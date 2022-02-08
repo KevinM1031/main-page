@@ -4,13 +4,6 @@ import { styled } from '@material-ui/core/styles';
 import useWindowDimensions from '../../components/ui/Window.js';
 import theme from "../../components/ui/Theme.js";
 import { useState, useEffect } from "react";
-import { Parallax } from 'react-parallax';
-
-const brot1 = '../../resource/images/brot1.png';
-const brot2 = '../../resource/images/brot2.png';
-const brot3 = '../../resource/images/brot3.png';
-const brot4 = '../../resource/images/brot4.png';
-const brot5 = '../../resource/images/brot5.png';
 
 const ab = '../../resource/images/ab.png';
 const a1 = '../../resource/images/a1.png';

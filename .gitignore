@@ -5,3 +5,5 @@ node_modules
 /.vs
 
 /.node_modules
+
+node_modules/

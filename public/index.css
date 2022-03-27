@@ -12,7 +12,7 @@ html {
 
 body {
     margin: 0px;
-    background-color: #000;
+    background-color: #151515;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     max-width: 100%;
@@ -40,4 +40,8 @@ img {
     margin-right: auto;
     display: block;
     object-fit: cover;
+}
+
+.parallaxWrapper {
+    margin: 0px;
 }

@@ -24,6 +24,8 @@ const defaultContent = {
 
 export default function Section1(props) {
 
+    console.log('needless update');
+
     const editing = true;
     const [textEditorOpen, setTextEditorOpen] = useState(false);
     const [imageEditorOpen, setImageEditorOpen] = useState(false);
@@ -84,15 +86,10 @@ export default function Section1(props) {
                 placeholder={editPlaceholder}/>
 
             <Box width={props.width} height={props.height} sx={{ overflow: 'hidden' }}>
-                <div style={{ marginTop: 
-                    (props.height > props.width) ? '0px' : (props.height - props.width) / 2 + 'px'
-                }}>
-                    <Section1BG 
-                        hidden={true} 
-                        width={props.width} 
-                        height={props.height} 
-                        resolution={800}/>
-                </div>
+                <Section1BG 
+                    width={props.width} 
+                    height={props.height} 
+                    resolution={800}/>
             </Box>
 
             <Grid 

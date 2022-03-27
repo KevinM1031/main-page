@@ -55,7 +55,7 @@ export default function Section5(props) {
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
                         <Typography align='center' variant='h4' sx={{mt: 8, mb: 4}}>
-                            Computer Science
+                            Video Game Development
                         </Typography>
                     </FadingComponent>
                 </Grid>

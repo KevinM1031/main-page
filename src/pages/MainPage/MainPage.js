@@ -9,8 +9,8 @@ import Section5 from "./Section5.js";
 import Section6 from "./Section6.js";
 import Section7 from "./Section7.js";
 import Section8 from "./Section8.js";
-import LoginButton from '../../components/ui/LoginButton.js'
-import { useState, useEffect } from "react";
+import RellaxWrapper from "react-rellax-wrapper";
+import { useEffect } from "react";
 
 const a0 = '../../resource/images/bg_a0.png';
 const a1 = '../../resource/images/bg_a1.png';
@@ -43,32 +43,34 @@ const f2 = '../../resource/images/bg_f2.png';
 const f3 = '../../resource/images/bg_f3.png';
 
 function SectionBG(props) {
-    const k0 = -0.5;
-    const k1 = 0.2;
-    const k2 = 0.2;
+
+    const k0 = -10;
+    const k1 = -8;
+    const k2 = -4;
 
     return (
-        <div style={{
-            width: '100%', height: props.height, backgroundImage: `url(${props.backgrounds[0]})`,
-            backgroundSize: 'auto 100%', transform: `translateY(${props.offsetY * -k0}px)`, zIndex: -100
-        }}>
+        <Box style={{height: props.height, overflow: 'hidden'}}>
+            <RellaxWrapper speed={k0} percentage={0.5} style={{
+                width: '100%', height: props.height, 
+                backgroundImage: `url(${props.backgrounds[0]})`,
+                backgroundSize: 'auto 100%', zIndex: -100
+            }}/>
+            <RellaxWrapper speed={k1} percentage={0.5} style={{
+                width: '100%', height: props.height, marginTop: -props.height,
+                backgroundImage: `url(${props.backgrounds[1]})`,
+                backgroundSize: 'auto 100%', zIndex: -100
+            }}/>
+            <RellaxWrapper speed={k2} percentage={0.5} style={{
+                width: '100%', height: props.height, marginTop: -props.height,
+                backgroundImage: `url(${props.backgrounds[2]})`,
+                backgroundSize: 'auto 100%', zIndex: -100
+            }}/>
             <div style={{
-                width: '100%', height: props.height, backgroundImage: `url(${props.backgrounds[1]})`,
-                backgroundSize: 'auto 100%', transform: `translateY(${props.offsetY * -k1}px)`
-            }}>
-                <div style={{
-                    width: '100%', height: props.height, backgroundImage: `url(${props.backgrounds[2]})`,
-                    backgroundSize: 'auto 100%', transform: `translateY(${props.offsetY * -k2}px)`
-                }}>
-                    <div style={{
-                        width: '100%', height: props.height, backgroundImage: `url(${props.backgrounds[3]})`,
-                        backgroundSize: 'auto 100%', transform: `translateY(${props.offsetY * (k0 + k1 + k2)}px)`
-                    }}>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+                width: '100%', height: props.height * 1.01, 
+                backgroundImage: `url(${props.backgrounds[3]})`, marginTop: -props.height,
+                backgroundSize: 'auto 100%', zIndex: 100, transform: `translate3d(0px, 0px, 0px)`
+            }}/>
+        </Box>
     );
 }
 
@@ -83,10 +85,8 @@ export function MainPage() {
     const width = useWindowDimensions().width;
     const height = useWindowDimensions().height * 1.5;
     
-    const [offsetY, setOffsetY] = useState(0);
     const handleScroll = () => {
         const currHeight = window.innerHeight * 1.5;
-        setOffsetY(window.pageYOffset);
 
         if (page === 1) {
             if (window.pageYOffset > currHeight * 2.1)
@@ -119,7 +119,7 @@ export function MainPage() {
             {
                 page === 1 ?
                     <Stack>
-                        <SectionBG height={height} offsetY={offsetY} backgrounds={[a0, a1, a2, a3]} />
+                        <SectionBG height={height} backgrounds={[a0, a1, a2, a3]} />
                         <Section1 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -127,7 +127,7 @@ export function MainPage() {
                 : page === 2 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} offsetY={offsetY - height} backgrounds={[b0, b1, b2, b3]} />
+                        <SectionBG height={height} backgrounds={[b0, b1, b2, b3]} />
                         <Section2 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000, #000)'}} height={height}/>
                     </Stack>
@@ -135,7 +135,7 @@ export function MainPage() {
                 : page === 3 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} offsetY={offsetY - height} backgrounds={[c0, c1, c2, c3]} />
+                        <SectionBG height={height} backgrounds={[c0, c1, c2, c3]} />
                         <Section3 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -143,7 +143,7 @@ export function MainPage() {
                 : page === 4 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} offsetY={offsetY - height} backgrounds={[d0, d1, d2, d3]} />
+                        <SectionBG height={height} backgrounds={[d0, d1, d2, d3]} />
                         <Section4 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -151,7 +151,7 @@ export function MainPage() {
                 : page === 5 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} offsetY={offsetY - height} backgrounds={[e0, e1, e2, e3]} />
+                        <SectionBG height={height} backgrounds={[e0, e1, e2, e3]} />
                         <Section5 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -159,7 +159,7 @@ export function MainPage() {
                 : page === 6 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} offsetY={offsetY - height} backgrounds={[f0, f1, f2, f3]} />
+                        <SectionBG height={height} backgrounds={[f0, f1, f2, f3]} />
                         <Section6 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -167,7 +167,7 @@ export function MainPage() {
                 : page === 7 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} offsetY={offsetY - height} backgrounds={[f0, f1, f2, f3]} />
+                        <SectionBG height={height} backgrounds={[f0, f1, f2, f3]} />
                         <Section7 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -175,7 +175,7 @@ export function MainPage() {
                 : page === 8 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} offsetY={offsetY - height} backgrounds={[f0, f1, f2, f3]} />
+                        <SectionBG height={height} backgrounds={[f0, f1, f2, f3]} />
                         <Section8 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                         <Box backgroundColor='#000000' height={height*10}/>

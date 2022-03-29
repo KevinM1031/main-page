@@ -56,15 +56,17 @@ export default function List(props) {
                 <Grid item xs={3} align='center'>
                     <SlidingComponent direction={'right'} duration={1500}>
                         <Editable editor={openImageEditor} id={'thumbnail_left'}>
-                            <img src={props.content.thumbnail_left} />
+                            <img src={props.content.thumbnail_left} 
+                                style={{height: props.maxHeight * 0.8, overflow: 'hidden'}}/>
                         </Editable>
                     </SlidingComponent>
                 </Grid>
 
-                <Grid item xs={5} align='center'>
+                <Grid item xs={5} align='center'> 
                     <FadingComponent duration={1500}>
                         <Editable editor={openTextEditor} id={'description'}>
-                            <Typography variant='h6'>
+                            <Typography variant='h6'
+                                sx={{maxHeight: props.maxHeight, overflow: 'auto'}}>
                                 {props.content.description}
                             </Typography>
                         </Editable>
@@ -74,7 +76,8 @@ export default function List(props) {
                 <Grid item xs={3} align='center'>
                     <SlidingComponent direction={'left'} duration={1500}>
                         <Editable editor={openImageEditor} id={'thumbnail_right'}>
-                            <img src={props.content.thumbnail_right} />
+                            <img src={props.content.thumbnail_right} 
+                                style={{height: props.maxHeight * 0.8, overflow: 'hidden'}}/>
                         </Editable>
                     </SlidingComponent>
                 </Grid>

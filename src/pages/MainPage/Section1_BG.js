@@ -1,6 +1,5 @@
 import { Component, createRef } from 'react';
 import * as THREE from 'three';
-import SectionBG from './SectionBG.js';
 
 class Scene extends Component {
     constructor(props) {
@@ -20,27 +19,55 @@ class Scene extends Component {
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(
-            75,
+            60,
             width / height,
             0.1,
             1000
         );
+        camera.position.z = 10;
 
         const renderer = new THREE.WebGLRenderer({ antialias: true });
-        const geometry = new THREE.BoxGeometry(1, 1, 1);
-        const material = new THREE.MeshBasicMaterial({ color: '#433F81' });
-        const cube = new THREE.Mesh(geometry, material);
-
-        camera.position.z = 4;
-        scene.add(cube);
         renderer.setClearColor('#151515');
         renderer.setSize(width, height);
+
+        //>>>>>>>> SCENE SETUP
+        
+        const ambientLight = new THREE.AmbientLight('#ffffff');
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight( '#ffffff', 1 );
+        pointLight.position.set( 30, 50, 10 );
+        scene.add(pointLight);
+
+        const centerObj_geo = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+        const centerObj_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
+        const centerObj = new THREE.Mesh(centerObj_geo, centerObj_mat);
+        scene.add(centerObj);
+        this.centerObj = centerObj;
+
+        const orbitObj1_geo = new THREE.BoxGeometry(0.25, 0.25, 0.25);
+        const orbitObj1_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
+        const orbitObj1 = new THREE.Mesh(orbitObj1_geo, orbitObj1_mat);
+        scene.add(orbitObj1);
+        this.orbitObj1 = orbitObj1;
+
+        const orbitObj2_geo = new THREE.BoxGeometry(0.25, 0.25, 0.25);
+        const orbitObj2_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
+        const orbitObj2 = new THREE.Mesh(orbitObj2_geo, orbitObj2_mat);
+        scene.add(orbitObj2);
+        this.orbitObj2 = orbitObj2;
+
+        const orbitObj3_geo = new THREE.BoxGeometry(0.25, 0.25, 0.25);
+        const orbitObj3_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
+        const orbitObj3 = new THREE.Mesh(orbitObj3_geo, orbitObj3_mat);
+        scene.add(orbitObj3);
+        this.orbitObj3 = orbitObj3;
+
+        //////////////////////
 
         this.scene = scene;
         this.camera = camera;
         this.renderer = renderer;
-        this.material = material;
-        this.cube = cube;
 
         this.renderer.domElement.style.width = '100%';
         this.renderer.domElement.style.height = '100%';
@@ -61,18 +88,45 @@ class Scene extends Component {
     }
 
     stop() {
-        cancelAnimationFrame(this.frameId);
+        window.cancelAnimationFrame(this.frameId);
     }
 
     animate() {
 
-        this.cube.rotation.x += 0.05;
-        this.cube.rotation.y += 0.05;
+        let height = this.renderer.domElement.scrollHeight * 1.5;
+        let scrollY = window.scrollY - height + window.innerHeight / 2;
+        this.camera.position.y = -scrollY / height * 4;
+
+        let rotationY_radians = Math.atan(-(this.camera.position.y * 2) / this.camera.position.z);
+        this.camera.rotation.x = rotationY_radians;
+
+        //>>>>>>>> ANIMATION SETUP
+
+        let t = Date.now() % 5000 / 2500 * Math.PI;
+
+        this.centerObj.rotation.y += 0.05;
+
+        this.orbitObj1.position.set(
+            2*Math.sin(t+Math.PI*0.9), 
+            Math.cos(t-Math.PI*0.3), 
+            2*Math.cos(t+Math.PI*0.9));
+
+        this.orbitObj2.position.set(
+            4*Math.sin(t-Math.PI*0.2), 
+            Math.cos(t+Math.PI*0.5), 
+            4*Math.cos(t-Math.PI*0.2));
+
+        this.orbitObj3.position.set(
+            6*Math.sin(t+Math.PI*0.6), 
+            Math.cos(t-Math.PI*0.3), 
+            6*Math.cos(t+Math.PI*0.6));
+
+        //////////////////////////
 
         this.renderScene();
         setTimeout( () => {
             this.frameId = window.requestAnimationFrame(this.animate);
-        }, 1000 / 60 );
+        }, 1000 / 40 );
     }
 
     renderScene() {

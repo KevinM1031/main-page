@@ -24,8 +24,6 @@ const defaultContent = {
 
 export default function Section1(props) {
 
-    console.log('needless update');
-
     const editing = true;
     const [textEditorOpen, setTextEditorOpen] = useState(false);
     const [imageEditorOpen, setImageEditorOpen] = useState(false);

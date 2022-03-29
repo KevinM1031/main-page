@@ -133,7 +133,7 @@ export default function Section7(props) {
                 </Grid>
 
                 <Grid item xs={12} align="center">
-                    <Header dataPath={dataPathParent} content={content}/>
+                    <Header dataPath={dataPathParent} content={content} maxHeight={props.height * 0.2}/>
                 </Grid>
 
                 <Grid item xs={12} align="center">

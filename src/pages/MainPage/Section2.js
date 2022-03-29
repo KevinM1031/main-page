@@ -1,7 +1,7 @@
 import { Typography, Grid, Box } from '@material-ui/core';
 import { getSectionContent, getSectionRawContent } from '../../components/database/FirebaseAPI.js';
 import { useState, useEffect } from "react";
-import Section1BG from './Section1_BG'
+import Section2BG from './Section2_BG'
 import Editable from '../../components/ui/Editable.js'
 import List from '../../components/ui/List.js'
 import ImageEditor from '../../components/ui/ImageEditor.js'
@@ -59,7 +59,7 @@ export default function Section2(props) {
                 placeholder={editPlaceholder}/>
 
             <Box width={props.width} height={props.height} sx={{ overflow: 'hidden' }}>
-                <Section1BG 
+                <Section2BG 
                     width={props.width} 
                     height={props.height} 
                     resolution={800}/>

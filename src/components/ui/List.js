@@ -27,7 +27,7 @@ const LandscapeLayout = (props) => {
                 <Slide timeout={700} direction="left" in={props.pageAnim}>
                     <div style={{height: '100%'}}>
                         <Fade timeout={700} in={props.pageAnim}>
-                            <Box sx={{ overflow: 'hidden', height: '100%' }}>
+                            <Box sx={{ overflow: 'auto', height: props.maxHeight * 0.9 }}>
                                 <Grid container sx={{ mb: 2, alignItems: 'center' }}>
                                     <Grid item xs={8}>
                                         <Typography variant='h4'>
@@ -64,8 +64,8 @@ const LandscapeLayout = (props) => {
 
 const PortraitLayout = (props) => {
     return (
-        <Grid container sx={{ overflow: 'hidden', height: '100%' }} direction='column'>
-            <Grid item xs={4}>
+        <Grid container sx={{ overflow: 'hidden', height: '100%' }}>
+            <Grid item xs={12}>
                 <Slide direction="right" timeout={700} in={props.pageAnim} onExited={() => {
                     props.setPageAnim(true);
                     props.setPageNum(props.pageNumTemp - 1);
@@ -74,18 +74,18 @@ const PortraitLayout = (props) => {
                         <Fade timeout={700} in={props.pageAnim}>
                             <img src={props.content.items[props.pageNum].image}
                                 style={{ 
-                                    maxWidth: '100%', width: '100%', height: props.maxHeight * 0.5, objectFit: 'cover'}}/>
+                                    maxWidth: '100%', width: '100%', height: props.maxHeight * 0.45, objectFit: 'cover'}}/>
                         </Fade>
                     </div>
                     
                 </Slide>
             </Grid>
 
-            <Grid item xs={4} align='left'>
+            <Grid item xs={12} align='left'>
                 <Slide timeout={700} direction="left" in={props.pageAnim}>
                     <div style={{height: '100%'}}>
                         <Fade timeout={700} in={props.pageAnim}>
-                            <Box sx={{ overflow: 'hidden', height: '100%' }}>
+                            <Box sx={{ overflow: 'auto', height: props.maxHeight * 0.45 }}>
 
                                 <Grid container sx={{ mt: 2, mb: 2, alignItems: 'center' }}>
                                     <Grid item xs={8}>
@@ -152,7 +152,8 @@ export default function List(props) {
                             pageNumTemp={pageNumTemp}
                             pageAnim={pageAnim}
                             setPageAnim={setPageAnim}
-                            content={props.content}/>
+                            content={props.content}
+                            maxHeight={props.maxHeight}/>
                     :
                         <PortraitLayout 
                             pageNum={pageNum} 

@@ -1,6 +1,5 @@
 import { ImageList, ImageListItem, ImageListItemBar, IconButton } 
     from '@material-ui/core';
-import { ZoomIn } from '@mui/icons-material';
 import { useState } from "react";
 import Editable from './Editable.js';
 import GalleryEditor from './GalleryEditor.js';
@@ -11,16 +10,16 @@ const LandscapeLayout = (props) => {
             style={{ width: '90%', height: '90%', hideScrollbar: true }} 
             sx={{ height: '90%', overflowY: 'scroll' }}>
             {props.content[props.id].map((item) => (
-                <ImageListItem key={item.title}>
+                <ImageListItem 
+                    key={item.title}
+                    onClick={() => { window.open(item.image, '_blank') }}>
                     <img
                         src={item.image}
                         alt={item.title}
                         style={{maxWidth: '100%'}}/>
                     <ImageListItemBar
                         title={item.title}
-                        sx={{ background: 'rgba(0, 0, 0, 0.3)' }}
-                        href={item.image}
-                        target="_blank"/>
+                        sx={{ background: 'rgba(0, 0, 0, 0.3)' }}/>
                 </ImageListItem>
             ))}
         </ImageList>

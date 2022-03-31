@@ -12,35 +12,45 @@ import Section8 from "./Section8.js";
 import RellaxWrapper from "react-rellax-wrapper";
 import { useEffect } from "react";
 
-const a0 = '../../resource/images/bg_a0.png';
-const a1 = '../../resource/images/bg_a1.png';
-const a2 = '../../resource/images/bg_a2.png';
-const a3 = '../../resource/images/bg_a3.png';
+import a0 from '../../images/bg_a0.png';
+import a1 from '../../images/bg_a1.png';
+import a2 from '../../images/bg_a2.png';
+import a3 from '../../images/bg_a3.png';
 
-const b0 = '../../resource/images/bg_b0.png';
-const b1 = '../../resource/images/bg_b1.png';
-const b2 = '../../resource/images/bg_b2.png';
-const b3 = '../../resource/images/bg_b3.png';
+import b0 from '../../images/bg_b0.png';
+import b1 from '../../images/bg_b1.png';
+import b2 from '../../images/bg_b2.png';
+import b3 from '../../images/bg_b3.png';
 
-const c0 = '../../resource/images/bg_c0.png';
-const c1 = '../../resource/images/bg_c1.png';
-const c2 = '../../resource/images/bg_c2.png';
-const c3 = '../../resource/images/bg_c3.png';
+import c0 from '../../images/bg_c0.png';
+import c1 from '../../images/bg_c1.png';
+import c2 from '../../images/bg_c2.png';
+import c3 from '../../images/bg_c3.png';
 
-const d0 = '../../resource/images/bg_d0.png';
-const d1 = '../../resource/images/bg_d1.png';
-const d2 = '../../resource/images/bg_d2.png';
-const d3 = '../../resource/images/bg_d3.png';
+import d0 from '../../images/bg_d0.png';
+import d1 from '../../images/bg_d1.png';
+import d2 from '../../images/bg_d2.png';
+import d3 from '../../images/bg_d3.png';
 
-const e0 = '../../resource/images/bg_e0.png';
-const e1 = '../../resource/images/bg_e1.png';
-const e2 = '../../resource/images/bg_e2.png';
-const e3 = '../../resource/images/bg_e3.png';
+import e0 from '../../images/bg_e0.png';
+import e1 from '../../images/bg_e1.png';
+import e2 from '../../images/bg_e2.png';
+import e3 from '../../images/bg_e3.png';
 
-const f0 = '../../resource/images/bg_f0.png';
-const f1 = '../../resource/images/bg_f1.png';
-const f2 = '../../resource/images/bg_f2.png';
-const f3 = '../../resource/images/bg_f3.png';
+import f0 from '../../images/bg_f0.png';
+import f1 from '../../images/bg_f1.png';
+import f2 from '../../images/bg_f2.png';
+import f3 from '../../images/bg_f3.png';
+
+import g0 from '../../images/bg_g0.png';
+import g1 from '../../images/bg_g1.png';
+import g2 from '../../images/bg_g2.png';
+import g3 from '../../images/bg_g3.png';
+
+import h0 from '../../images/bg_h0.png';
+import h1 from '../../images/bg_h1.png';
+import h2 from '../../images/bg_h2.png';
+import h3 from '../../images/bg_h3.png';
 
 function SectionBG(props) {
 
@@ -167,7 +177,7 @@ export function MainPage() {
                 : page === 7 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} backgrounds={[f0, f1, f2, f3]} />
+                        <SectionBG height={height} backgrounds={[g0, g1, g2, g3]} />
                         <Section7 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -175,7 +185,7 @@ export function MainPage() {
                 : page === 8 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} backgrounds={[f0, f1, f2, f3]} />
+                        <SectionBG height={height} backgrounds={[h0, h1, h2, h3]} />
                         <Section8 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                         <Box backgroundColor='#000000' height={height*10}/>

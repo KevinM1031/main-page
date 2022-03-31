@@ -32,36 +32,48 @@ class Scene extends Component {
 
         //>>>>>>>> SCENE SETUP
         
-        const ambientLight = new THREE.AmbientLight('#ffffff');
+        const ambientLight = new THREE.AmbientLight('#444444');
         scene.add(ambientLight);
 
-        const pointLight = new THREE.PointLight( '#ffffff', 1 );
+        const pointLight = new THREE.PointLight( '#888888', 1 );
         pointLight.position.set( 30, 50, 10 );
         scene.add(pointLight);
 
-        const centerObj_geo = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-        const centerObj_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
+        const centerObj_geo = new THREE.BoxGeometry(1.5, 1.5, 1.5);
+        const centerObj_mat = new THREE.MeshLambertMaterial({ color: '#666688' });
         const centerObj = new THREE.Mesh(centerObj_geo, centerObj_mat);
+        centerObj.rotation.set( Math.PI/4, Math.PI/4, Math.PI/2 );
         scene.add(centerObj);
         this.centerObj = centerObj;
 
         const orbitObj1_geo = new THREE.BoxGeometry(0.25, 0.25, 0.25);
-        const orbitObj1_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
-        const orbitObj1 = new THREE.Mesh(orbitObj1_geo, orbitObj1_mat);
+        const orbitObj1 = new THREE.Mesh(orbitObj1_geo, centerObj_mat);
+        orbitObj1.rotation.set( Math.PI/4, Math.PI/4, Math.PI/2 );
         scene.add(orbitObj1);
         this.orbitObj1 = orbitObj1;
 
         const orbitObj2_geo = new THREE.BoxGeometry(0.25, 0.25, 0.25);
-        const orbitObj2_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
-        const orbitObj2 = new THREE.Mesh(orbitObj2_geo, orbitObj2_mat);
+        const orbitObj2 = new THREE.Mesh(orbitObj2_geo, centerObj_mat);
+        orbitObj2.rotation.set( Math.PI/4, Math.PI, Math.PI/2 );
         scene.add(orbitObj2);
         this.orbitObj2 = orbitObj2;
 
         const orbitObj3_geo = new THREE.BoxGeometry(0.25, 0.25, 0.25);
-        const orbitObj3_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
-        const orbitObj3 = new THREE.Mesh(orbitObj3_geo, orbitObj3_mat);
+        const orbitObj3 = new THREE.Mesh(orbitObj3_geo, centerObj_mat);
+        orbitObj3.rotation.set( Math.PI/2, Math.PI/4, Math.PI );
         scene.add(orbitObj3);
         this.orbitObj3 = orbitObj3;
+
+        const ringObj1_geo = new THREE.CylinderGeometry(4.5, 4.5, 0.2, 32, 1, true);
+        const ringObj1_mat = new THREE.LineBasicMaterial({ color: '#333344' });
+        const ringObj1 = new THREE.Line(ringObj1_geo, ringObj1_mat);
+        scene.add(ringObj1);
+        this.ringObj1 = ringObj1;
+
+        const ringObj2_geo = new THREE.CylinderGeometry(3, 3, 0.2, 24, 1, true);
+        const ringObj2 = new THREE.Line(ringObj2_geo, ringObj1_mat);
+        scene.add(ringObj2);
+        this.ringObj2 = ringObj2;
 
         //////////////////////
 
@@ -102,9 +114,11 @@ class Scene extends Component {
 
         //>>>>>>>> ANIMATION SETUP
 
-        let t = Date.now() % 5000 / 2500 * Math.PI;
+        let t = Date.now() % 50000 / 25000 * Math.PI;
 
-        this.centerObj.rotation.y += 0.05;
+        this.centerObj.rotation.x += 0.01;
+        this.centerObj.rotation.y += 0.01;
+        this.centerObj.rotation.z += 0.01;
 
         this.orbitObj1.position.set(
             2*Math.sin(t+Math.PI*0.9), 
@@ -120,6 +134,9 @@ class Scene extends Component {
             6*Math.sin(t+Math.PI*0.6), 
             Math.cos(t-Math.PI*0.3), 
             6*Math.cos(t+Math.PI*0.6));
+
+        this.ringObj1.rotation.set(0.1*Math.sin(t), -t, 0.4*Math.cos(t));
+        this.ringObj2.rotation.set(Math.PI, -3*t, 0.4*Math.cos(t));
 
         //////////////////////////
 

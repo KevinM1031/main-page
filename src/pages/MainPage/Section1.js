@@ -103,7 +103,7 @@ export default function Section1(props) {
 
                 <Grid item xs={10} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant='h4'>
+                        <Typography align='center' variant='h4' sx={{mt:8, mb:8}}>
                             About Me
                         </Typography>
                     </FadingComponent>
@@ -140,6 +140,7 @@ export default function Section1(props) {
                         <div>
                             <Editable editor={openTextEditor} id={'introductory_text'}>
                                 <Typography variant='h5' width={'40%'} 
+                                    sx={{mt: 8, maxHeight: props.height*0.25, overflow: 'auto'}}
                                     onClick={() => {if (editing) openTextEditor('introductory_text')}}>
                                     {content.introductory_text}
                                 </Typography>
@@ -150,7 +151,7 @@ export default function Section1(props) {
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant='h4' sx={{mt: 8}}>
+                        <Typography align='center' variant='h4' sx={{mt: 12}}>
                             Affiliation Summary
                         </Typography>
                     </FadingComponent>
@@ -200,7 +201,7 @@ export default function Section1(props) {
 
                 <Grid item xs={2}/>
 
-                <Grid item xs={2} align='center'>
+                <Grid item xs={3} align='center'>
                     <ZoomingComponent duration={800}>
                         <div>
                             <Editable editor={openButtonEditor} id={'employment_resume'}>
@@ -215,7 +216,7 @@ export default function Section1(props) {
                     </ZoomingComponent>
                 </Grid>
 
-                <Grid item xs={2} align='center'>
+                <Grid item xs={3} align='center'>
                     <ZoomingComponent duration={800}>
                         <div>
                             <Editable editor={openButtonEditor} id={'general_resume'}>

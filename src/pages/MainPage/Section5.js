@@ -1,7 +1,7 @@
 import { Typography, Grid, Box } from '@material-ui/core';
 import { getSectionContent, getSectionRawContent } from '../../components/database/FirebaseAPI.js';
 import { useState, useEffect } from "react";
-import Section1BG from './Section1_BG'
+import Section5BG from './Section5_BG'
 import Shop from '../../components/ui/Shop.js'
 import Header from '../../components/ui/Header.js'
 import { FadingComponent } from '../../components/ui/AnimatedComponent.js';
@@ -37,7 +37,7 @@ export default function Section5(props) {
 
             <Box width={props.width} height={props.height} sx={{ overflow: 'hidden' }}>
                 <div style={{ marginTop: '0px' }}>
-                    <Section1BG 
+                    <Section5BG 
                         hidden={true} 
                         width={props.width} 
                         height={props.height} 

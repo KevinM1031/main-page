@@ -1,7 +1,7 @@
 import { Typography, Grid, Box } from '@material-ui/core';
 import { getSectionContent, getSectionRawContent } from '../../components/database/FirebaseAPI.js';
 import { useState, useEffect } from "react";
-import Section1BG from './Section1_BG'
+import Section7BG from './Section7_BG'
 import Gallery from '../../components/ui/Gallery.js'
 import Header from '../../components/ui/Header.js'
 import { FadingComponent } from '../../components/ui/AnimatedComponent.js';
@@ -34,7 +34,7 @@ const LandscapeGalleries = (props) => {
                 </Typography>
 
                 <Gallery 
-                    maxHeight={props.height * 0.47} 
+                    maxHeight={props.height * 0.55} 
                     dataPath={props.dataPathParent + 'traditional_media/'} 
                     id={'traditional_media'}
                     rawContent={props.rawContent} 
@@ -48,7 +48,7 @@ const LandscapeGalleries = (props) => {
                 </Typography>
 
                 <Gallery 
-                    maxHeight={props.height * 0.47} 
+                    maxHeight={props.height * 0.55} 
                     dataPath={props.dataPathParent + 'digital_media/'} 
                     id={'digital_media'}
                     rawContent={props.rawContent} 
@@ -107,7 +107,7 @@ export default function Section7(props) {
 
             <Box width={props.width} height={props.height} sx={{ overflow: 'hidden' }}>
                 <div style={{ marginTop: '0px' }}>
-                    <Section1BG 
+                    <Section7BG 
                         hidden={true} 
                         width={props.width} 
                         height={props.height} 

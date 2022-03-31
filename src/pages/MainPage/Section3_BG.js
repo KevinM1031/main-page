@@ -1,12 +1,6 @@
 import { Component, createRef } from 'react';
 import * as THREE from 'three';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-import { SavePass } from 'three/examples/jsm/postprocessing/SavePass.js';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { BlendShader } from 'three/examples/jsm/shaders/BlendShader.js';
-import { CopyShader } from 'three/examples/jsm/shaders/CopyShader.js';
-
+import * as POSTPROCESSING from 'postprocessing';
 
 class Scene extends Component {
     constructor(props) {
@@ -33,85 +27,83 @@ class Scene extends Component {
         );
         camera.position.z = 10;
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.shadowMap.enabled = true;
-        renderer.setPixelRatio(window.devicePixelRatio);
+        const renderer = new THREE.WebGLRenderer();
         renderer.setClearColor('#151515');
         renderer.setSize(width, height);
 
-        ////////////////////////////////
-
-        // Post-processing inits
-        const composer = new EffectComposer(renderer);
-
-        var renderPass = new RenderPass(scene, camera);
-        var copyPass = new ShaderPass( CopyShader );
-        copyPass.renderToScreen = true;
-
-        const renderTargetParameters = {
-            minFilter: THREE.LinearFilter,
-            magFilter: THREE.LinearFilter,
-            stencilBuffer: false
-        };
-
-        // save pass
-        const savePass = new SavePass(
-            new THREE.WebGLRenderTarget(
-                width,
-                height,
-                renderTargetParameters
-            )
-        );
-
-        // blend pass
-        const blendPass = new ShaderPass(BlendShader, "tDiffuse1");
-        blendPass.uniforms["tDiffuse2"].value = savePass.renderTarget.texture;
-        blendPass.uniforms["mixRatio"].value = 0.3;
-
-        // output pass
-        const outputPass = new ShaderPass(CopyShader);
-        outputPass.renderToScreen = true;
-
-        // adding passes to composer
-        composer.addPass(renderPass);
-        composer.addPass(blendPass);
-        composer.addPass(savePass);
-        composer.addPass(outputPass);
-
-        this.composer = composer;
-
         //>>>>>>>> SCENE SETUP
         
-        const ambientLight = new THREE.AmbientLight('#ffffff');
+        const ambientLight = new THREE.AmbientLight('#444444');
         scene.add(ambientLight);
 
-        const pointLight = new THREE.PointLight( '#ffffff', 1 );
-        pointLight.position.set( 30, 50, 10 );
-        scene.add(pointLight);
+        const pointLight1 = new THREE.PointLight( '#aa4444', 1 );
+        pointLight1.position.set( 0, 50, 0 );
+        scene.add(pointLight1);
 
-        const centerObj_geo = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-        const centerObj_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
-        const centerObj = new THREE.Mesh(centerObj_geo, centerObj_mat);
-        scene.add(centerObj);
-        this.centerObj = centerObj;
+        const pointLight2 = new THREE.PointLight( '#4444aa', 1 );
+        pointLight2.position.set( 0, -50, 0 );
+        scene.add(pointLight2);
 
-        const orbitObj1_geo = new THREE.BoxGeometry(0.25, 0.25, 0.25);
-        const orbitObj1_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
-        const orbitObj1 = new THREE.Mesh(orbitObj1_geo, orbitObj1_mat);
+        const orbitObj_geo = new THREE.IcosahedronGeometry(0.2, 0);
+        const orbitObj_mat = new THREE.MeshLambertMaterial({ color: '#aaaaaa' });
+        const orbitObj1 = new THREE.Mesh(orbitObj_geo, orbitObj_mat);
         scene.add(orbitObj1);
         this.orbitObj1 = orbitObj1;
-
-        const orbitObj2_geo = new THREE.BoxGeometry(0.25, 0.25, 0.25);
-        const orbitObj2_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
-        const orbitObj2 = new THREE.Mesh(orbitObj2_geo, orbitObj2_mat);
+        const orbitObj2 = new THREE.Mesh(orbitObj_geo, orbitObj_mat);
         scene.add(orbitObj2);
         this.orbitObj2 = orbitObj2;
-
-        const orbitObj3_geo = new THREE.BoxGeometry(0.25, 0.25, 0.25);
-        const orbitObj3_mat = new THREE.MeshLambertMaterial({ color: '#433F81' });
-        const orbitObj3 = new THREE.Mesh(orbitObj3_geo, orbitObj3_mat);
+        const orbitObj3 = new THREE.Mesh(orbitObj_geo, orbitObj_mat);
         scene.add(orbitObj3);
         this.orbitObj3 = orbitObj3;
+        const orbitObj4 = new THREE.Mesh(orbitObj_geo, orbitObj_mat);
+        scene.add(orbitObj4);
+        this.orbitObj4 = orbitObj4;
+        const orbitObj5 = new THREE.Mesh(orbitObj_geo, orbitObj_mat);
+        scene.add(orbitObj5);
+        this.orbitObj5 = orbitObj5;
+        const orbitObj6 = new THREE.Mesh(orbitObj_geo, orbitObj_mat);
+        scene.add(orbitObj6);
+        this.orbitObj6 = orbitObj6;
+
+        const orbitLin_geo = new THREE.IcosahedronGeometry(0.4, 0);
+        const orbitLin_mat = new THREE.MeshLambertMaterial({ color: '#888888' });
+        const orbitLin1 = new THREE.Line(orbitLin_geo, orbitLin_mat);
+        scene.add(orbitLin1);
+        this.orbitLin1 = orbitLin1;
+        const orbitLin2 = new THREE.Line(orbitLin_geo, orbitLin_mat);
+        scene.add(orbitLin2);
+        this.orbitLin2 = orbitLin2;
+        const orbitLin3 = new THREE.Line(orbitLin_geo, orbitLin_mat);
+        scene.add(orbitLin3);
+        this.orbitLin3 = orbitLin3;
+        const orbitLin4 = new THREE.Line(orbitLin_geo, orbitLin_mat);
+        scene.add(orbitLin4);
+        this.orbitLin4 = orbitLin4;
+        const orbitLin5 = new THREE.Line(orbitLin_geo, orbitLin_mat);
+        scene.add(orbitLin5);
+        this.orbitLin5 = orbitLin5;
+        const orbitLin6 = new THREE.Line(orbitLin_geo, orbitLin_mat);
+        scene.add(orbitLin6);
+        this.orbitLin6 = orbitLin6;
+        
+        ///
+
+        let shockwaveEffect = new POSTPROCESSING.ShockWaveEffect(camera, new THREE.Vector3(0,0,0), {
+            speed: 0.5,
+			maxRadius: 1,
+			waveSize: 0.3,
+			amplitude: 0.1
+        });
+        this.shockwaveEffect = shockwaveEffect;
+        let smaaEffect = new POSTPROCESSING.SMAAEffect();
+        let renderPass = new POSTPROCESSING.RenderPass(scene, camera);
+        let effectPass = new POSTPROCESSING.EffectPass(camera, shockwaveEffect);
+        let smaaPass = new POSTPROCESSING.EffectPass(camera, smaaEffect);
+        let composer = new POSTPROCESSING.EffectComposer(renderer);
+        composer.addPass(renderPass);
+        composer.addPass(effectPass);
+        composer.addPass(smaaPass);
+        this.composer = composer;
 
         //////////////////////
 
@@ -142,9 +134,8 @@ class Scene extends Component {
     }
 
     animate() {
-        this.composer.render();
 
-        let height = this.renderer.domElement.scrollHeight * 1.5;
+        let height = this.renderer.domElement.scrollHeight * 2.5;
         let scrollY = window.scrollY - height + window.innerHeight / 2;
         this.camera.position.y = -scrollY / height * 4;
 
@@ -153,35 +144,103 @@ class Scene extends Component {
 
         //>>>>>>>> ANIMATION SETUP
 
-        let t = Date.now() % 5000 / 2500 * Math.PI;
+        let t = Date.now() % 1000000 / 500000 * Math.PI;
 
-        this.centerObj.rotation.y += 0.05;
-
+        let t1 = t*8 + Math.PI*0.3
         this.orbitObj1.position.set(
-            2*Math.sin(t+Math.PI*0.9), 
-            Math.cos(t-Math.PI*0.3), 
-            2*Math.cos(t+Math.PI*0.9));
-
+            5*Math.cos(t1)*Math.sin(Math.tan(t1)+Math.PI), 
+            -Math.cos(t1)*Math.sin(Math.tan(t1)+Math.PI), 
+            5*Math.cos(t1)*Math.cos(Math.tan(t1)+Math.PI));
         this.orbitObj2.position.set(
-            4*Math.sin(t-Math.PI*0.2), 
-            Math.cos(t+Math.PI*0.5), 
-            4*Math.cos(t-Math.PI*0.2));
+            5*Math.cos(t1)*Math.sin(Math.tan(t1)), 
+            -Math.cos(t1)*Math.sin(Math.tan(t1)), 
+            5*Math.cos(t1)*Math.cos(Math.tan(t1)));
+        this.orbitObj1.rotation.x += 0.03;
+        this.orbitObj1.rotation.y -= 0.02;
+        this.orbitObj2.rotation.x -= 0.04;
+        this.orbitObj2.rotation.y += 0.01;
+        this.orbitLin1.position.set(
+            5*Math.cos(t1)*Math.sin(Math.tan(t1)+Math.PI), 
+            -Math.cos(t1)*Math.sin(Math.tan(t1)+Math.PI), 
+            5*Math.cos(t1)*Math.cos(Math.tan(t1)+Math.PI));
+        this.orbitLin2.position.set(
+            5*Math.cos(t1)*Math.sin(Math.tan(t1)), 
+            -Math.cos(t1)*Math.sin(Math.tan(t1)), 
+            5*Math.cos(t1)*Math.cos(Math.tan(t1)));
+        this.orbitLin1.rotation.x -= 0.02;
+        this.orbitLin1.rotation.y -= 0.05;
+        this.orbitLin2.rotation.x += 0.01;
+        this.orbitLin2.rotation.y += 0.03;
 
+
+        let t2 = t*17 + Math.PI*0.9
         this.orbitObj3.position.set(
-            6*Math.sin(t+Math.PI*0.6), 
-            Math.cos(t-Math.PI*0.3), 
-            6*Math.cos(t+Math.PI*0.6));
+            8*Math.cos(t2)*Math.sin(-Math.tan(t2)+Math.PI), 
+            2*Math.cos(t2)*Math.sin(-Math.tan(t2)+Math.PI), 
+            8*Math.cos(t2)*Math.cos(-Math.tan(t2)+Math.PI));
+        this.orbitObj4.position.set(
+            8*Math.cos(t2)*Math.sin(-Math.tan(t2)), 
+            2*Math.cos(t2)*Math.sin(-Math.tan(t2)), 
+            8*Math.cos(t2)*Math.cos(-Math.tan(t2)));
+        this.orbitObj3.rotation.x += 0.05;
+        this.orbitObj3.rotation.y -= 0.02;
+        this.orbitObj4.rotation.x -= 0.03;
+        this.orbitObj4.rotation.y += 0.02;
+        this.orbitLin3.position.set(
+            8*Math.cos(t2)*Math.sin(-Math.tan(t2)+Math.PI), 
+            2*Math.cos(t2)*Math.sin(-Math.tan(t2)+Math.PI), 
+            8*Math.cos(t2)*Math.cos(-Math.tan(t2)+Math.PI));
+        this.orbitLin4.position.set(
+            8*Math.cos(t2)*Math.sin(-Math.tan(t2)), 
+            2*Math.cos(t2)*Math.sin(-Math.tan(t2)), 
+            8*Math.cos(t2)*Math.cos(-Math.tan(t2)));
+        this.orbitLin3.rotation.x -= 0.01;
+        this.orbitLin3.rotation.y -= 0.05;
+        this.orbitLin4.rotation.x += 0.01;
+        this.orbitLin4.rotation.y += 0.03;
+
+        let t3 = t*5 + Math.PI*-0.5
+        this.orbitObj5.position.set(
+            12*Math.cos(t3)*Math.sin(Math.tan(t3)+Math.PI), 
+            -3*Math.cos(t3)*Math.sin(Math.tan(t3)+Math.PI), 
+            12*Math.cos(t3)*Math.cos(Math.tan(t3)+Math.PI));
+        this.orbitObj6.position.set(
+            12*Math.cos(t3)*Math.sin(Math.tan(t3)), 
+            -3*Math.cos(t3)*Math.sin(Math.tan(t3)), 
+            12*Math.cos(t3)*Math.cos(Math.tan(t3)));
+        this.orbitObj5.rotation.x -= 0.01;
+        this.orbitObj5.rotation.y -= 0.06;
+        this.orbitObj6.rotation.x += 0.01;
+        this.orbitObj6.rotation.y += 0.02;
+        this.orbitLin5.position.set(
+            12*Math.cos(t3)*Math.sin(Math.tan(t3)+Math.PI), 
+            -3*Math.cos(t3)*Math.sin(Math.tan(t3)+Math.PI), 
+            12*Math.cos(t3)*Math.cos(Math.tan(t3)+Math.PI));
+        this.orbitLin6.position.set(
+            12*Math.cos(t3)*Math.sin(Math.tan(t3)), 
+            -3*Math.cos(t3)*Math.sin(Math.tan(t3)), 
+            12*Math.cos(t3)*Math.cos(Math.tan(t3)));
+        this.orbitLin5.rotation.x -= 0.04;
+        this.orbitLin5.rotation.y -= 0.02;
+        this.orbitLin6.rotation.x += 0.02;
+        this.orbitLin6.rotation.y += 0.03;
+
+        if (Math.abs(Math.cos(t1)) < 0.03 || 
+            Math.abs(Math.cos(t2)) < 0.03 ||
+            Math.abs(Math.cos(t3)) < 0.03) {
+            this.shockwaveEffect.explode();
+        }
 
         //////////////////////////
 
-        //this.renderScene();
+        this.renderScene();
         setTimeout( () => {
             this.frameId = window.requestAnimationFrame(this.animate);
-        }, 1000 / 60 );
+        }, 1000 / 40 );
     }
 
     renderScene() {
-        this.renderer.render(this.scene, this.camera);
+        this.composer.render();
     }
 
     resize() {

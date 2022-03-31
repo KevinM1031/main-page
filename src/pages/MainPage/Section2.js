@@ -38,7 +38,7 @@ export default function Section2(props) {
     const prepareEditor = (id) => {
         setEditTarget(id);
         setEditDataPath(dataPathParent);
-        setEditPlaceholder(content);
+        setEditPlaceholder(content[id]);
     }
 
     const [content, setContent] = useState(defaultContent);

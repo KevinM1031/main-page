@@ -7,7 +7,7 @@ const App = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Routes path>
+            <Routes>
                 <Route exact path='/' element={<MainPage/>}/>
             </Routes>
         </ThemeProvider>

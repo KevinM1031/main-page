@@ -90,7 +90,7 @@ export function MainPage() {
     const queryParams = new URLSearchParams(window.location.search);
     const page = parseInt(queryParams.get('p'));
     if (!page || !(page > 0) || !(page <= sectionCount))
-        window.location.href = '/?p=' + 1;
+        window.location.href = 'https://kevinm1031.github.io/main-page/?p=1';
 
     const width = useWindowDimensions().width;
     const height = useWindowDimensions().height * 1.5;

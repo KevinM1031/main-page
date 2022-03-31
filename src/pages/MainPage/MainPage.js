@@ -100,15 +100,15 @@ export function MainPage() {
 
         if (page === 1) {
             if (window.pageYOffset > currHeight * 2.1)
-                window.location.href = '/?p=' + (page + 1);
+                window.location.href = '/main-page/?p=' + (page + 1);
         } else if (page === sectionCount) {
             if (window.pageYOffset < currHeight * 0.1)
-                window.location.href = '/?p=' + (page - 1) + '&b=true';
+                window.location.href = '/main-page/?p=' + (page - 1) + '&b=true';
         }else {
             if (window.pageYOffset < currHeight * 0.1)
-                window.location.href = '/?p=' + (page - 1) + '&b=true';
+                window.location.href = '/main-page/?p=' + (page - 1) + '&b=true';
             else if (window.pageYOffset > currHeight * 3.1)
-                window.location.href = '/?p=' + (page + 1);
+                window.location.href = '/main-page/?p=' + (page + 1);
         }
     };
 

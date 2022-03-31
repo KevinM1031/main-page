@@ -62,7 +62,7 @@ export default function SectionBG() {
                     icon={action.icon}
                     tooltipTitle={action.name}
                     onClick={() => {
-                        window.location.href = '/?p=' + (action.key + 1) + '&b=true';
+                        window.location.href = '/main-page/?p=' + (action.key + 1) + '&b=true';
                     }}
                 />
             ))}

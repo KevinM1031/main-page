@@ -106,7 +106,7 @@ class Scene extends Component {
         ///
 
         let godraysEffect = new POSTPROCESSING.GodRaysEffect(camera, centerObj1, {
-            resolutionScale: 1,
+            resolutionScale: 0.8,
             density: 0.5,
             decay: 0.9,
             weight: 0.9,

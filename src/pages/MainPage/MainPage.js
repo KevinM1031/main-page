@@ -9,7 +9,7 @@ import Section5 from "./Section5.js";
 import Section6 from "./Section6.js";
 import Section7 from "./Section7.js";
 import Section8 from "./Section8.js";
-import RellaxWrapper from "react-rellax-wrapper";
+import SectionBG from "../../components/ui/SectionBG.js"
 import { useEffect } from "react";
 
 import a0 from '../../images/bg_a0.png';
@@ -52,45 +52,15 @@ import h1 from '../../images/bg_h1.png';
 import h2 from '../../images/bg_h2.png';
 import h3 from '../../images/bg_h3.png';
 
-function SectionBG(props) {
-
-    const k0 = -10;
-    const k1 = -8;
-    const k2 = -4;
-
-    return (
-        <Box style={{height: props.height, overflow: 'hidden'}}>
-            <RellaxWrapper speed={k0} percentage={0.5} style={{
-                width: '100%', height: props.height, 
-                backgroundImage: `url(${props.backgrounds[0]})`,
-                backgroundSize: 'auto 100%', zIndex: -100
-            }}/>
-            <RellaxWrapper speed={k1} percentage={0.5} style={{
-                width: '100%', height: props.height, marginTop: -props.height,
-                backgroundImage: `url(${props.backgrounds[1]})`,
-                backgroundSize: 'auto 100%', zIndex: -100
-            }}/>
-            <RellaxWrapper speed={k2} percentage={0.5} style={{
-                width: '100%', height: props.height, marginTop: -props.height,
-                backgroundImage: `url(${props.backgrounds[2]})`,
-                backgroundSize: 'auto 100%', zIndex: -100
-            }}/>
-            <div style={{
-                width: '100%', height: props.height * 1.01, 
-                backgroundImage: `url(${props.backgrounds[3]})`, marginTop: -props.height,
-                backgroundSize: 'auto 100%', zIndex: 100, transform: `translate3d(0px, 0px, 0px)`
-            }}/>
-        </Box>
-    );
-}
-
 export function MainPage() {
     const sectionCount = 8;
 
     const queryParams = new URLSearchParams(window.location.search);
     const page = parseInt(queryParams.get('p'));
-    if (!page || !(page > 0) || !(page <= sectionCount))
-        window.location.href = 'https://kevinm1031.github.io/main-page/?p=1';
+    if (!page || !(page > 0) || !(page <= sectionCount)) {
+        //window.location.href = 'https://kevinm1031.github.io/main-page/?p=1';
+        window.location.href = '/main-page/?p=1';
+    }
 
     const width = useWindowDimensions().width;
     const height = useWindowDimensions().height * 1.5;
@@ -129,7 +99,7 @@ export function MainPage() {
             {
                 page === 1 ?
                     <Stack>
-                        <SectionBG height={height} backgrounds={[a0, a1, a2, a3]} />
+                        <SectionBG width={width} height={height} backgrounds={[a0, a1, a2, a3]} />
                         <Section1 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -137,7 +107,7 @@ export function MainPage() {
                 : page === 2 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} backgrounds={[b0, b1, b2, b3]} />
+                        <SectionBG width={width} height={height} backgrounds={[b0, b1, b2, b3]} />
                         <Section2 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000, #000)'}} height={height}/>
                     </Stack>
@@ -145,7 +115,7 @@ export function MainPage() {
                 : page === 3 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} backgrounds={[c0, c1, c2, c3]} />
+                        <SectionBG width={width} height={height} backgrounds={[c0, c1, c2, c3]} />
                         <Section3 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -153,7 +123,7 @@ export function MainPage() {
                 : page === 4 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} backgrounds={[d0, d1, d2, d3]} />
+                        <SectionBG width={width} height={height} backgrounds={[d0, d1, d2, d3]} />
                         <Section4 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -161,7 +131,7 @@ export function MainPage() {
                 : page === 5 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} backgrounds={[e0, e1, e2, e3]} />
+                        <SectionBG width={width} height={height} backgrounds={[e0, e1, e2, e3]} />
                         <Section5 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -169,7 +139,7 @@ export function MainPage() {
                 : page === 6 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} backgrounds={[f0, f1, f2, f3]} />
+                        <SectionBG width={width} height={height} backgrounds={[f0, f1, f2, f3]} />
                         <Section6 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -177,7 +147,7 @@ export function MainPage() {
                 : page === 7 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} backgrounds={[g0, g1, g2, g3]} />
+                        <SectionBG width={width} height={height} backgrounds={[g0, g1, g2, g3]} />
                         <Section7 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -185,7 +155,7 @@ export function MainPage() {
                 : page === 8 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG height={height} backgrounds={[h0, h1, h2, h3]} />
+                        <SectionBG width={width} height={height} backgrounds={[h0, h1, h2, h3]} />
                         <Section8 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                         <Box backgroundColor='#000000' height={height*10}/>

@@ -76,7 +76,7 @@ export default function Section2(props) {
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant='h4' sx={{ mt: 4 }}>
+                        <Typography align='center' variant='h4' sx={{ mt: 8 }}>
                             Featured Items
                         </Typography>
                     </FadingComponent>
@@ -95,7 +95,7 @@ export default function Section2(props) {
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant='h4' sx={{mt: props.height * 0.02}}>
+                        <Typography align='center' variant='h4' sx={{mt: props.height * 0.01}}>
                             Skillsets
                         </Typography>
                     </FadingComponent>

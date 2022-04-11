@@ -140,8 +140,7 @@ export default function Section1(props) {
                         <div>
                             <Editable editor={openTextEditor} id={'introductory_text'}>
                                 <Typography variant='h5' width={'40%'} 
-                                    sx={{mt: 8, maxHeight: props.height*0.25, overflow: 'auto'}}
-                                    onClick={() => {if (editing) openTextEditor('introductory_text')}}>
+                                    sx={{mt: 8, maxHeight: props.height*0.25, overflow: 'auto'}}>
                                     {content.introductory_text}
                                 </Typography>
                             </Editable>

@@ -1,6 +1,5 @@
 import { Component, createRef } from 'react';
 import * as THREE from 'three';
-import * as POSTPROCESSING from 'postprocessing';
 
 class Scene extends Component {
     constructor(props) {
@@ -36,7 +35,7 @@ class Scene extends Component {
         const ambientLight = new THREE.AmbientLight('#333333');
         scene.add(ambientLight);
 
-        const orbitObj_geo = new THREE.SphereGeometry(0.07, 10, 10);
+        const orbitObj_geo = new THREE.SphereGeometry(0.07, 3, 3);
         const orbitObj_mat = new THREE.MeshLambertMaterial({ emissive: '#ffffff' });
         const orbitObj1 = new THREE.Mesh(orbitObj_geo, orbitObj_mat);
         this.orbitObj1 = orbitObj1;

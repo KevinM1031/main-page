@@ -17,7 +17,7 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontFamily: 'Candara',
+        fontFamily: 'Arial',
     },
 });
 export default theme;

@@ -75,11 +75,9 @@ export default function Section2(props) {
                 sx={{ mt: -props.height / 8 }}>
 
                 <Grid item xs={12} align="center">
-                    <FadingComponent duration={1500}>
                         <Typography align='center' variant='h4' sx={{ mt: 8 }}>
                             Featured Items
                         </Typography>
-                    </FadingComponent>
                 </Grid>
 
                 <Grid item xs={12} align="center">

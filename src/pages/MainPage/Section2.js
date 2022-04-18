@@ -59,31 +59,37 @@ export default function Section2(props) {
                 placeholder={editPlaceholder}/>
 
             <Box width={props.width} height={props.height} sx={{ overflow: 'hidden' }}>
-                <Section2BG 
-                    width={props.width} 
-                    height={props.height} 
-                    resolution={800}/>
+                <div style={{ marginTop: '0px' }}>
+                    <Section2BG 
+                        hidden={true} 
+                        width={props.width} 
+                        height={props.height} 
+                        resolution={800}/>
+                </div>
             </Box>
 
             <Grid 
                 container 
                 backgroundColor='#151515'
                 color='primary.text'
-                justifyContent='center'
-                alignItems='center'
+                justifyContent='space-around'
+                alignItems='stretch'
                 height={props.height} 
-                sx={{ mt: -props.height / 8 }}>
+                sx={{ mt: -props.height / 8 }}
+                direction="column">
 
-                <Grid item xs={12} align="center">
-                        <Typography align='center' variant='h4' sx={{ mt: 8 }}>
+                <Grid item align="center">
+                    <FadingComponent duration={1500}>
+                        <Typography align='center' variant='h4'>
                             Featured Items
                         </Typography>
+                    </FadingComponent>
                 </Grid>
 
-                <Grid item xs={12} align="center">
+                <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <List 
-                            maxHeight={props.height * 0.47} 
+                            maxHeight={props.height * 0.5} 
                             dataPath={dataPathParent + 'items/'} 
                             rawContent={rawContent} 
                             content={content}
@@ -91,18 +97,20 @@ export default function Section2(props) {
                     </FadingComponent>
                 </Grid>
 
-                <Grid item xs={12} align="center">
+                <Grid item align="center"/>
+
+                <Grid item align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant='h4' sx={{mt: props.height * 0.01}}>
+                        <Typography align='center' variant='h4'>
                             Skillsets
                         </Typography>
                     </FadingComponent>
                 </Grid>
 
-                <Grid item xs={12} align="center">
+                <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <Editable editor={openImageEditor} id={'skillsets'}>
-                            <img src={content.skillsets} width={'100%'} />
+                            <img src={content.skillsets} style={{height: props.height*0.2+"px"}}/>
                         </Editable>
                     </FadingComponent>
                 </Grid>

@@ -21,7 +21,7 @@ const defaultContent = {
     ],
 };
 
-export default function Section5(props) {
+export default function Section3(props) {
     const dataPathParent = 'contents/section3/';
     const [content, setContent] = useState(defaultContent);
     const [rawContent, setRawContent] = useState({});
@@ -62,7 +62,7 @@ export default function Section5(props) {
                 </Grid>
 
                 <Grid item xs={12} align="center">
-                    <Header dataPath={dataPathParent} content={content} maxHeight={props.height * 0.2}/>
+                    <Header dataPath={dataPathParent} content={content} height={props.height * 0.2}/>
                 </Grid>
 
                 <Grid item xs={12} align="center">

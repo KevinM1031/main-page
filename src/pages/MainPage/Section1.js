@@ -91,13 +91,13 @@ export default function Section1(props) {
             </Box>
 
             <Grid 
-                container 
-                backgroundColor='#151515'
+                container
                 color='primary.text'
                 justifyContent='center'
                 alignItems='center'
                 height={props.height} 
-                sx={{ mt: -props.height / 8 }}>
+                sx={{ mt: -props.height / 8 }}
+                style={{ position: 'relative' }}>
 
                 <Grid item xs={1}></Grid>
 

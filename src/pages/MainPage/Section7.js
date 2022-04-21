@@ -117,12 +117,12 @@ export default function Section7(props) {
 
             <Grid 
                 container 
-                backgroundColor='#151515'
                 color='primary.text'
                 justifyContent='center'
                 alignItems='center'
                 height={props.height} 
-                sx={{ mt: -props.height / 8 }}>
+                sx={{ mt: -props.height / 8 }}
+                style={{ position: 'relative' }}>
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>

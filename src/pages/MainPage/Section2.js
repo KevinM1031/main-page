@@ -59,24 +59,21 @@ export default function Section2(props) {
                 placeholder={editPlaceholder}/>
 
             <Box width={props.width} height={props.height} sx={{ overflow: 'hidden' }}>
-                <div style={{ marginTop: '0px' }}>
-                    <Section2BG 
-                        hidden={true} 
-                        width={props.width} 
-                        height={props.height} 
-                        resolution={800}/>
-                </div>
+                <Section2BG 
+                    width={props.width} 
+                    height={props.height} 
+                    resolution={800}/>
             </Box>
 
             <Grid 
                 container 
-                backgroundColor='#151515'
                 color='primary.text'
                 justifyContent='space-around'
                 alignItems='stretch'
                 height={props.height} 
                 sx={{ mt: -props.height / 8 }}
-                direction="column">
+                direction="column"
+                style={{ position: 'relative' }}>
 
                 <Grid item align="center">
                     <FadingComponent duration={1500}>

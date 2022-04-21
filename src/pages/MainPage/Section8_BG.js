@@ -6,7 +6,7 @@ import {SavePass} from 'three/examples/jsm/postprocessing/SavePass.js';
 import {ShaderPass} from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import {BlendShader} from 'three/examples/jsm/shaders/BlendShader.js';
 import {CopyShader} from 'three/examples/jsm/shaders/CopyShader.js';
-
+import { getScreenHeight } from '../../components/ui/Window';
 
 class Scene extends Component {
     constructor(props) {
@@ -175,7 +175,7 @@ class Scene extends Component {
     animate() {
 
         let height = this.renderer.domElement.scrollHeight * 2.5;
-        let scrollY = window.scrollY - height + window.innerHeight / 2;
+        let scrollY = window.scrollY - height + getScreenHeight() / 2;
         this.camera.position.y = -scrollY / height * 4;
 
         let rotationY_radians = Math.atan(-(this.camera.position.y * 2) / this.camera.position.z);
@@ -210,6 +210,7 @@ class Scene extends Component {
 
     resize() {
         setTimeout( () => {
+            if (!this.renderer || !this.camera) return;
             const renderTargetParameters = {
                 minFilter: THREE.LinearFilter,
                 magFilter: THREE.LinearFilter,

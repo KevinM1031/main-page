@@ -1,5 +1,5 @@
 import { Stack, Box, Fade } from '@material-ui/core';
-import { useWindowDimensions } from '../../components/ui/Window.js';
+import { getScreenWidth, getScreenHeight } from '../../components/ui/Window.js';
 import NavBar from "../../components/ui/NavBar.js";
 import Section1 from "./Section1.js";
 import Section2 from "./Section2.js";
@@ -10,7 +10,7 @@ import Section6 from "./Section6.js";
 import Section7 from "./Section7.js";
 import Section8 from "./Section8.js";
 import SectionBG from "../../components/ui/SectionBG.js"
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import a0 from '../../images/bg_a0.png';
 import a1 from '../../images/bg_a1.png';
@@ -61,12 +61,9 @@ export function MainPage() {
         //window.location.href = 'https://kevinm1031.github.io/main-page/?p=1';
         window.location.href = '/main-page/?p=1';
     }
-
-    const width = useWindowDimensions().width;
-    const height = useWindowDimensions().height * 1.5;
     
     const handleScroll = () => {
-        const currHeight = window.innerHeight * 1.5;
+        const currHeight = getScreenHeight() * 1.5;
 
         if (page === 1) {
             if (window.pageYOffset > currHeight * 2.1)
@@ -82,13 +79,29 @@ export function MainPage() {
         }
     };
 
+    const handleResize = () => {
+        setWidth(getScreenWidth());
+        setHeight(getScreenHeight() * 1.5);
+        //window.location.reload();
+    }
+
+    const [width, setWidth] = useState(getScreenWidth());
+    const [height, setHeight] = useState(getScreenHeight() * 1.5);
+
     useEffect(() => {
+        const currHeight = getScreenWidth();
+
         let fromBottom = queryParams.get('b');
-        if (page === 1) window.scroll(0, fromBottom ? height : 0);
-        else window.scroll(0, fromBottom ? height*2 : height);
+        if (page === 1) window.scroll(0, fromBottom ? currHeight : 0);
+        else window.scroll(0, fromBottom ? currHeight*2 : currHeight);
 
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     return (

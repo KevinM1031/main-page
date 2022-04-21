@@ -1,5 +1,6 @@
 import { Component, createRef } from 'react';
 import * as THREE from 'three';
+import { getScreenHeight } from '../../components/ui/Window';
 
 class Scene extends Component {
     constructor(props) {
@@ -106,7 +107,7 @@ class Scene extends Component {
     animate() {
 
         let height = this.renderer.domElement.scrollHeight * 1.5;
-        let scrollY = window.scrollY - height + window.innerHeight / 2;
+        let scrollY = window.scrollY - height + getScreenHeight() / 2;
         this.camera.position.y = -scrollY / height * 4;
 
         let rotationY_radians = Math.atan(-(this.camera.position.y * 2) / this.camera.position.z);
@@ -152,6 +153,7 @@ class Scene extends Component {
 
     resize() {
         setTimeout( () => {
+            if (!this.renderer || !this.camera) return;
             this.renderer.setSize(this.props.width, this.props.height);
             this.camera.aspect = this.props.width / this.props.height;
             this.camera.updateProjectionMatrix();

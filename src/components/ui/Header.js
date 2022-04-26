@@ -47,17 +47,18 @@ export default function List(props) {
                 dataPath={editDataPath} 
                 placeholder={editPlaceholder}/>
 
-            <Grid container spacing={8} sx={{
+            <Grid container spacing={8} style={{height: props.height+'px'}} sx={{
                 overflow: 'hidden',
                 direction: "row",
                 justifyContent: "center",
                 alignItems: "center",
+                height: props.height+'px'
             }}>
                 <Grid item xs={3} align='center'>
                     <SlidingComponent direction={'right'} duration={1500}>
                         <Editable editor={openImageEditor} id={'thumbnail_left'}>
                             <img src={props.content.thumbnail_left} 
-                                style={{height: props.maxHeight * 0.8, overflow: 'hidden'}}/>
+                                style={{height: props.height * 0.8, overflow: 'hidden'}}/>
                         </Editable>
                     </SlidingComponent>
                 </Grid>
@@ -66,7 +67,7 @@ export default function List(props) {
                     <FadingComponent duration={1500}>
                         <Editable editor={openTextEditor} id={'description'}>
                             <Typography variant='h6'
-                                sx={{maxHeight: props.maxHeight, overflow: 'auto'}}>
+                                sx={{maxHeight: props.height, overflow: 'auto'}}>
                                 {props.content.description}
                             </Typography>
                         </Editable>
@@ -77,7 +78,7 @@ export default function List(props) {
                     <SlidingComponent direction={'left'} duration={1500}>
                         <Editable editor={openImageEditor} id={'thumbnail_right'}>
                             <img src={props.content.thumbnail_right} 
-                                style={{height: props.maxHeight * 0.8, overflow: 'hidden'}}/>
+                                style={{height: props.height * 0.8, overflow: 'hidden'}}/>
                         </Editable>
                     </SlidingComponent>
                 </Grid>

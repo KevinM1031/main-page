@@ -47,13 +47,14 @@ export default function Section3(props) {
             <Grid 
                 container 
                 color='primary.text'
-                justifyContent='center'
-                alignItems='center'
+                justifyContent='space-around'
+                alignItems='stretch'
                 height={props.height} 
                 sx={{ mt: -props.height / 8 }}
+                direction="column"
                 style={{ position: 'relative' }}>
 
-                <Grid item xs={12} align="center">
+                <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <Typography align='center' variant='h4' sx={{mt: 8, mb: 4}}>
                             Computer Science
@@ -61,11 +62,11 @@ export default function Section3(props) {
                     </FadingComponent>
                 </Grid>
 
-                <Grid item xs={12} align="center">
+                <Grid item align="center">
                     <Header dataPath={dataPathParent} content={content} height={props.height * 0.2}/>
                 </Grid>
 
-                <Grid item xs={12} align="center">
+                <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <Typography align='center' variant='h4' sx={{mt: '5%'}}>
                             Featured Projects
@@ -73,7 +74,9 @@ export default function Section3(props) {
                     </FadingComponent>
                 </Grid>
 
-                <Grid item xs={12} align="center">
+                <Grid item align="center"/>
+
+                <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <List 
                             maxHeight={props.height * 0.47} 

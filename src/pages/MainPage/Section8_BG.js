@@ -210,7 +210,7 @@ class Scene extends Component {
 
     resize() {
         setTimeout( () => {
-            if (!this.renderer || !this.camera) return;
+            if (!this.composer || !this.camera) return;
             const renderTargetParameters = {
                 minFilter: THREE.LinearFilter,
                 magFilter: THREE.LinearFilter,
@@ -224,7 +224,7 @@ class Scene extends Component {
                 )
             );
 
-            this.renderer.setSize(this.props.width, this.props.height);
+            this.composer.setSize(this.props.width, this.props.height);
             this.camera.aspect = this.props.width / this.props.height;
             this.camera.updateProjectionMatrix();
         }, 100 );

@@ -71,7 +71,7 @@ export function MainPage() {
         } else if (page === sectionCount) {
             if (window.pageYOffset < currHeight * 0.1)
                 window.location.href = '/main-page/?p=' + (page - 1) + '&b=true';
-        }else {
+        } else {
             if (window.pageYOffset < currHeight * 0.1)
                 window.location.href = '/main-page/?p=' + (page - 1) + '&b=true';
             else if (window.pageYOffset > currHeight * 3.1)
@@ -89,7 +89,7 @@ export function MainPage() {
     const [height, setHeight] = useState(getScreenHeight() * 1.5);
 
     useEffect(() => {
-        const currHeight = getScreenWidth();
+        const currHeight = getScreenHeight() * 1.5;
 
         let fromBottom = queryParams.get('b');
         if (page === 1) window.scroll(0, fromBottom ? currHeight : 0);

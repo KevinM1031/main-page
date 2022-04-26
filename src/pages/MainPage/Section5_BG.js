@@ -107,11 +107,11 @@ class Scene extends Component {
         ///
 
         let godraysEffect = new POSTPROCESSING.GodRaysEffect(camera, centerObj1, {
-            resolutionScale: 0.8,
-            density: 0.5,
+            resolutionScale: 0.7,
+            density: 0.4,
             decay: 0.9,
             weight: 0.9,
-            samples: 20
+            samples: 10
         });
         let smaaEffect = new POSTPROCESSING.SMAAEffect();
         let renderPass = new POSTPROCESSING.RenderPass(scene, camera);
@@ -228,8 +228,8 @@ class Scene extends Component {
 
     resize() {
         setTimeout( () => {
-            if (!this.renderer || !this.camera) return;
-            this.renderer.setSize(this.props.width, this.props.height);
+            if (!this.composer || !this.camera) return;
+            this.composer.setSize(this.props.width, this.props.height);
             this.camera.aspect = this.props.width / this.props.height;
             this.camera.updateProjectionMatrix();
 

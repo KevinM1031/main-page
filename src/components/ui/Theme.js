@@ -17,7 +17,7 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontFamily: 'Arial',
+        fontFamily: 'Helvetica',
     },
 });
 export default theme;

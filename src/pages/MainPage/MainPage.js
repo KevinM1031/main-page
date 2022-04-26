@@ -112,7 +112,7 @@ export function MainPage() {
             {
                 page === 1 ?
                     <Stack>
-                        <SectionBG width={width} height={height} backgrounds={[a0, a1, a2, a3]} />
+                        <SectionBG width={width} height={height} backgrounds={[a0, a1, a2, a3]} critterType='none'/>
                         <Section1 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -120,7 +120,7 @@ export function MainPage() {
                 : page === 2 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG width={width} height={height} backgrounds={[b0, b1, b2, b3]} />
+                        <SectionBG width={width} height={height} backgrounds={[b0, b1, b2, b3]} critterType='none'/>
                         <Section2 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000, #000)'}} height={height}/>
                     </Stack>
@@ -128,7 +128,7 @@ export function MainPage() {
                 : page === 3 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG width={width} height={height} backgrounds={[c0, c1, c2, c3]} />
+                        <SectionBG width={width} height={height} backgrounds={[c0, c1, c2, c3]} critterType='dragonfly'/>
                         <Section3 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -136,7 +136,7 @@ export function MainPage() {
                 : page === 4 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG width={width} height={height} backgrounds={[d0, d1, d2, d3]} />
+                        <SectionBG width={width} height={height} backgrounds={[d0, d1, d2, d3]} critterType='none'/>
                         <Section4 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -144,7 +144,7 @@ export function MainPage() {
                 : page === 5 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG width={width} height={height} backgrounds={[e0, e1, e2, e3]} />
+                        <SectionBG width={width} height={height} backgrounds={[e0, e1, e2, e3]} critterType='none'/>
                         <Section5 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -152,7 +152,7 @@ export function MainPage() {
                 : page === 6 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG width={width} height={height} backgrounds={[f0, f1, f2, f3]} />
+                        <SectionBG width={width} height={height} backgrounds={[f0, f1, f2, f3]} critterType='none'/>
                         <Section6 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -160,7 +160,7 @@ export function MainPage() {
                 : page === 7 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG width={width} height={height} backgrounds={[g0, g1, g2, g3]} />
+                        <SectionBG width={width} height={height} backgrounds={[g0, g1, g2, g3]} critterType='none'/>
                         <Section7 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                     </Stack>
@@ -168,7 +168,7 @@ export function MainPage() {
                 : page === 8 ?
                     <Stack>
                         <Box style={{background: 'linear-gradient(to top, #151515, #000000)'}} height={height}/>
-                        <SectionBG width={width} height={height} backgrounds={[h0, h1, h2, h3]} />
+                        <SectionBG width={width} height={height} backgrounds={[h0, h1, h2, h3]} critterType='none'/>
                         <Section8 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                         <Box backgroundColor='#000000' height={height*10}/>

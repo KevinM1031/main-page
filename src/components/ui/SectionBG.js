@@ -17,7 +17,7 @@ export default function SectionBG(props) {
                         bgImageStyle={{height: props.height+'px'}}>
                         <Parallax strength={k2} percentage={0.5} bgImage={props.backgrounds[2]}
                             bgImageStyle={{height: props.height+'px'}}>
-                            <Critters width={props.width} height={props.height}/>
+                            <Critters width={props.width} height={props.height} type={props.critterType}/>
                         </Parallax>
                     </Parallax>
                 </Parallax>

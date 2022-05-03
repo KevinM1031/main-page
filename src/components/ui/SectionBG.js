@@ -23,7 +23,7 @@ export default function SectionBG(props) {
                 </Parallax>
             </div>
             <div style={{
-                width: 'auto', height: props.height, 
+                width: 'auto', height: props.height * 1.01, 
                 backgroundImage: `url(${props.backgrounds[3]})`, marginTop: -props.height, paddingTop: 0,
                 backgroundSize: 'auto 100%', transform: `translate3d(0px, 0px, 0px)`
             }}/>

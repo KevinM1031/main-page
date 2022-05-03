@@ -1,4 +1,4 @@
-import { MainPage } from "./pages/MainPage/MainPage";
+import { MainPage } from "./pages/MainPage";
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from "./components/ui/Theme"
 

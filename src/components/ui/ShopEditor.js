@@ -71,7 +71,7 @@ const AddItemDialog = (props) => {
           </DialogContentText>
           <CustomTextField id={'addItem'} label={'Name'} placeholder={''} listener={setInput} autoFocus={true}/>
           <Collapse in={failed}>
-            <Alert variant="standard" severity="error" color="error">
+            <Alert variant="outlined" severity="error" color="error">
               Invalid item name. This name is already in use.
             </Alert>
           </Collapse>
@@ -250,7 +250,7 @@ export default function ShopEditor(props) {
 
           <CustomTextField id={'name'} label={'Name'} placeholder={name} listener={setName} autoFocus={true}/>
           <Collapse in={failed}>
-            <Alert variant="standard" severity="error" color="error">
+            <Alert variant="outlined" severity="error" color="error">
               Invalid name. This name is already in use.
             </Alert>
           </Collapse>

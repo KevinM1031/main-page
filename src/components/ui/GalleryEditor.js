@@ -66,7 +66,7 @@ const AddItemDialog = (props) => {
           </DialogContentText>
           <CustomTextField id={'addItem'} label={'Name'} placeholder={''} listener={setInput} autoFocus={true}/>
           <Collapse in={failed}>
-            <Alert variant="standard" severity="error" color="error">
+            <Alert variant="outlined" severity="error" color="error">
               Invalid item name. This name is already in use.
             </Alert>
           </Collapse>
@@ -230,7 +230,7 @@ export default function GalleryEditor(props) {
 
           <CustomTextField id={'title'} label={'Title'} placeholder={title} listener={setTitle} autoFocus={true}/>
           <Collapse in={failed}>
-            <Alert variant="standard" severity="error" color="error">
+            <Alert variant="outlined" severity="error" color="error">
               Invalid title. This title is already in use.
             </Alert>
           </Collapse>

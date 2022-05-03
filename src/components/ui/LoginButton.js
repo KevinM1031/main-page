@@ -1,10 +1,10 @@
 import { Login, Logout } from '@mui/icons-material';
 import { isEditor, login, logout } from '../database/FirebaseAPI.js';
 import { useEffect, useState } from 'react';
-import { IconButton, Button, TextField, Dialog, DialogActions, DialogContent, Collapse, Alert, DialogTitle } 
+import { IconButton, Button, TextField, Dialog, DialogActions, DialogContent, Collapse, Alert, DialogTitle, Tooltip } 
   from '@material-ui/core';
 
-export default function Editable() {
+export default function LoginButton(props) {
 
     const [open, setOpen] = useState(false);
     const [email, setEmail] = useState();
@@ -39,20 +39,24 @@ export default function Editable() {
 
     return (
         <div>
-            <IconButton onClick={handleOpen} size="large">
-                {
-                loggedIn ?
-                <Logout color="secondary"/>
-                :
-                <Login color="secondary"/>
-                }
-            </IconButton>
+            <Tooltip title={loggedIn ? 
+                (props.lang === 'kor' ? '로그아웃' : 'Log Out') : 
+                (props.lang === 'kor' ? '로그인' : 'Log In')}>
+
+                <IconButton onClick={handleOpen}>
+                    {
+                    loggedIn ?
+                    <Logout fontSize={props.landscape ? 'large' : 'medium'}/>
+                    :
+                    <Login fontSize={props.landscape ? 'large' : 'medium'}/>
+                    }
+                </IconButton>
+            </Tooltip>
 
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Log In</DialogTitle>
                 <DialogContent>
                     <Collapse in={failed}>
-                        <Alert variant="standard" severity="error" color="error">
+                        <Alert variant="outlined" severity="error" color="error">
                             Login attempt failed. Unregistered email-password combination.
                         </Alert>
                     </Collapse>
@@ -61,14 +65,12 @@ export default function Editable() {
                         margin="normal"
                         id="email"
                         label="Email"
-                        variant="outlined"
                         fullWidth
                         onChange={(event) => setEmail(event.target.value)}/>
                     <TextField
                         margin="normal"
                         id="password"
                         label="Password"
-                        variant="outlined"
                         type="password"
                         fullWidth
                         onChange={(event) => setPassword(event.target.value)}/>

@@ -28,22 +28,20 @@ const LandscapeLayout = (props) => {
 
 const PortraitLayout = (props) => {
     return (
-        <ImageList variant={''} cols={1} gap={8} 
+        <ImageList variant={''} cols={2} gap={8} 
             style={{ width: '90%', height: '90%', hideScrollbar: true }} 
             sx={{ height: '90%', overflowY: 'scroll' }}>
             {props.content[props.id].map((item) => (
-                <ImageListItem key={item.title}>
+                <ImageListItem 
+                    key={item.title}
+                    onClick={() => { window.open(item.image, '_blank') }}>
                     <img
                         src={item.image}
                         alt={item.title}
                         style={{maxWidth: '100%'}}/>
                     <ImageListItemBar
                         title={item.title}
-                        sx={{ background: 'rgba(0, 0, 0, 0.3)' }}
-                        href={item.image}
-                        onFocus={() => console.log('asdf')}
-                        onClick={() => window.open(item.image, '_blank')}
-                        target="_blank"/>
+                        sx={{ background: 'rgba(0, 0, 0, 0.3)' }}/>
                 </ImageListItem>
             ))}
         </ImageList>

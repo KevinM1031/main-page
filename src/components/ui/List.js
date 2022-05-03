@@ -30,7 +30,7 @@ const LandscapeLayout = (props) => {
                             <Box sx={{ overflow: 'auto', height: props.maxHeight * 0.9 }}>
                                 <Grid container sx={{ mb: 2, alignItems: 'center' }}>
                                     <Grid item xs={8}>
-                                        <Typography variant='h4'>
+                                        <Typography variant='h2'>
                                             {props.content.items[props.pageNum].title}
                                         </Typography>
                                     </Grid>
@@ -46,11 +46,11 @@ const LandscapeLayout = (props) => {
                                     </Grid>
                                 </Grid>
 
-                                <Typography variant='h5' sx={{ mb: 3 }}>
+                                <Typography variant='h3' sx={{ mb: 2 }}>
                                     {props.content.items[props.pageNum].status}
                                 </Typography>
 
-                                <Typography variant='h6'>
+                                <Typography variant='h4'>
                                     {props.content.items[props.pageNum].description}
                                 </Typography>
                             </Box>
@@ -87,9 +87,9 @@ const PortraitLayout = (props) => {
                         <Fade timeout={700} in={props.pageAnim}>
                             <Box sx={{ overflow: 'auto', height: props.maxHeight * 0.45 }}>
 
-                                <Grid container sx={{ mt: 2, mb: 2, alignItems: 'center' }}>
+                                <Grid container sx={{ mt: 2, mb: 1, alignItems: 'center' }}>
                                     <Grid item xs={8}>
-                                        <Typography variant='h4'>
+                                        <Typography variant='h3'>
                                             {props.content.items[props.pageNum].title}
                                         </Typography>
                                     </Grid>
@@ -105,11 +105,11 @@ const PortraitLayout = (props) => {
                                     </Grid>
                                 </Grid>
 
-                                <Typography variant='h5' sx={{mb: 2}}>
+                                <Typography variant='h4' sx={{mb: 1}}>
                                     {props.content.items[props.pageNum].status}
                                 </Typography>
 
-                                <Typography variant='h6' sx={{mb: 2}}>
+                                <Typography variant='h5' sx={{mb: 2}}>
                                     {props.content.items[props.pageNum].description}
                                 </Typography>
                             </Box>

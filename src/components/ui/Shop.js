@@ -28,25 +28,25 @@ const LandscapeLayout = (props) => {
                     <div style={{height: '100%'}}>
                         <Fade timeout={700} in={props.pageAnim}>
                             <Box sx={{ overflow: 'auto', height: props.maxHeight * 0.9 }}>
-                            <Typography variant='h4' sx={{mb: 2}}>
+                            <Typography variant='h2' sx={{mb: 2}}>
                                     {props.content.items[props.pageNum].title}
                                 </Typography>
 
                                 <Grid container sx={{ mb: 3, alignItems: 'center' }}>
                                     <Grid item xs={4}>
-                                        <Typography variant='h5'>
+                                        <Typography variant='h3'>
                                             {props.content.items[props.pageNum].status}
                                         </Typography>
                                     </Grid>
 
                                     <Grid item xs={4}>
-                                        <Typography variant='h5'>
+                                        <Typography variant='h3'>
                                             {props.content.items[props.pageNum].price}
                                         </Typography>
                                     </Grid>
                                 </Grid>
 
-                                <Typography variant='h6'>
+                                <Typography variant='h4'>
                                     {props.content.items[props.pageNum].description}
                                 </Typography>
                             </Box>
@@ -83,25 +83,25 @@ const PortraitLayout = (props) => {
                         <Fade timeout={700} in={props.pageAnim}>
                             <Box sx={{ overflow: 'auto', height: props.maxHeight * 0.45 }}>
 
-                                <Typography variant='h4' sx={{mb: 2, mt:2}}>
+                                <Typography variant='h3' sx={{mb: 2, mt:2}}>
                                     {props.content.items[props.pageNum].title}
                                 </Typography>
 
                                 <Grid container sx={{ mb: 2, alignItems: 'center' }}>
                                     <Grid item xs={4}>
-                                        <Typography variant='h5'>
+                                        <Typography variant='h4'>
                                             {props.content.items[props.pageNum].status}
                                         </Typography>
                                     </Grid>
 
                                     <Grid item xs={4}>
-                                        <Typography variant='h5'>
+                                        <Typography variant='h4'>
                                             {props.content.items[props.pageNum].price}
                                         </Typography>
                                     </Grid>
                                 </Grid>
 
-                                <Typography variant='h6'>
+                                <Typography variant='h5'>
                                     {props.content.items[props.pageNum].description}
                                 </Typography>
                             </Box>

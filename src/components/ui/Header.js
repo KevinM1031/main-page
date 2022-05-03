@@ -54,19 +54,21 @@ export default function List(props) {
                 alignItems: "center",
                 height: props.height+'px'
             }}>
-                <Grid item xs={3} align='center'>
-                    <SlidingComponent direction={'right'} duration={1500}>
-                        <Editable editor={openImageEditor} id={'thumbnail_left'}>
-                            <img src={props.content.thumbnail_left} 
-                                style={{height: props.height * 0.8, overflow: 'hidden'}}/>
-                        </Editable>
-                    </SlidingComponent>
-                </Grid>
+                {(props.landscape) ?
+                    <Grid item xs={3} align='center'>
+                        <SlidingComponent direction={'right'} duration={1500}>
+                            <Editable editor={openImageEditor} id={'thumbnail_left'}>
+                                <img src={props.content.thumbnail_left} 
+                                    style={{height: props.height * 0.8, overflow: 'hidden'}}/>
+                            </Editable>
+                        </SlidingComponent>
+                    </Grid> : null
+                }
 
-                <Grid item xs={5} align='center'> 
+                <Grid item xs={props.landscape ? 5 : 10} align='center'> 
                     <FadingComponent duration={1500}>
                         <Editable editor={openTextEditor} id={'description'}>
-                            <Typography variant='h6'
+                            <Typography variant={props.landscape ? 'h4' : 'h5'}
                                 sx={{maxHeight: props.height, overflow: 'auto'}}>
                                 {props.content.description}
                             </Typography>
@@ -74,14 +76,16 @@ export default function List(props) {
                     </FadingComponent>
                 </Grid>
 
-                <Grid item xs={3} align='center'>
-                    <SlidingComponent direction={'left'} duration={1500}>
-                        <Editable editor={openImageEditor} id={'thumbnail_right'}>
-                            <img src={props.content.thumbnail_right} 
-                                style={{height: props.height * 0.8, overflow: 'hidden'}}/>
-                        </Editable>
-                    </SlidingComponent>
-                </Grid>
+                {(props.landscape) ?
+                    <Grid item xs={3} align='center'>
+                        <SlidingComponent direction={'left'} duration={1500}>
+                            <Editable editor={openImageEditor} id={'thumbnail_right'}>
+                                <img src={props.content.thumbnail_right} 
+                                    style={{height: props.height * 0.8, overflow: 'hidden'}}/>
+                            </Editable>
+                        </SlidingComponent>
+                    </Grid> : null
+                }
             </Grid>
         </div>
     );

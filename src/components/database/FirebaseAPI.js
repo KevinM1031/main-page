@@ -2,12 +2,12 @@
  * This file is meant to abstract all the Firebase APIs and/or to add logic to them to fulfill our own needs
  */
 
- import {signInWithEmailAndPassword} from "firebase/auth";
- import {auth, db } from "./firebase-config";
- import {capitalize} from "@material-ui/core";
- import {ref, set, push, onValue, get, remove, query} from "firebase/database";
+import {signInWithEmailAndPassword} from "firebase/auth";
+import {auth, db } from "./firebase-config";
+import {capitalize} from "@material-ui/core";
+import {ref, set, get, query} from "firebase/database";
 
-export const login = (email, password) => {
+export const login = async (email, password) => {
     return signInWithEmailAndPassword(auth, email, password).catch((error) => {
         // Extract the actual error message from the error message returned from Firebase
         // for better display
@@ -21,9 +21,8 @@ export const login = (email, password) => {
     });
 }
 
-export const logout = () => {
+export const logout = async () => {
     return auth.signOut().then(() => {
-        localStorage.clear();
         window.location.reload();
     });
 }
@@ -31,6 +30,12 @@ export const logout = () => {
 export const isEditor = () => {
     if (!auth.currentUser) return false;
     return auth.currentUser.email == 'kevinmin1031@gmail.com';
+}
+
+export const pathBase = () => {
+    const lang = localStorage.getItem('lang');
+    if (!lang || lang === '') return 'contents/'
+    else return 'contents_' + lang + '/';
 }
 
 export const setData = async (path, data) => {
@@ -47,7 +52,7 @@ export const setData = async (path, data) => {
     }
 }
 
-export const overwriteData = async (path, data) => {
+const overwriteData = async (path, data) => {
     await set(ref(db, path), data);
 }
 
@@ -81,7 +86,7 @@ export function titleToId(title) {
 }
 
 export const getSectionContent = (page, setContent, listIds=['items'], listReverse=false) => {
-    const path = 'contents/section' + page;
+    const path = pathBase() + 'section' + page;
     getData(path).then((data) => {
         for (const i in listIds) {
             let listId = listIds[i];
@@ -101,14 +106,14 @@ export const getSectionContent = (page, setContent, listIds=['items'], listRever
 }
 
 export const getSectionRawContent = (page, setContent) => {
-    const path = 'contents/section' + page;
+    const path = pathBase() + 'section' + page;
     getData(path).then((data) => {
         setContent(data);
     });
 }
 
 export const updateSectionContent = (page, data, setContent) => {
-    const path = 'contents/section' + page;
+    const path = pathBase() + 'section' + page;
     setData(path, data).then(() => {
         getSectionContent(page, setContent);
     });

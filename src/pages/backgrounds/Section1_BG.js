@@ -1,7 +1,6 @@
 import { Component, createRef } from 'react';
 import * as THREE from 'three';
 import { getScreenHeight } from '../../components/ui/Window';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 class Scene extends Component {
     constructor(props) {
@@ -76,20 +75,6 @@ class Scene extends Component {
         const ringObj2 = new THREE.Line(ringObj2_geo, ringObj1_mat);
         scene.add(ringObj2);
         this.ringObj2 = ringObj2;
-
-        const loader = new GLTFLoader();
-        loader.load('../../images/land.glb', function (gltf) {
-            gltf.scene.traverse(function(node) { 
-                if (node instanceof THREE.Mesh) { 
-                    node.position.set(0, -1, 0);
-                    node.castShadow = true;
-                    node.receiveShadow = true;
-                } 
-            });
-            scene.add( gltf.scene );
-        }, undefined, function (error) {
-            console.error(error);
-        });
 
         //////////////////////
 

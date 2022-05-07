@@ -14,7 +14,6 @@ import { AccessTime, NightsStayOutlined } from "@material-ui/icons";
 import { ArticleOutlined, GitHub, Instagram, LinkedIn, Language } from "@mui/icons-material";
 
 const defaultContent = {
-    'clock': null,
     'weather': null,
     'personal_icon': null,
     'personal_photo': null,
@@ -148,7 +147,7 @@ export default function Section1(props) {
                         <div>
                             <Editable editor={openButtonEditor} id={'clock'}>
                                 <Tooltip title={lang === 'kor' ? '시간' : 'Digital Clock'}>
-                                    <IconButton href={content.clock} target='_blank'>
+                                    <IconButton href={'/main-page/?p=101'} target='_blank'>
                                         <AccessTime 
                                             fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
                                     </IconButton>

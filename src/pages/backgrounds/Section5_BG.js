@@ -234,20 +234,21 @@ class Scene extends Component {
             this.camera.updateProjectionMatrix();
 
             let godraysEffect = new POSTPROCESSING.GodRaysEffect(this.camera, this.centerObj1, {
-                resolutionScale: 1,
-                density: 0.7,
+                resolutionScale: 0.7,
+                density: 0.4,
                 decay: 0.9,
                 weight: 0.9,
-                samples: 20
+                samples: 10
             });
             let smaaEffect = new POSTPROCESSING.SMAAEffect();
             let renderPass = new POSTPROCESSING.RenderPass(this.scene, this.camera);
             let effectPass = new POSTPROCESSING.EffectPass(this.camera, godraysEffect);
             let smaaPass = new POSTPROCESSING.EffectPass(this.camera, smaaEffect);
-            this.composer = new POSTPROCESSING.EffectComposer(this.renderer);
-            this.composer.addPass(renderPass);
-            this.composer.addPass(smaaPass);
-            this.composer.addPass(effectPass);
+            let composer = new POSTPROCESSING.EffectComposer(this.renderer);
+            composer.addPass(renderPass);
+            composer.addPass(effectPass);
+            composer.addPass(smaaPass);
+            this.composer = composer;
         }, 100 );
     }
 

@@ -1,14 +1,14 @@
-import { Component, createRef } from 'react';
+import { Component, createRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import * as POSTPROCESSING from 'postprocessing';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
-import { getSunPos, getMoonPos, getDateStr, getTimeStr } from '../Util.js';
+import { getSunPos, getMoonPos, getDateStr, getTimeStr, getTimezoneStr } from '../Util.js';
+import { Box, Grid } from '@material-ui/core';
 
 import landModel from '../images/land.glb';
-const customFont = 'https://threejs.org/examples/fonts/droid/droid_sans_regular.typeface.json';
+
+const FRAME_INTERVAL = 100;
 
 class Clock extends Component {
     constructor(props) {
@@ -22,9 +22,11 @@ class Clock extends Component {
         this.lat = 0;
         this.lon = 0;
         navigator.geolocation.getCurrentPosition((pos) => {
-            this.lat = pos.coords.latitude / 180 * Math.PI;
-            this.lon = pos.coords.longitude / 180 * Math.PI;
+            this.lat = pos.coords.latitude;
+            this.lon = pos.coords.longitude;
         });
+
+        window.addEventListener('resize', () => {this.resize()});
     }
 
     componentDidMount() {
@@ -53,13 +55,6 @@ class Clock extends Component {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.shadowMap.enabled = true;
         this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-        window.addEventListener('resize', () => {
-            this.camera.aspect = window.innerWidth / window.innerHeight;
-            this.camera.updateProjectionMatrix();
-            this.renderer.setSize( window.innerWidth, window.innerHeight );
-            this.composer.setSize(window.innerWidth, window.innerHeight);
-        });
         
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.controls.listenToKeyEvents(this.canvas);
@@ -74,8 +69,6 @@ class Clock extends Component {
         this.initMoon();
         this.initLand();
         this.initLampLight();
-        this.initTimeText();
-        this.initDateText();
         this.initGodRays();
 
         this.start();
@@ -149,8 +142,6 @@ class Clock extends Component {
         }, undefined, function (error) {
             console.error(error);
         });
-
-        return group;
     }
 
     initLampLight() {
@@ -166,54 +157,6 @@ class Clock extends Component {
         group.add(lamp);
         this.scene.add(group);
         this.lampLight = lamp_light;
-    }
-
-    initTimeText() {
-        const group = new THREE.Group();
-        const date = new Date();
-        const str = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-        const fontSize = 0.15;
-
-        const loader = new FontLoader();
-        loader.load(customFont, function (font) {
-            const textGeo = new TextGeometry(str, {
-                font: font,
-                size: fontSize,
-                height: 0.05,
-            });
-            const textMat = new THREE.MeshLambertMaterial({ color: '#555555', emissive: '#aa2222' });
-            const text = new THREE.Mesh(textGeo, textMat);
-            text.position.set(-(fontSize*str.length)*0.37, -0.9, 8);
-            group.add(text);
-        });
-
-        group.position.set(0, 0, 0)
-        this.scene.add(group);
-        this.timeText = group;
-    }
-
-    initDateText() {
-        const group = new THREE.Group();
-        const date = new Date();
-        const str = date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate();
-        const fontSize = 0.08;
-
-        const loader = new FontLoader();
-        loader.load(customFont, function (font) {
-            const textGeo = new TextGeometry(str, {
-                font: font,
-                size: fontSize,
-                height: 0.03,
-            });
-            const textMat = new THREE.MeshLambertMaterial({ color: '#555555', emissive: '#aa2222' });
-            const text = new THREE.Mesh(textGeo, textMat);
-            text.position.set(-(fontSize*str.length)*0.37, -1.2, 8);
-            group.add(text);
-        });
-
-        group.position.set(0, 0, 0)
-        this.scene.add(group);
-        this.dateText = group;
     }
 
     initGodRays() {
@@ -315,58 +258,118 @@ class Clock extends Component {
         this.ambientLight.color.setRGB(ambientIllum, ambientIllum, ambientIllum);
 
         // Time text update
-        this.timeText.lookAt(this.camera.position);
-        const timeStr = getTimeStr(date);
-        const timeTextFontSize = 0.15;
-        
-        const timeTextMesh = this.timeText.children[0];
-        const timeTextLoader = new FontLoader();
-        timeTextLoader.load(customFont, function (font) {
-            if (!timeTextMesh) return;
-            timeTextMesh.geometry = new TextGeometry(timeStr, {
-                font: font,
-                size: timeTextFontSize,
-                height: 0.05,
-            });
-            timeTextMesh.position.set(-(timeTextFontSize*timeStr.length)*0.37, -0.9, 8);
-        });
+        const timeText = this.mount.parentElement.children[1];
+        timeText.style.left = window.innerWidth/2 - timeText.clientWidth/2 + 'px';
+        timeText.style.top = window.innerHeight
+        timeText.style.top = window.innerHeight * 0.08 + 'px';
+        timeText.replaceChildren(getTimeStr(date));
 
         // Date text update
-        this.dateText.lookAt(this.camera.position);
-        const dateStr =  getDateStr(date);
-        const dateTextFontSize = 0.08;
+        const dateText = this.mount.parentElement.children[2];
+        dateText.style.left = window.innerWidth/2 - dateText.clientWidth/2 + 'px';
+        dateText.style.top = window.innerHeight
+        dateText.style.top = window.innerHeight * 0.2 + 'px';
+        dateText.replaceChildren(getDateStr(date));
 
-        const dateTextMesh = this.dateText.children[0];
-        const dateTextLoader = new FontLoader();
-        dateTextLoader.load(customFont, function (font) {
-            if (!dateTextMesh) return;
-            dateTextMesh.geometry = new TextGeometry(dateStr, {
-                font: font,
-                size: dateTextFontSize,
-                height: 0.03,
-            });
-            dateTextMesh.position.set(-(dateTextFontSize*dateStr.length)*0.37, -1.2, 8);
+        // Date text update
+        const timezoneText = this.mount.parentElement.children[3];
+        timezoneText.style.left = window.innerWidth/2 - timezoneText.clientWidth/2 + 'px';
+        timezoneText.style.top = window.innerHeight
+        timezoneText.style.top = window.innerHeight * 0.78 + 'px';
+        timezoneText.replaceChildren(getTimezoneStr(date));
+
+        // Coordinate text update
+        const coordText = this.mount.parentElement.children[4];
+        coordText.style.left = window.innerWidth/2 - coordText.clientWidth/2 + 'px';
+        coordText.style.top = window.innerHeight
+        coordText.style.top = window.innerHeight * 0.85 + 'px';
+        coordText.replaceChildren("GCS [" + this.lat + ", " + this.lon + "]");
+
+        // Sun position text update
+        const sunPosText = this.mount.parentElement.children[5];
+        sunPosText.style.left = window.innerWidth/2 - sunPosText.clientWidth/2 + 'px';
+        sunPosText.style.top = window.innerHeight
+        sunPosText.style.top = window.innerHeight * 0.88 + 'px';
+        sunPosText.replaceChildren("☉ Alt/Az [" 
+            + Math.round(sunPos.altitude / Math.PI * 18000) / 100 + ", " 
+            + Math.round(sunPos.azimuth / Math.PI * 18000) / 100 + "]");
+
+        // Moon position text update
+        const moonPosText = this.mount.parentElement.children[6];
+        moonPosText.style.left = window.innerWidth/2 - moonPosText.clientWidth/2 + 'px';
+        moonPosText.style.top = window.innerHeight
+        moonPosText.style.top = window.innerHeight * 0.905 + 'px';
+        moonPosText.replaceChildren("☾ Alt/Az [" 
+            + Math.round(moonPos.altitude / Math.PI * 18000) / 100 + ", " 
+            + Math.round(moonPos.azimuth / Math.PI * 18000) / 100 + "]");
+
+        // Coordinate update
+        navigator.geolocation.getCurrentPosition((pos) => {
+            this.lat = pos.coords.latitude;
+            this.lon = pos.coords.longitude;
         });
 
         this.composer.render();
         setTimeout( () => {
             this.frameId = window.requestAnimationFrame(this.animate);
-        }, 100 );
+        }, FRAME_INTERVAL );
     }
 
     resize() {
-        setTimeout( () => {
-            if (!this.renderer || !this.camera) return;
-            this.renderer.setSize(this.props.width, this.props.height);
-            this.camera.aspect = this.props.width / this.props.height;
+        if (!this.composer || !this.camera) return;
+            this.composer.setSize(window.innerWidth, window.innerHeight);
+            this.camera.aspect = window.innerWidth / window.innerHeight;
             this.camera.updateProjectionMatrix();
-        }, 100 );
+            this.initGodRays();
     }
 
     render() {
+
         return (
             <div ref={this.myRef}>
                 <div ref={(mount) => { this.mount = mount }}/>
+
+                <div style={{
+                    position: 'absolute', 
+                    color: 'lightcoral',
+                    fontFamily: 'monospace', 
+                    fontSize: '70px',
+                }}/>
+                
+                <div style={{
+                    position: 'absolute', 
+                    color: 'lightcoral',
+                    fontFamily: 'monospace', 
+                    fontSize: '40px',
+                }}/>
+
+                <div style={{
+                    position: 'absolute', 
+                    color: 'lightcoral',
+                    fontFamily: 'monospace', 
+                    fontSize: '40px',
+                }}/>
+
+                <div style={{
+                    position: 'absolute', 
+                    color: 'lightcoral',
+                    fontFamily: 'monospace', 
+                    fontSize: '15px',
+                }}/>
+
+                <div style={{
+                    position: 'absolute', 
+                    color: 'lightcoral',
+                    fontFamily: 'monospace', 
+                    fontSize: '15px',
+                }}/>
+
+                <div style={{
+                    position: 'absolute', 
+                    color: 'lightcoral',
+                    fontFamily: 'monospace', 
+                    fontSize: '15px',
+                }}/>
             </div>
         )
     }

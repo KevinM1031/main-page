@@ -3,13 +3,13 @@ export function getDateStr(date) {
     str += (date.getMonth() < 9 ? '0' + (date.getMonth()+1) : date.getMonth()+1) + '/';
     str += (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' ';
     switch(date.getDay()) {
-        case 0: str += '(U)'; break;
-        case 1: str += '(M)'; break;
-        case 2: str += '(T)'; break;
-        case 3: str += '(W)'; break;
-        case 4: str += '(R)'; break;
-        case 5: str += '(F)'; break;
-        case 6: str += '(A)'; break;
+        case 0: str += '(SUN)'; break;
+        case 1: str += '(MON)'; break;
+        case 2: str += '(TUE)'; break;
+        case 3: str += '(WED)'; break;
+        case 4: str += '(THU)'; break;
+        case 5: str += '(FRI)'; break;
+        case 6: str += '(SAT)'; break;
         default: str += '(?)';
     }
     return str;
@@ -24,7 +24,17 @@ export function getTimeStr(date) {
     return str;
 }
 
+export function getTimezoneStr(date) {
+    const tOff = date.getTimezoneOffset();
+    let str = tOff < 0 ? "UTC - " : "UTC + ";
+    str += (Math.floor(tOff / 60) < 10 ? '0' + Math.floor(tOff / 60) : Math.floor(tOff / 60)) + ":";
+    str += "" + Math.floor(tOff % 60) < 10 ? '0' + Math.floor(tOff % 60) : Math.floor(tOff % 60);
+    return str;
+}
+
 export function getSunPos(date, lat, lon) {
+
+    lat = lat / 180 * Math.PI;
 
     // calculating equatorial coordinates
     // from https://en.wikipedia.org/wiki/Position_of_the_Sun
@@ -41,7 +51,7 @@ export function getSunPos(date, lat, lon) {
 
     // calculating local sidereal time
     const UTC_hours = date.getUTCHours() + date.getUTCMinutes()/60 + date.getUTCSeconds()/3600;
-    const LST = (100.46 + 0.985647332 * n + (lon / Math.PI * 180) + 15 * UTC_hours) % 360 / 180 * Math.PI;
+    const LST = (100.46 + 0.985647332 * n + lon + 15 * UTC_hours) % 360 / 180 * Math.PI;
 
     // converting equatorial coordinates to horizontal coordinates
     // from http://www.stargazing.net/kepler/altaz.html
@@ -58,6 +68,8 @@ export function getSunPos(date, lat, lon) {
 }
 
 export function getMoonPos(date, lat, lon) {
+
+    lat = lat / 180 * Math.PI;
 
     // calculating equatorial coordinates
     // from https://www.aa.quae.nl/en/reken/hemelpositie.html#4
@@ -76,7 +88,7 @@ export function getMoonPos(date, lat, lon) {
 
     // calculating local sidereal time
     const UTC_hours = date.getUTCHours() + date.getUTCMinutes()/60 + date.getUTCSeconds()/3600;
-    const LST = (100.46 + 0.985647332 * n + (lon / Math.PI * 180) + 15 * UTC_hours) % 360 / 180 * Math.PI;
+    const LST = (100.46 + 0.985647332 * n + lon + 15 * UTC_hours) % 360 / 180 * Math.PI;
 
     // converting equatorial coordinates to horizontal coordinates
     // from http://www.stargazing.net/kepler/altaz.html

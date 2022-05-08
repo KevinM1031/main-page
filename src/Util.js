@@ -26,7 +26,7 @@ export function getTimeStr(date) {
 
 export function getTimezoneStr(date) {
     const tOff = date.getTimezoneOffset();
-    let str = tOff < 0 ? "UTC - " : "UTC + ";
+    let str = tOff < 0 ? "UTC + " : "UTC - ";
     str += (Math.floor(tOff / 60) < 10 ? '0' + Math.abs(Math.floor(tOff / 60)) : Math.abs(Math.floor(tOff / 60))) + ":";
     str += "" + Math.floor(tOff % 60) < 10 ? '0' + Math.abs(Math.floor(tOff % 60)) : Math.abs(Math.floor(tOff % 60));
     return str;

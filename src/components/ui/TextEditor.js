@@ -21,7 +21,6 @@ export default function TextEditor(props) {
   return (
     <div>
       <Dialog open={props.open} onClose={handleClose}>
-        <DialogTitle>Edit Text</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Please enter the new text to be displayed for: "{props.id}"

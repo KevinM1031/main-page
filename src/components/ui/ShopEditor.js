@@ -209,7 +209,6 @@ export default function ShopEditor(props) {
         dataPath={props.dataPath}/>   
 
       <Dialog open={props.open} onClose={handleClose}>
-        <DialogTitle>Edit Shop</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Please modify the selected list element.

@@ -21,7 +21,6 @@ export default function ButtonEditor(props) {
   return (
     <div>
       <Dialog open={props.open} onClose={handleClose}>
-        <DialogTitle>Edit Image Source</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Please enter the new action link for: "{props.id}"

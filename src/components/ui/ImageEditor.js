@@ -21,7 +21,6 @@ export default function ImageEditor(props) {
   return (
     <div>
       <Dialog open={props.open} onClose={handleClose}>
-        <DialogTitle>Edit Image Source</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Please enter the new image link to be displayed for: "{props.id}"

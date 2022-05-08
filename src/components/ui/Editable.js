@@ -17,11 +17,6 @@ export default function Editable(props) {
         <Box 
             sx={{ border: borderStyle(), width: '100%', height: '100%' }}
             onClick={() => {if (editing) props.editor(props.id)}}>
-            <Collapse in={editing}>
-                <Alert variant="outlined" severity="info" color="info">
-                    Click here to edit this element.
-                </Alert>
-            </Collapse>
             <div style={{ width: '100%', height: '100%'}}>
                 {props.children}
             </div>

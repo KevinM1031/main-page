@@ -144,31 +144,23 @@ export default function Section1(props) {
 
                 <Grid item xs={2} align="right">
                     <FadingComponent duration={1000}>
-                        <div>
-                            <Editable editor={openButtonEditor} id={'clock'}>
-                                <Tooltip title={lang === 'kor' ? '시간' : 'Digital Clock'}>
-                                    <IconButton href={'/main-page/?p=101'} target='_blank'>
-                                        <AccessTime 
-                                            fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
-                                    </IconButton>
-                                </Tooltip>
-                            </Editable>
-                        </div>
+                        <Tooltip title={lang === 'kor' ? '시간' : 'Digital Clock'}>
+                            <IconButton href={'/main-page/?p=101'} target='_blank'>
+                                <AccessTime 
+                                    fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                            </IconButton>
+                        </Tooltip>
                     </FadingComponent>
                 </Grid>
 
                 <Grid item xs={2} align="left">
                     <FadingComponent duration={1000}>
-                        <div>
-                            <Editable editor={openButtonEditor} id={'weather'}>
-                                <Tooltip title={lang === 'kor' ? '날씨' : 'Digital Weather Report'}>
-                                    <IconButton href={content.weather} target='_blank'>
-                                        <NightsStayOutlined 
-                                            fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
-                                    </IconButton>
-                                </Tooltip>
-                            </Editable>
-                        </div>
+                        <Tooltip title={lang === 'kor' ? '날씨' : 'Digital Weather Report'}>
+                            <IconButton href={content.weather} target='_blank'>
+                                <NightsStayOutlined 
+                                    fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                            </IconButton>
+                        </Tooltip>
                     </FadingComponent>
                 </Grid>
 

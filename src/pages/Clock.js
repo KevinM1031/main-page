@@ -249,8 +249,8 @@ class Clock extends Component {
         const moonCover = moonMesh.children[1];
         moonCover.lookAt((sx*1000), (sy*1000), (sz*1000));
 
-        // Lamp light calculation (based on astronomical twilight)
-        if (sunPos.altitude > -0.314159) this.lampLight.color.setRGB(0, 0, 0);
+        // Lamp light calculation (based on civil twilight)
+        if (sunPos.altitude > -0.10472) this.lampLight.color.setRGB(0, 0, 0);
         else this.lampLight.color.setRGB(Math.random()*0.2 + 0.8, 0.4, 0);
 
         // Ambient light calculation
@@ -259,8 +259,8 @@ class Clock extends Component {
 
         // Time text update
         const landscape = isLandscape(window.innerWidth, window.innerHeight);
-        const textColor = sunPos.altitude < -0.10472 ? 'cornflowerblue' 
-            : sunPos.altitude > 0.10472 ? '#5de356' : 'coral'; // based on civil twilight
+        const textColor = sunPos.altitude < -0.314159 ? 'cornflowerblue' 
+            : sunPos.altitude > 0.314159 ? '#5de356' : 'coral'; // based on astronomical twilight
 
         const timeText = this.mount.parentElement.children[1];
         timeText.style.left = window.innerWidth/2 - timeText.clientWidth/2 + 'px';

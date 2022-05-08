@@ -1,10 +1,10 @@
-import { Component, createRef, useState, useEffect } from 'react';
+import { Component, createRef } from 'react';
 import * as THREE from 'three';
 import * as POSTPROCESSING from 'postprocessing';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { getSunPos, getMoonPos, getDateStr, getTimeStr, getTimezoneStr } from '../Util.js';
-import { Box, Grid } from '@material-ui/core';
+import { isLandscape } from '../components/ui/Window.js'
 
 import landModel from '../images/land.glb';
 
@@ -249,8 +249,8 @@ class Clock extends Component {
         const moonCover = moonMesh.children[1];
         moonCover.lookAt((sx*1000), (sy*1000), (sz*1000));
 
-        // Lamp light calculation
-        if (sunPos.altitude > -0.16875) this.lampLight.color.setRGB(0, 0, 0);
+        // Lamp light calculation (based on astronomical twilight)
+        if (sunPos.altitude > -0.314159) this.lampLight.color.setRGB(0, 0, 0);
         else this.lampLight.color.setRGB(Math.random()*0.2 + 0.8, 0.4, 0);
 
         // Ambient light calculation
@@ -258,38 +258,47 @@ class Clock extends Component {
         this.ambientLight.color.setRGB(ambientIllum, ambientIllum, ambientIllum);
 
         // Time text update
+        const landscape = isLandscape(window.innerWidth, window.innerHeight);
+        const textColor = sunPos.altitude < -0.10472 ? 'cornflowerblue' 
+            : sunPos.altitude > 0.10472 ? '#5de356' : 'coral'; // based on civil twilight
+
         const timeText = this.mount.parentElement.children[1];
         timeText.style.left = window.innerWidth/2 - timeText.clientWidth/2 + 'px';
-        timeText.style.top = window.innerHeight
         timeText.style.top = window.innerHeight * 0.08 + 'px';
+        timeText.style.color = textColor;
+        timeText.style.fontSize = landscape ? '70px' : '47px';
         timeText.replaceChildren(getTimeStr(date));
 
         // Date text update
         const dateText = this.mount.parentElement.children[2];
         dateText.style.left = window.innerWidth/2 - dateText.clientWidth/2 + 'px';
-        dateText.style.top = window.innerHeight
         dateText.style.top = window.innerHeight * 0.2 + 'px';
+        dateText.style.color = textColor;
+        dateText.style.fontSize = landscape ? '40px' : '27px';
         dateText.replaceChildren(getDateStr(date));
 
         // Date text update
         const timezoneText = this.mount.parentElement.children[3];
         timezoneText.style.left = window.innerWidth/2 - timezoneText.clientWidth/2 + 'px';
-        timezoneText.style.top = window.innerHeight
         timezoneText.style.top = window.innerHeight * 0.78 + 'px';
+        timezoneText.style.color = textColor;
+        timezoneText.style.fontSize = landscape ? '40px' : '27px';
         timezoneText.replaceChildren(getTimezoneStr(date));
 
         // Coordinate text update
         const coordText = this.mount.parentElement.children[4];
         coordText.style.left = window.innerWidth/2 - coordText.clientWidth/2 + 'px';
-        coordText.style.top = window.innerHeight
         coordText.style.top = window.innerHeight * 0.85 + 'px';
+        coordText.style.color = textColor;
+        coordText.style.fontSize = landscape ? '15px' : '10px';
         coordText.replaceChildren("GCS [" + this.lat + ", " + this.lon + "]");
 
         // Sun position text update
         const sunPosText = this.mount.parentElement.children[5];
         sunPosText.style.left = window.innerWidth/2 - sunPosText.clientWidth/2 + 'px';
-        sunPosText.style.top = window.innerHeight
         sunPosText.style.top = window.innerHeight * 0.88 + 'px';
+        sunPosText.style.color = textColor;
+        sunPosText.style.fontSize = landscape ? '15px' : '10px';
         sunPosText.replaceChildren("☉ Alt/Az [" 
             + Math.round(sunPos.altitude / Math.PI * 18000) / 100 + ", " 
             + Math.round(sunPos.azimuth / Math.PI * 18000) / 100 + "]");
@@ -297,8 +306,9 @@ class Clock extends Component {
         // Moon position text update
         const moonPosText = this.mount.parentElement.children[6];
         moonPosText.style.left = window.innerWidth/2 - moonPosText.clientWidth/2 + 'px';
-        moonPosText.style.top = window.innerHeight
         moonPosText.style.top = window.innerHeight * 0.905 + 'px';
+        moonPosText.style.color = textColor;
+        moonPosText.style.fontSize = landscape ? '15px' : '10px';
         moonPosText.replaceChildren("☾ Alt/Az [" 
             + Math.round(moonPos.altitude / Math.PI * 18000) / 100 + ", " 
             + Math.round(moonPos.azimuth / Math.PI * 18000) / 100 + "]");
@@ -331,44 +341,44 @@ class Clock extends Component {
 
                 <div style={{
                     position: 'absolute', 
-                    color: 'lightcoral',
+                    color: 'cornflowerblue',
                     fontFamily: 'monospace', 
-                    fontSize: '70px',
+                    fontSize: '550%',
                 }}/>
                 
                 <div style={{
                     position: 'absolute', 
-                    color: 'lightcoral',
+                    color: 'cornflowerblue',
                     fontFamily: 'monospace', 
-                    fontSize: '40px',
+                    fontSize: '300%',
                 }}/>
 
                 <div style={{
                     position: 'absolute', 
-                    color: 'lightcoral',
+                    color: 'cornflowerblue',
                     fontFamily: 'monospace', 
-                    fontSize: '40px',
+                    fontSize: '270%',
                 }}/>
 
                 <div style={{
                     position: 'absolute', 
-                    color: 'lightcoral',
+                    color: 'cornflowerblue',
                     fontFamily: 'monospace', 
-                    fontSize: '15px',
+                    fontSize: '120%',
                 }}/>
 
                 <div style={{
                     position: 'absolute', 
-                    color: 'lightcoral',
+                    color: 'cornflowerblue',
                     fontFamily: 'monospace', 
-                    fontSize: '15px',
+                    fontSize: '120%',
                 }}/>
 
                 <div style={{
                     position: 'absolute', 
-                    color: 'lightcoral',
+                    color: 'cornflowerblue',
                     fontFamily: 'monospace', 
-                    fontSize: '15px',
+                    fontSize: '120%',
                 }}/>
             </div>
         )

@@ -77,7 +77,7 @@ const PortraitGalleries = (props) => {
                 </Typography>
 
                 <Gallery 
-                    maxHeight={props.height * 0.3} 
+                    maxHeight={props.height * 0.27} 
                     dataPath={props.dataPathParent + 'traditional_media/'} 
                     id={'traditional_media'}
                     rawContent={props.rawContent} 
@@ -94,7 +94,7 @@ const PortraitGalleries = (props) => {
                 </Typography>
 
                 <Gallery 
-                    maxHeight={props.height * 0.3} 
+                    maxHeight={props.height * 0.27} 
                     dataPath={props.dataPathParent + 'digital_media/'} 
                     id={'digital_media'}
                     rawContent={props.rawContent} 

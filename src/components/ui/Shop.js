@@ -162,7 +162,7 @@ export default function List(props) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center', }}>
-                    <Pagination count={props.content.items.length} color='primary'
+                    <Pagination count={props.content.items.length} color='primary' siblingCount={props.landscape ? 2 : 0}
                         variant="outlined" shape="rounded" onChange={(event, value) => {
                             setPageNumTemp(value);
                             setPageAnim(false);

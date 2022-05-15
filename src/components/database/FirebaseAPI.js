@@ -33,9 +33,7 @@ export const isEditor = () => {
 }
 
 export const pathBase = () => {
-    const lang = localStorage.getItem('lang');
-    if (!lang || lang === '') return 'contents/'
-    else return 'contents_' + lang + '/';
+    return 'contents/';
 }
 
 export const setData = async (path, data) => {

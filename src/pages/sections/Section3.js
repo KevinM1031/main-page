@@ -11,11 +11,15 @@ const defaultContent = {
     'thumbnail_left': null,
     'thumbnail_right': null,
     'description': '',
+    'description_kor': '',
     'items': [
         {
             'title': '',
+            'title_kor': '',
             'status': '',
+            'status_kor': '',
             'description': '',
+            'description_kor': '',
             'image': null,
         },
     ],
@@ -68,7 +72,8 @@ export default function Section3(props) {
                     <Header 
                         dataPath={dataPathParent} 
                         content={content} height={props.height * 0.2} 
-                        landscape={isLandscape(props.width, props.height)}/>
+                        landscape={isLandscape(props.width, props.height)}
+                        lang={lang}/>
                 </Grid>
 
                 <Grid item align="center">
@@ -88,7 +93,8 @@ export default function Section3(props) {
                             dataPath={dataPathParent + 'items/'} 
                             rawContent={rawContent} 
                             content={content}
-                            landscape={isLandscape(props.width, props.height)} />
+                            landscape={isLandscape(props.width, props.height)}
+                            lang={lang} />
                     </FadingComponent>
                 </Grid>
             </Grid>

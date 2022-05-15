@@ -13,11 +13,13 @@ export default function List(props) {
 
     const [editTarget, setEditTarget] = useState('');
     const [editPlaceholder, setEditPlaceholder] = useState('');
+    const [editPlaceholder_kor, setEditPlaceholder_kor] = useState('');
     const [editDataPath, setEditDataPath] = useState('');
 
     const openTextEditor = (id) => {
         setTextEditorOpen(true);
         prepareEditor(id);
+        setEditPlaceholder_kor(props.content[id + '_kor']);
     };
 
     const openImageEditor = (id) => {
@@ -38,7 +40,8 @@ export default function List(props) {
                 setOpen={setTextEditorOpen} 
                 id={editTarget} 
                 dataPath={editDataPath} 
-                placeholder={editPlaceholder}/>
+                placeholder={editPlaceholder}
+                placeholder_kor={editPlaceholder_kor}/>
 
             <ImageEditor 
                 open={imageEditorOpen} 
@@ -70,7 +73,12 @@ export default function List(props) {
                         <Editable editor={openTextEditor} id={'description'}>
                             <Typography variant={props.landscape ? 'h4' : 'h5'}
                                 sx={{maxHeight: props.height, overflow: 'auto'}}>
-                                {props.content.description}
+                                {
+                                    props.lang === 'kor' ?
+                                    props.content.description_kor
+                                    :
+                                    props.content.description
+                                }
                             </Typography>
                         </Editable>
                     </FadingComponent>

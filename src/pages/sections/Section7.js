@@ -11,6 +11,7 @@ const defaultContent = {
     'thumbnail_left': null,
     'thumbnail_right': null,
     'description': '',
+    'description_kor': '',
     'traditional_media': [
         {
             'title': '',
@@ -155,7 +156,8 @@ export default function Section7(props) {
                     <Header 
                         dataPath={dataPathParent} 
                         content={content} height={props.height * 0.2} 
-                        landscape={isLandscape(props.width, props.height)}/>
+                        landscape={isLandscape(props.width, props.height)}
+                        lang={lang}/>
                 </Grid>
 
                 <Grid item align="center">

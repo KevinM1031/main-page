@@ -9,7 +9,7 @@ export function FadingComponent(props) {
             entries.forEach((entry) => setVisible(entry.isIntersecting));
         });
         observer.observe(domRef.current);
-        return () => observer.unobserve(domRef.current);  // clean up
+//        return () => observer.unobserve(domRef.current);  // clean up
     }, []);
 
     return (
@@ -31,7 +31,7 @@ export function SlidingComponent(props) {
             entries.forEach((entry) => setVisible(entry.isIntersecting));
         });
         observer.observe(domRef.current);
-        return () => observer.unobserve(domRef.current);  // clean up
+//        return () => observer.unobserve(domRef.current);  // clean up
     }, []);
 
     return (
@@ -53,7 +53,7 @@ export function SlidingAndFadingComponent(props) {
             entries.forEach((entry) => setVisible(entry.isIntersecting));
         });
         observer.observe(domRef.current);
-        return () => observer.unobserve(domRef.current);  // clean up
+//        return () => observer.unobserve(domRef.current);  // clean up
     }, []);
 
     return (
@@ -79,7 +79,7 @@ export function ZoomingComponent(props) {
             entries.forEach((entry) => setVisible(entry.isIntersecting));
         });
         observer.observe(domRef.current);
-        return () => observer.unobserve(domRef.current);  // clean up
+//        return () => observer.unobserve(domRef.current);  // clean up
     }, []);
 
     return (

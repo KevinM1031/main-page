@@ -189,6 +189,7 @@ export default function GalleryEditor(props) {
         dataPath={props.dataPath}/>   
 
       <Dialog open={props.open} onClose={handleClose}>
+        <DialogTitle fontSize='large'>Edit Gallery</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Please modify the selected list element.

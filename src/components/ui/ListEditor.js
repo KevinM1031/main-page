@@ -41,14 +41,17 @@ const AddItemDialog = (props) => {
   const handleSubmit = () => {
     if (!input || input == '') return;
 
-    if (!props.content[input]) {
+    let key = titleToId(input);
+    if (!props.content[key]) {
       let data = props.content;
-      let key = titleToId(input);
       data[key] = {};
 
+      data[key].title_kor = '한국어 제목';
       data[key].description = 'Sample description text.';
+      data[key].description_kor = '한국어 설명.';
       data[key].image = 'https://picsum.photos/600/400';
       data[key].status = 'Sample Status Text.';
+      data[key].status_kor = '한국어 상태.';
       data[key].link = 'https://example.com';
 
       setData(props.dataPath, data).then(() => window.location.reload());
@@ -63,7 +66,7 @@ const AddItemDialog = (props) => {
   return (
     <div>
       <Dialog open={props.open} onClose={handleClose}>
-        <DialogTitle>Create New Item</DialogTitle>
+        <DialogTitle fontSize='large'>Create New Item</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Choose a name for the new list item.
@@ -101,7 +104,7 @@ const RemoveItemDialog = (props) => {
   return (
     <div>
       <Dialog open={props.open} onClose={handleClose}>
-        <DialogTitle>Delete Item</DialogTitle>
+        <DialogTitle fontSize='large'>Delete Item</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Delete {props.item}? This cannot be undone.
@@ -135,9 +138,12 @@ export default function ListEditor(props) {
       key = newKey;
     }
 
+    data[key].title_kor = title_kor;
     data[key].description = description;
+    data[key].description_kor = description_kor;
     data[key].image = image;
     data[key].status = status;
+    data[key].status_kor = status_kor;
 
     if (link == '' || link == 'Empty')
       data[key].link = null;
@@ -160,8 +166,11 @@ export default function ListEditor(props) {
   const updateTextFields = (item) => {
     setTitle(item);
     let key = titleToId(item);
+    setTitle_kor(props.content[key].title_kor);
     setStatus(props.content[key].status);
+    setStatus_kor(props.content[key].status_kor);
     setDescription(props.content[key].description);
+    setDescription_kor(props.content[key].description_kor);
     setImage(props.content[key].image);
 
     if (!props.content[key].link) {
@@ -173,10 +182,13 @@ export default function ListEditor(props) {
   const [selectedItem, setSelectedItem] = useState('');
 
   const [title, setTitle] = useState('');
+  const [title_kor, setTitle_kor] = useState('');
   const [description, setDescription] = useState('');
+  const [description_kor, setDescription_kor] = useState('');
   const [image, setImage] = useState('');
   const [link, setLink] = useState('Empty');
   const [status, setStatus] = useState('');
+  const [status_kor, setStatus_kor] = useState('');
 
   const [addItemOpen, setAddItemOpen] = useState(false);
   const [removeItemOpen, setRemoveItemOpen] = useState(false);
@@ -208,6 +220,7 @@ export default function ListEditor(props) {
         dataPath={props.dataPath}/>   
 
       <Dialog open={props.open} onClose={handleClose}>
+        <DialogTitle fontSize='large'>Edit List</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Please modify the selected list element.
@@ -252,8 +265,11 @@ export default function ListEditor(props) {
               Invalid title. This title is already in use.
             </Alert>
           </Collapse>
+          <CustomTextField id={'title_kor'} label={'Title (Korean)'} placeholder={title_kor} listener={setTitle_kor}/>
           <CustomTextField id={'status'} label={'Status'} placeholder={status} listener={setStatus}/>
+          <CustomTextField id={'status_kor'} label={'Status (Korean)'} placeholder={status_kor} listener={setStatus_kor}/>
           <CustomTextField id={'description'} label={'Description'} placeholder={description} listener={setDescription}/>
+          <CustomTextField id={'description_kor'} label={'Description (Korean)'} placeholder={description_kor} listener={setDescription_kor}/>
           <CustomTextField id={'image'} label={'Image Source'} placeholder={image} listener={setImage}/>
           <CustomTextField id={'link'} label={'External Link (optional)'} placeholder={link} listener={setLink}/>
           

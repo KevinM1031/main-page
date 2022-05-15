@@ -44,13 +44,14 @@ const AddItemDialog = (props) => {
     let key = titleToId(input);
     if (!props.content[key]) {
       let data = props.content;
-      let key = titleToId(input);
       data[key] = {};
 
+      data[key].name_kor = '한국어 제목';
       data[key].description = 'Sample description text.';
+      data[key].description_kor = '한국어 설명.';
       data[key].image = 'https://picsum.photos/600/400';
       data[key].status = 'Sample Status Text.';
-      data[key].link = 'https://example.com';
+      data[key].status_kor = '한국어 상태.';
 
       setData(props.dataPath, data).then(() => window.location.reload());
       handleClose();
@@ -64,7 +65,7 @@ const AddItemDialog = (props) => {
   return (
     <div>
       <Dialog open={props.open} onClose={handleClose}>
-        <DialogTitle>Create New Item</DialogTitle>
+        <DialogTitle fontSize='large'>Create New Item</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Choose a name for the new list item.
@@ -102,7 +103,7 @@ const RemoveItemDialog = (props) => {
   return (
     <div>
       <Dialog open={props.open} onClose={handleClose}>
-        <DialogTitle>Delete Item</DialogTitle>
+        <DialogTitle fontSize='large'>Delete Item</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Delete {props.item}? This cannot be undone.
@@ -136,9 +137,12 @@ export default function ShopEditor(props) {
       key = newKey;
     }
 
+    data[key].name_kor = name_kor;
     data[key].description = description;
+    data[key].description_kor = description_kor;
     data[key].image = image;
     data[key].status = status;
+    data[key].status_kor = status_kor;
 
     if (price == '')
       data[key].price = null;
@@ -161,8 +165,11 @@ export default function ShopEditor(props) {
   const updateTextFields = (item) => {
     setName(item);
     let key = titleToId(item);
+    setName_kor(props.content[key].name_kor);
     setStatus(props.content[key].status);
+    setStatus_kor(props.content[key].status_kor);
     setDescription(props.content[key].description);
+    setDescription_kor(props.content[key].description_kor);
     setImage(props.content[key].image);
 
     if (!props.content[key].price) {
@@ -174,10 +181,13 @@ export default function ShopEditor(props) {
   const [selectedItem, setSelectedItem] = useState('');
 
   const [name, setName] = useState('');
+  const [name_kor, setName_kor] = useState('');
   const [description, setDescription] = useState('');
+  const [description_kor, setDescription_kor] = useState('');
   const [image, setImage] = useState('');
-  const [price, setPrice] = useState('');
   const [status, setStatus] = useState('');
+  const [status_kor, setStatus_kor] = useState('');
+  const [price, setPrice] = useState('');
 
   const [addItemOpen, setAddItemOpen] = useState(false);
   const [removeItemOpen, setRemoveItemOpen] = useState(false);
@@ -209,6 +219,7 @@ export default function ShopEditor(props) {
         dataPath={props.dataPath}/>   
 
       <Dialog open={props.open} onClose={handleClose}>
+        <DialogTitle fontSize='large'>Edit Shop</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Please modify the selected list element.
@@ -253,9 +264,12 @@ export default function ShopEditor(props) {
               Invalid name. This name is already in use.
             </Alert>
           </Collapse>
+          <CustomTextField id={'name_kor'} label={'Name (Korean)'} placeholder={name_kor} listener={setName_kor}/>
           <CustomTextField id={'status'} label={'Status'} placeholder={status} listener={setStatus}/>
+          <CustomTextField id={'status_kor'} label={'Status (Korean)'} placeholder={status_kor} listener={setStatus_kor}/>
           <CustomTextField id={'price'} label={'Price (optional)'} placeholder={price} listener={setPrice}/>
           <CustomTextField id={'description'} label={'Description'} placeholder={description} listener={setDescription}/>
+          <CustomTextField id={'description_kor'} label={'Description (Korean)'} placeholder={description_kor} listener={setDescription_kor}/>
           <CustomTextField id={'image'} label={'Image Source'} placeholder={image} listener={setImage}/>
           
           

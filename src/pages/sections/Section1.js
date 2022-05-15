@@ -37,12 +37,14 @@ export default function Section1(props) {
 
     const [editTarget, setEditTarget] = useState('');
     const [editPlaceholder, setEditPlaceholder] = useState('');
+    const [editPlaceholder_kor, setEditPlaceholder_kor] = useState('');
     const dataPathParent = pathBase() + 'section1/';
     const [editDataPath, setEditDataPath] = useState('');
 
     const openTextEditor = (id) => {
         setTextEditorOpen(true);
         prepareEditor(id);
+        setEditPlaceholder_kor(content[id + '_kor']);
     };
 
     const openImageEditor = (id) => {
@@ -80,7 +82,8 @@ export default function Section1(props) {
                 setOpen={setTextEditorOpen} 
                 id={editTarget} 
                 dataPath={editDataPath} 
-                placeholder={editPlaceholder}/>
+                placeholder={editPlaceholder}
+                placeholder_kor={editPlaceholder_kor}/>
 
             <ImageEditor 
                 open={imageEditorOpen} 
@@ -193,7 +196,12 @@ export default function Section1(props) {
                                 <Typography variant={isLandscape(props.width, props.height) ? 'h4' : 'h5'} 
                                     width={isLandscape(props.width, props.height) ? '40%' : '70%'} 
                                     sx={{mt: 8, maxHeight: props.height*0.25, overflow: 'auto'}}>
-                                    {content.introductory_text}
+                                    {
+                                        lang === 'kor' ?
+                                        content.introductory_text_kor
+                                        :
+                                        content.introductory_text
+                                    }
                                 </Typography>
                             </Editable>
                         </div>

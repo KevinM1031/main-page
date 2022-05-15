@@ -54,30 +54,36 @@ export default function LoginButton(props) {
             </Tooltip>
 
             <Dialog open={open} onClose={handleClose}>
-                <DialogContent>
+                <DialogTitle fontSize='large'>{props.lang === 'kor' ? '로그인' : 'Log In'}</DialogTitle>
+                <DialogContent style={{overflow: 'hidden'}}>
                     <Collapse in={failed}>
                         <Alert variant="outlined" severity="error" color="error">
-                            Login attempt failed. Unregistered email-password combination.
+                            {
+                            props.lang === 'kor' ? 
+                                '로그인 실패. 이메일과 비밀번호의 조합이 인식되지 않았습니다.'
+                            : 
+                                'Login attempt failed. Unregistered email-password combination.'
+                            }
                         </Alert>
                     </Collapse>
                     <TextField
                         autoFocus
                         margin="normal"
                         id="email"
-                        label="Email"
+                        label={props.lang === 'kor' ? '이메일' : 'Email'}
                         fullWidth
                         onChange={(event) => setEmail(event.target.value)}/>
                     <TextField
                         margin="normal"
                         id="password"
-                        label="Password"
+                        label={props.lang === 'kor' ? '비밀번호' : 'Password'}
                         type="password"
                         fullWidth
                         onChange={(event) => setPassword(event.target.value)}/>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleLogin}  type="submit">Enter</Button>
+                    <Button onClick={handleClose}>{props.lang === 'kor' ? '취소' : 'Cancel'}</Button>
+                    <Button onClick={handleLogin} type="submit">{props.lang === 'kor' ? '확인' : 'Enter'}</Button>
                 </DialogActions>
             </Dialog>
         </div>

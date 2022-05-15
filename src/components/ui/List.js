@@ -31,7 +31,12 @@ const LandscapeLayout = (props) => {
                                 <Grid container sx={{ mb: 2, alignItems: 'center' }}>
                                     <Grid item xs={8}>
                                         <Typography variant='h2'>
-                                            {props.content.items[props.pageNum].title}
+                                            {
+                                                props.lang === 'kor' ?
+                                                props.content.items[props.pageNum].title_kor
+                                                :
+                                                props.content.items[props.pageNum].title
+                                            }
                                         </Typography>
                                     </Grid>
 
@@ -41,17 +46,32 @@ const LandscapeLayout = (props) => {
                                             href={props.content.items[props.pageNum].link}
                                             target="_blank"
                                             variant='outlined'>
-                                            Inspect
+                                            {
+                                                props.lang === 'kor' ?
+                                                '보기'
+                                                :
+                                                'Inspect'
+                                            }
                                         </Button>
                                     </Grid>
                                 </Grid>
 
                                 <Typography variant='h3' sx={{ mb: 2 }}>
-                                    {props.content.items[props.pageNum].status}
+                                    {
+                                        props.lang === 'kor' ?
+                                        props.content.items[props.pageNum].status_kor
+                                        :
+                                        props.content.items[props.pageNum].status
+                                    }
                                 </Typography>
 
-                                <Typography variant='h4'>
-                                    {props.content.items[props.pageNum].description}
+                                <Typography variant='h4' style={{ whiteSpace: "pre-line" }}>
+                                    {
+                                        props.lang === 'kor' ?
+                                        props.content.items[props.pageNum].description_kor
+                                        :
+                                        props.content.items[props.pageNum].description
+                                    }
                                 </Typography>
                             </Box>
                         </Fade>
@@ -90,7 +110,12 @@ const PortraitLayout = (props) => {
                                 <Grid container sx={{ mt: 2, mb: 1, alignItems: 'center' }}>
                                     <Grid item xs={8}>
                                         <Typography variant='h3'>
-                                            {props.content.items[props.pageNum].title}
+                                            {
+                                                props.lang === 'kor' ?
+                                                props.content.items[props.pageNum].title_kor
+                                                :
+                                                props.content.items[props.pageNum].title
+                                            }
                                         </Typography>
                                     </Grid>
 
@@ -100,17 +125,32 @@ const PortraitLayout = (props) => {
                                             href={props.content.items[props.pageNum].link}
                                             target="_blank"
                                             variant='outlined'>
-                                            Inspect
+                                            {
+                                                props.lang === 'kor' ?
+                                                '보기'
+                                                :
+                                                'Inspect'
+                                            }
                                         </Button>
                                     </Grid>
                                 </Grid>
 
                                 <Typography variant='h4' sx={{mb: 1}}>
-                                    {props.content.items[props.pageNum].status}
+                                    {
+                                        props.lang === 'kor' ?
+                                        props.content.items[props.pageNum].status_kor
+                                        :
+                                        props.content.items[props.pageNum].status
+                                    }
                                 </Typography>
 
-                                <Typography variant='h5' sx={{mb: 2}}>
-                                    {props.content.items[props.pageNum].description}
+                                <Typography variant='h5' sx={{mb: 2}} style={{ whiteSpace: "pre-line" }}>
+                                    {
+                                        props.lang === 'kor' ?
+                                        props.content.items[props.pageNum].description_kor
+                                        :
+                                        props.content.items[props.pageNum].description
+                                    }
                                 </Typography>
                             </Box>
                         </Fade>
@@ -153,7 +193,8 @@ export default function List(props) {
                             pageAnim={pageAnim}
                             setPageAnim={setPageAnim}
                             content={props.content}
-                            maxHeight={props.maxHeight}/>
+                            maxHeight={props.maxHeight}
+                            lang={props.lang}/>
                     :
                         <PortraitLayout 
                             pageNum={pageNum} 
@@ -162,7 +203,8 @@ export default function List(props) {
                             pageAnim={pageAnim}
                             setPageAnim={setPageAnim}
                             content={props.content}
-                            maxHeight={props.maxHeight}/>
+                            maxHeight={props.maxHeight}
+                            lang={props.lang}/>
                     }
                 </Editable>
 

@@ -6,9 +6,7 @@ import GalleryEditor from './GalleryEditor.js';
 
 const LandscapeLayout = (props) => {
     return (
-        <ImageList variant={''} cols={2} gap={8} 
-            style={{ width: '90%', height: '90%', hideScrollbar: true }} 
-            sx={{ height: '90%', overflowY: 'scroll' }}>
+        <ImageList variant={'masonry'} cols={2} gap={8}>
             {props.content[props.id].map((item) => (
                 <ImageListItem 
                     key={item.title}
@@ -28,9 +26,7 @@ const LandscapeLayout = (props) => {
 
 const PortraitLayout = (props) => {
     return (
-        <ImageList variant={''} cols={2} gap={8} 
-            style={{ width: '90%', height: '90%', hideScrollbar: true }} 
-            sx={{ height: '90%', overflowY: 'scroll' }}>
+        <ImageList variant={'masonry'} cols={2} gap={8}>
             {props.content[props.id].map((item) => (
                 <ImageListItem 
                     key={item.title}
@@ -65,7 +61,7 @@ export default function Gallery(props) {
                 dataPath={props.dataPath} 
                 content={props.rawContent[props.id]}/>
 
-            <div style={{width: '100%', height: props.maxHeight}}>
+            <div style={{width: '90%', height: props.maxHeight, overflowX: 'hidden', overflowY: 'scroll'}}>
                 <Editable editor={openGalleryEditor}>
                     {
                     props.landscape ?

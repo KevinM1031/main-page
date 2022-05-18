@@ -148,7 +148,7 @@ export default function Section1(props) {
                 <Grid item xs={2} align="right">
                     <FadingComponent duration={1000}>
                         <Tooltip title={lang === 'kor' ? '시간' : 'Digital Clock'}>
-                            <IconButton href={'/main-page/?p=101'} target='_blank'>
+                            <IconButton href={'/digital-clock'} target='_blank'>
                                 <AccessTime 
                                     fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
                             </IconButton>

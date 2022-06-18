@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Parallax } from "react-parallax";
 import Critters from "../../components/ui/Critters.js";
 
@@ -17,7 +16,8 @@ export default function SectionBG(props) {
                         bgImageStyle={{height: props.height+'px'}}>
                         <Parallax strength={k2} percentage={0.5} bgImage={props.backgrounds[2]}
                             bgImageStyle={{height: props.height+'px'}}>
-                            <Critters width={props.width} height={props.height} type={props.critterType}/>
+                            <Critters width={props.width} height={props.height} type={props.critterType}
+                                heightAmp={props.heightAmp} heightOff={props.heightOff}/>
                         </Parallax>
                     </Parallax>
                 </Parallax>

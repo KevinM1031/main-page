@@ -33,7 +33,7 @@ const LandscapeLayout = (props) => {
                                         props.lang === 'kor' ?
                                         props.content.items[props.pageNum].name_kor
                                         :
-                                        props.content.items[props.pageNum].name
+                                        props.content.items[props.pageNum].title
                                     }
                                 </Typography>
 
@@ -103,7 +103,7 @@ const PortraitLayout = (props) => {
                                         props.lang === 'kor' ?
                                         props.content.items[props.pageNum].name_kor
                                         :
-                                        props.content.items[props.pageNum].name
+                                        props.content.items[props.pageNum].title
                                     }
                                 </Typography>
 

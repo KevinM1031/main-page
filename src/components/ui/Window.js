@@ -3,7 +3,8 @@ export function getScreenWidth() {
 }
 
 export function getScreenHeight() {
-    return document.documentElement.clientHeight;
+    return document.documentElement.clientWidth / document.documentElement.clientHeight <= 1.8 ?
+        document.documentElement.clientHeight : document.documentElement.clientWidth / 1.8;
 }
 
 export function isLandscape(width, height) {

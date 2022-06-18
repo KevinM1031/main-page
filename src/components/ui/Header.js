@@ -51,7 +51,7 @@ export default function List(props) {
                 placeholder={editPlaceholder}/>
 
             <Grid container spacing={8} style={{height: props.height+'px'}} sx={{
-                overflow: 'hidden',
+                overflow: 'visible',
                 direction: "row",
                 justifyContent: "center",
                 alignItems: "center",

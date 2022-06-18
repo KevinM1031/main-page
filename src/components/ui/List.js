@@ -27,7 +27,7 @@ const LandscapeLayout = (props) => {
                 <Slide timeout={700} direction="left" in={props.pageAnim}>
                     <div style={{height: '100%'}}>
                         <Fade timeout={700} in={props.pageAnim}>
-                            <Box sx={{ overflow: 'auto', height: props.maxHeight * 0.9 }}>
+                            <Box sx={{ overflowX: 'visible', overflowY: 'auto', height: props.maxHeight * 0.9 }}>
                                 <Grid container sx={{ mb: 2, alignItems: 'center' }}>
                                     <Grid item xs={8}>
                                         <Typography variant='h2'>
@@ -105,7 +105,7 @@ const PortraitLayout = (props) => {
                 <Slide timeout={700} direction="left" in={props.pageAnim}>
                     <div style={{height: '100%'}}>
                         <Fade timeout={700} in={props.pageAnim}>
-                            <Box sx={{ overflow: 'auto', height: props.maxHeight * 0.45 }}>
+                            <Box sx={{ overflowX: 'visible', overflowY: 'auto', height: props.maxHeight * 0.45 }}>
 
                                 <Grid container sx={{ mt: 2, mb: 1, alignItems: 'center' }}>
                                     <Grid item xs={8}>

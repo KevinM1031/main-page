@@ -2,10 +2,10 @@ import { Typography, Grid, Box } from '@material-ui/core';
 import { getSectionContent, getSectionRawContent, pathBase } from '../../components/database/FirebaseAPI.js';
 import { useState, useEffect } from "react";
 import Section8BG from '../backgrounds/Section8_BG'
-import List from '../../components/ui/List.js'
-import Header from '../../components/ui/Header.js'
+import List from '../../components/ui/List.js';
+import Header from '../../components/ui/Header.js';
 import { FadingComponent } from '../../components/ui/AnimatedComponent.js';
-import { isLandscape } from '../../components/ui/Window.js'
+import { isLandscape } from '../../components/ui/Window.js';
 
 const defaultContent = {
     'thumbnail_left': null,

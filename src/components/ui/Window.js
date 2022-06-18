@@ -3,7 +3,7 @@ export function getScreenWidth() {
 }
 
 export function getScreenHeight() {
-    const thresholdRatio = small ? 1.2 : 1.8;
+    const thresholdRatio = small ? 1.1 : 1.8;
     return document.documentElement.clientWidth / document.documentElement.clientHeight <= thresholdRatio?
         document.documentElement.clientHeight : document.documentElement.clientWidth / thresholdRatio;
 }

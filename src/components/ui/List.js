@@ -1,7 +1,8 @@
 import { Typography, Grid, Pagination, Slide, Box, Fade, Button } from '@material-ui/core';
 import { useState } from "react";
-import Editable from './Editable.js'
-import ListEditor from './ListEditor.js'
+import Editable from './Editable.js';
+import ListEditor from './ListEditor.js';
+import { wasSmall } from './Window.js';
 
 const LandscapeLayout = (props) => {
     return (
@@ -29,7 +30,7 @@ const LandscapeLayout = (props) => {
                         <Fade timeout={700} in={props.pageAnim}>
                             <Box sx={{ overflowX: 'visible', overflowY: 'auto', height: props.maxHeight * 0.9 }}>
                                 <Grid container sx={{ mb: 2, alignItems: 'center' }}>
-                                    <Grid item xs={8}>
+                                    <Grid item xs={wasSmall() ? 6 : 10}>
                                         <Typography variant='h2'>
                                             {
                                                 props.lang === 'kor' ?
@@ -40,7 +41,7 @@ const LandscapeLayout = (props) => {
                                         </Typography>
                                     </Grid>
 
-                                    <Grid item xs={4} align={'right'}>
+                                    <Grid item xs={wasSmall() ? 6 : 2} align={'right'}>
                                         <Button 
                                             disabled={!props.content.items[props.pageNum].link}
                                             href={props.content.items[props.pageNum].link}

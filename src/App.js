@@ -8,12 +8,14 @@ const App = () => {
     const [theme, setTheme] = useState(defaultTheme);
 
     const resizeHandler = () => {
-        const dpi = {
-            w: document.getElementById("dpi").offsetWidth,
-            h: document.getElementById("dpi").offsetHeight
-        };
-        setFontSize(dpi);
-        setTheme(defaultTheme);
+        setTimeout( () => {
+            const dpi = {
+                w: document.getElementById("dpi").offsetWidth,
+                h: document.getElementById("dpi").offsetHeight
+            };
+            setFontSize(dpi);
+            setTheme(defaultTheme);
+        }, 100 );
     }
 
     useEffect(() => {

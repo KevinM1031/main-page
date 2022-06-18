@@ -228,10 +228,11 @@ class Scene extends Component {
 
     resize() {
         setTimeout( () => {
-            if (!this.composer || !this.camera) return;
+            if (!this.renderer || !this.composer || !this.camera) return;
             this.composer.setSize(this.props.width, this.props.height);
             this.camera.aspect = this.props.width / this.props.height;
             this.camera.updateProjectionMatrix();
+            this.renderer.setSize(this.props.width, this.props.height);
 
             let godraysEffect = new POSTPROCESSING.GodRaysEffect(this.camera, this.centerObj1, {
                 resolutionScale: 0.7,

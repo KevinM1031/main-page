@@ -7,6 +7,10 @@ export function getScreenHeight() {
         document.documentElement.clientHeight : document.documentElement.clientWidth / 1.8;
 }
 
-export function isLandscape(width, height) {
-    return height / width < 1.5;
+export function isLandscape() {
+    return getScreenHeight() / getScreenWidth() < 1;
+}
+
+export function isSmall(dpi) {
+    return isLandscape() && getScreenWidth() / dpi.w <= 12;
 }

@@ -1,11 +1,33 @@
 import { MainPage } from "./pages/MainPage";
 import { ThemeProvider } from '@material-ui/core/styles';
-import theme from "./components/ui/Theme"
+import defaultTheme, { setFontSize } from "./components/ui/Theme";
+import { useState, useEffect } from "react";
 
 const App = () => {
 
+    const [theme, setTheme] = useState(defaultTheme);
+
+    const resizeHandler = () => {
+        const dpi = {
+            w: document.getElementById("dpi").offsetWidth,
+            h: document.getElementById("dpi").offsetHeight
+        };
+        setFontSize(dpi);
+        setTheme(defaultTheme);
+    }
+
+    useEffect(() => {
+        resizeHandler();
+        //window.addEventListener("resize", resizeHandler);
+
+        return () => {
+            //window.removeEventListener("resize", resizeHandler);
+        };
+    }, []);
+
     return (
         <ThemeProvider theme={theme}>
+            <div id="dpi" style={{height: '1in', width: '1in', left: '100%', position: 'fixed', top: '100%'}}/>
             <MainPage/>
         </ThemeProvider>
 

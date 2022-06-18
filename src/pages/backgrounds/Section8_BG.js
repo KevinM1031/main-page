@@ -210,23 +210,39 @@ class Scene extends Component {
 
     resize() {
         setTimeout( () => {
-            if (!this.composer || !this.camera) return;
+            if (!this.renderer || !this.composer || !this.camera) return;
+            this.composer.setSize(this.props.width, this.props.height);
+            this.camera.aspect = this.props.width / this.props.height;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(this.props.width, this.props.height);
+
             const renderTargetParameters = {
                 minFilter: THREE.LinearFilter,
                 magFilter: THREE.LinearFilter,
                 stencilBuffer: false
             };
-            this.savePass = new SavePass(
+
+            const savePass = new SavePass(
                 new THREE.WebGLRenderTarget(
                     this.props.width,
                     this.props.height,
                     renderTargetParameters
                 )
             );
-
-            this.composer.setSize(this.props.width, this.props.height);
-            this.camera.aspect = this.props.width / this.props.height;
-            this.camera.updateProjectionMatrix();
+            this.savePass = savePass;
+            
+            const blendPass = new ShaderPass(BlendShader, "tDiffuse1");
+            blendPass.uniforms["tDiffuse2"].value = savePass.renderTarget.texture;
+            blendPass.uniforms["mixRatio"].value = 0.4;
+            const outputPass = new ShaderPass(CopyShader);
+            outputPass.renderToScreen = true;
+            const renderPass = new RenderPass(this.scene, this.camera);
+            const composer = new EffectComposer(this.renderer);
+            composer.addPass(renderPass);
+            composer.addPass(blendPass);
+            composer.addPass(savePass);
+            composer.addPass(outputPass);
+            this.composer = composer;
         }, 100 );
     }
 

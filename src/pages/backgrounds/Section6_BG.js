@@ -150,6 +150,7 @@ class Scene extends Component {
 
     resize() {
         setTimeout( () => {
+            if (!this.renderer || !this.camera) return;
             this.renderer.setSize(this.props.width, this.props.height);
             this.camera.aspect = this.props.width / this.props.height;
             this.camera.updateProjectionMatrix();

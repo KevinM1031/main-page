@@ -62,7 +62,7 @@ export default function List(props) {
                         <SlidingComponent direction={'right'} duration={1500}>
                             <Editable editor={openImageEditor} id={'thumbnail_left'}>
                                 <img src={props.content.thumbnail_left} 
-                                    style={{height: props.height * 0.8, overflow: 'hidden'}}/>
+                                    style={{height: props.height+'px', overflow: 'hidden'}}/>
                             </Editable>
                         </SlidingComponent>
                     </Grid> : null
@@ -72,7 +72,7 @@ export default function List(props) {
                     <FadingComponent duration={1500}>
                         <Editable editor={openTextEditor} id={'description'}>
                             <Typography variant={props.landscape ? 'h4' : 'h5'}
-                                sx={{maxHeight: props.height, overflow: 'auto'}}>
+                                sx={{maxHeight: props.height+'px', overflow: 'auto'}}>
                                 {
                                     props.lang === 'kor' ?
                                     props.content.description_kor
@@ -89,7 +89,7 @@ export default function List(props) {
                         <SlidingComponent direction={'left'} duration={1500}>
                             <Editable editor={openImageEditor} id={'thumbnail_right'}>
                                 <img src={props.content.thumbnail_right} 
-                                    style={{height: props.height * 0.8, overflow: 'hidden'}}/>
+                                    style={{height: props.height+'px', overflow: 'hidden'}}/>
                             </Editable>
                         </SlidingComponent>
                     </Grid> : null

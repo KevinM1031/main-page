@@ -52,7 +52,7 @@ export default function Header(props) {
                 placeholder={editPlaceholder}/>
 
             <Grid container spacing={8} style={{height: props.height+'px'}} sx={{
-                overflow: 'visible',
+                overflow: 'auto',
                 direction: "row",
                 justifyContent: "center",
                 alignItems: "center",

@@ -5,7 +5,7 @@ import ListEditor from './ListEditor.js'
 
 const LandscapeLayout = (props) => {
     return (
-        <Grid container sx={{ overflow: 'hidden'}}  style={{ height: '100%'}}>
+        <Grid container sx={{ overflow: 'visible'}}  style={{ height: '100%'}}>
             <Grid item xs={7}  style={{ height: '100%'}}>
                 <Slide direction="right" timeout={700} in={props.pageAnim} onExited={() => {
                     props.setPageAnim(true);

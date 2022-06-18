@@ -18,10 +18,10 @@ const App = () => {
 
     useEffect(() => {
         resizeHandler();
-        //window.addEventListener("resize", resizeHandler);
+        window.addEventListener("resize", resizeHandler);
 
         return () => {
-            //window.removeEventListener("resize", resizeHandler);
+            window.removeEventListener("resize", resizeHandler);
         };
     }, []);
 

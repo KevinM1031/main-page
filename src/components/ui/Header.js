@@ -3,10 +3,11 @@ import { useState } from "react";
 import { SlidingComponent, FadingComponent } from './AnimatedComponent.js';
 import Editable from './Editable.js';
 import TextEditor from './TextEditor.js';
-import ImageEditor from './ImageEditor.js'
+import ImageEditor from './ImageEditor.js';
+import { wasSmall } from './Window.js';
 
 
-export default function List(props) {
+export default function Header(props) {
 
     const [textEditorOpen, setTextEditorOpen] = useState(false);
     const [imageEditorOpen, setImageEditorOpen] = useState(false);
@@ -57,7 +58,7 @@ export default function List(props) {
                 alignItems: "center",
                 height: props.height+'px'
             }}>
-                {(props.landscape) ?
+                {(props.landscape && !wasSmall()) ?
                     <Grid item xs={3} align='center'>
                         <SlidingComponent direction={'right'} duration={1500}>
                             <Editable editor={openImageEditor} id={'thumbnail_left'}>
@@ -68,7 +69,7 @@ export default function List(props) {
                     </Grid> : null
                 }
 
-                <Grid item xs={props.landscape ? 5 : 10} align='center'> 
+                <Grid item xs={props.landscape && !wasSmall() ? 5 : 10} align='center'> 
                     <FadingComponent duration={1500}>
                         <Editable editor={openTextEditor} id={'description'}>
                             <Typography variant={props.landscape ? 'h4' : 'h5'}
@@ -84,7 +85,7 @@ export default function List(props) {
                     </FadingComponent>
                 </Grid>
 
-                {(props.landscape) ?
+                {(props.landscape && !wasSmall()) ?
                     <Grid item xs={3} align='center'>
                         <SlidingComponent direction={'left'} duration={1500}>
                             <Editable editor={openImageEditor} id={'thumbnail_right'}>

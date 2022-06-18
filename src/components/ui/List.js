@@ -84,7 +84,7 @@ const LandscapeLayout = (props) => {
 
 const PortraitLayout = (props) => {
     return (
-        <Grid container sx={{ overflow: 'hidden', height: '100%' }}>
+        <Grid container sx={{ overflow: 'visible', height: '100%' }}>
             <Grid item xs={12}>
                 <Slide direction="right" timeout={700} in={props.pageAnim} onExited={() => {
                     props.setPageAnim(true);

@@ -11,6 +11,11 @@ export function isLandscape() {
     return getScreenHeight() / getScreenWidth() < 1;
 }
 
+var small = false;
 export function isSmall(dpi) {
-    return isLandscape() && getScreenWidth() / dpi.w <= 12;
+    small = isLandscape() && getScreenWidth() / dpi.w <= 12;
+    return small
+}
+export function wasSmall() {
+    return small;
 }

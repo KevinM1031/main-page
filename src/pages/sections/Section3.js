@@ -61,7 +61,7 @@ export default function Section3(props) {
 
                 <Grid item align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' sx={{mt: 8, mb: 4}}
+                        <Typography align='center' sx={{mt: 8, mb: 6}}
                             variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '컴퓨터공학' :

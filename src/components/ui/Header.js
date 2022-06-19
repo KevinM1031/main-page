@@ -4,7 +4,7 @@ import { SlidingComponent, FadingComponent } from './AnimatedComponent.js';
 import Editable from './Editable.js';
 import TextEditor from './TextEditor.js';
 import ImageEditor from './ImageEditor.js';
-import { wasSmall } from './Window.js';
+import { isLandscape, wasSmall } from './Window.js';
 
 
 export default function Header(props) {
@@ -55,7 +55,7 @@ export default function Header(props) {
                 overflow: 'visible',
                 direction: "row",
                 justifyContent: "center",
-                alignItems: "center",
+                alignItems: (!isLandscape() || wasSmall()) ? "flex-start" : "center",
                 height: props.height+'px'
             }}>
                 {(props.landscape && !wasSmall()) ?

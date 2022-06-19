@@ -118,7 +118,7 @@ export default function Section1(props) {
                 <Grid item xs={2} align="right">
                     <FadingComponent duration={1000}>
                         <div>
-                            <LoginButton landscape={isLandscape(props.width, props.height)} lang={lang}/>
+                            <LoginButton landscape={isLandscape()} lang={lang}/>
                         </div>
                     </FadingComponent>
                 </Grid>
@@ -127,7 +127,7 @@ export default function Section1(props) {
                     <FadingComponent duration={1000}>
                         <Tooltip title={lang === 'kor' ? '언어' : 'Language'}>
                             <IconButton onClick={() => cycleLanguage()}>
-                                <Language fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                                <Language fontSize={isLandscape() ? 'large' : 'medium'}/>
                             </IconButton>
                         </Tooltip>
                     </FadingComponent>
@@ -136,7 +136,7 @@ export default function Section1(props) {
                 <Grid item xs={4} align="center">
                     <FadingComponent duration={1500}>
                         <Typography align='center' sx={{mt: 8, mb: 8}}
-                            variant={isLandscape(props.width, props.height) ? 'h2' : 'h3'}>
+                            variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '소개' :
                                 'About Me'
@@ -150,7 +150,7 @@ export default function Section1(props) {
                         <Tooltip title={lang === 'kor' ? '시간' : 'Digital Clock'}>
                             <IconButton href={'/digital-clock'} target='_blank'>
                                 <AccessTime 
-                                    fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                                    fontSize={isLandscape() ? 'large' : 'medium'}/>
                             </IconButton>
                         </Tooltip>
                     </FadingComponent>
@@ -161,13 +161,13 @@ export default function Section1(props) {
                         <Tooltip title={lang === 'kor' ? '날씨' : 'Digital Weather Report'}>
                             <IconButton href={content.weather} target='_blank'>
                                 <NightsStayOutlined 
-                                    fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                                    fontSize={isLandscape() ? 'large' : 'medium'}/>
                             </IconButton>
                         </Tooltip>
                     </FadingComponent>
                 </Grid>
 
-                <Grid item xs={isLandscape(props.width, props.height) ? 3 : 5} align="left">
+                <Grid item xs={isLandscape() ? 3 : 5} align="left">
                     <SlidingAndFadingComponent duration={1500} direction={'left'}>
                         <div>
                             <Editable editor={openImageEditor} id={'personal_icon'}>
@@ -179,7 +179,7 @@ export default function Section1(props) {
 
                 <Grid item xs={1}></Grid>
 
-                <Grid item xs={isLandscape(props.width, props.height) ? 3 : 5} align="right">
+                <Grid item xs={isLandscape() ? 3 : 5} align="right">
                     <SlidingAndFadingComponent duration={1500} direction={'right'}>
                         <div>
                             <Editable editor={openImageEditor} id={'personal_photo'}>
@@ -193,8 +193,8 @@ export default function Section1(props) {
                     <FadingComponent duration={1500}>
                         <div>
                             <Editable editor={openTextEditor} id={'introductory_text'}>
-                                <Typography variant={isLandscape(props.width, props.height) ? 'h4' : 'h5'} 
-                                    width={isLandscape(props.width, props.height) ? '40%' : '70%'} 
+                                <Typography variant={isLandscape() ? 'h4' : 'h5'} 
+                                    width={isLandscape() ? '40%' : '70%'} 
                                     sx={{mt: 8, maxHeight: props.height*0.25, overflow: 'auto'}}>
                                     {
                                         lang === 'kor' ?
@@ -211,7 +211,7 @@ export default function Section1(props) {
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
                         <Typography align='center' sx={{mt: 12}}
-                            variant={isLandscape(props.width, props.height) ? 'h2' : 'h3'}>
+                            variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '소속' :
                                 'Affiliation Summary'
@@ -222,7 +222,7 @@ export default function Section1(props) {
 
                 <Grid item xs={2}/>
 
-                <Grid item xs={isLandscape(props.width, props.height) ? 2 : 4} align='center'>
+                <Grid item xs={isLandscape() ? 2 : 4} align='center'>
                     <ZoomingComponent duration={800}>
                         <div>
                             <Editable editor={openImageEditor} id={'affiliation_image_1'}>
@@ -232,7 +232,7 @@ export default function Section1(props) {
                     </ZoomingComponent>
                 </Grid>
 
-                <Grid item xs={isLandscape(props.width, props.height) ? 2 : 4} align='center'>
+                <Grid item xs={isLandscape() ? 2 : 4} align='center'>
                     <ZoomingComponent duration={800} delay={150}>
                         <div>
                             <Editable editor={openImageEditor} id={'affiliation_image_2'}>
@@ -242,13 +242,13 @@ export default function Section1(props) {
                     </ZoomingComponent>
                 </Grid>
 
-                {isLandscape(props.width, props.height) ?
+                {isLandscape() ?
                 null : <Grid item xs={2}/>}
 
-                {isLandscape(props.width, props.height) ?
+                {isLandscape() ?
                 null : <Grid item xs={2}/>}
 
-                <Grid item xs={isLandscape(props.width, props.height) ? 2 : 4} align='center'>
+                <Grid item xs={isLandscape() ? 2 : 4} align='center'>
                     <ZoomingComponent duration={800} delay={300}>
                         <div>
                             <Editable editor={openImageEditor} id={'affiliation_image_3'}>
@@ -258,7 +258,7 @@ export default function Section1(props) {
                     </ZoomingComponent>
                 </Grid>
 
-                <Grid item xs={isLandscape(props.width, props.height) ? 2 : 4} align='center'>
+                <Grid item xs={isLandscape() ? 2 : 4} align='center'>
                     <ZoomingComponent duration={800} delay={450}>
                         <div>
                             <Editable editor={openImageEditor} id={'affiliation_image_4'}>
@@ -270,7 +270,7 @@ export default function Section1(props) {
 
                 <Grid item xs={2}/>
 
-                <Grid item xs={isLandscape(props.width, props.height) ? 2 : 4} align='center'>
+                <Grid item xs={isLandscape() ? 2 : 4} align='center'>
                     <ZoomingComponent duration={800}>
                         <div>
                             <Editable editor={openButtonEditor} id={'employment_resume'}>
@@ -278,11 +278,11 @@ export default function Section1(props) {
                                     variant='outlined' 
                                     href={content.employment_resume} 
                                     target='_blank'>
-                                    <ArticleOutlined fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                                    <ArticleOutlined fontSize={isLandscape() ? 'large' : 'medium'}/>
                                 </IconButton>
                             </Editable>
                             
-                            <Typography align='center' variant={isLandscape(props.width, props.height) ? 'h5' : 'h6'}>
+                            <Typography align='center' variant={isLandscape() ? 'h5' : 'h6'}>
                                 { lang === 'kor' ?
                                     '채용 이력서' :
                                     'Employment Resume'
@@ -299,7 +299,7 @@ export default function Section1(props) {
                                 <Tooltip title='GitHub'>
                                     <IconButton href={content.github} target='_blank'>
                                         <GitHub 
-                                            fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                                            fontSize={isLandscape() ? 'large' : 'medium'}/>
                                     </IconButton>
                                 </Tooltip>
                             </Editable>
@@ -314,7 +314,7 @@ export default function Section1(props) {
                                 <Tooltip title='LinkedIn'>
                                     <IconButton href={content.linkedin} target='_blank'>
                                         <LinkedIn 
-                                            fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                                            fontSize={isLandscape() ? 'large' : 'medium'}/>
                                     </IconButton>
                                 </Tooltip>
                             </Editable>
@@ -329,7 +329,7 @@ export default function Section1(props) {
                                 <Tooltip title='Instagram'>
                                     <IconButton href={content.instagram} target='_blank'>
                                         <Instagram 
-                                            fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                                            fontSize={isLandscape() ? 'large' : 'medium'}/>
                                     </IconButton>
                                 </Tooltip>
                             </Editable>
@@ -337,7 +337,7 @@ export default function Section1(props) {
                     </ZoomingComponent>
                 </Grid>
 
-                <Grid item xs={isLandscape(props.width, props.height) ? 2 : 4} align='center'>
+                <Grid item xs={isLandscape() ? 2 : 4} align='center'>
                     <ZoomingComponent duration={800}>
                         <div>
                             <Editable editor={openButtonEditor} id={'general_resume'}>
@@ -345,11 +345,11 @@ export default function Section1(props) {
                                     variant='outlined' 
                                     href={content.general_resume} 
                                     target='_blank'>
-                                    <ArticleOutlined fontSize={isLandscape(props.width, props.height) ? 'large' : 'medium'}/>
+                                    <ArticleOutlined fontSize={isLandscape() ? 'large' : 'medium'}/>
                                 </IconButton>
                             </Editable>
                             
-                            <Typography align='center' variant={isLandscape(props.width, props.height) ? 'h5' : 'h6'}>
+                            <Typography align='center' variant={isLandscape() ? 'h5' : 'h6'}>
                                 { lang === 'kor' ?
                                     '일반 이력서' :
                                     'General Resume'

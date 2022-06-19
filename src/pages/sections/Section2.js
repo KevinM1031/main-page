@@ -94,7 +94,7 @@ export default function Section2(props) {
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant={isLandscape(props.width, props.height) ? 'h2' : 'h3'} sx={{mt: 8, mb: 4}}>
+                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 8, mb: 4}}>
                             { lang === 'kor' ?
                                 '게시판' :
                                 'Featured Items'
@@ -110,14 +110,14 @@ export default function Section2(props) {
                             dataPath={dataPathParent + 'items/'} 
                             rawContent={rawContent} 
                             content={content}
-                            landscape={isLandscape(props.width, props.height)}
+                            landscape={isLandscape()}
                             lang={lang}/>
                     </FadingComponent>
                 </Grid>
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant={isLandscape(props.width, props.height) ? 'h2' : 'h3'} sx={{mt: 12, mb: 6}}>
+                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 12, mb: 6}}>
                             { lang === 'kor' ?
                                 '특기 / 능력' :
                                 'Skillsets'
@@ -128,7 +128,7 @@ export default function Section2(props) {
 
                 <Grid item xs={10} align="center">
                     {
-                    isLandscape(props.width, props.height) ?
+                    isLandscape() ?
                         <Grid container justifyContent='center' alignItems='center'>
                             <Grid item xs={1}/>
                             <Grid item xs={1} align='center'> <ZoomingComponent duration={800} delay={400}>

@@ -143,27 +143,25 @@ export default function Section7(props) {
                 <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <Typography align='center' sx={{mt: 8, mb: 4}}
-                            variant={isLandscape(props.width, props.height) ? 'h2' : 'h3'}>
+                            variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '그림' :
                                 'Art Gallery'
                             }
                         </Typography>
                     </FadingComponent>
-                </Grid>
 
-                <Grid item align="center">
                     <Header 
                         dataPath={dataPathParent} 
                         content={content} height={props.height * 0.2} 
-                        landscape={isLandscape(props.width, props.height)}
+                        landscape={isLandscape()}
                         lang={lang}/>
                 </Grid>
 
                 <Grid item align="center">
                     <FadingComponent duration={1500}>
                         {
-                        isLandscape(props.width, props.height) ?
+                        isLandscape() ?
                             <LandscapeGalleries 
                                 width={props.width} 
                                 height={props.height}

@@ -50,57 +50,51 @@ export default function Section5(props) {
             </Box>
 
             <Grid 
-                container 
+                container
+                height={props.height} 
+                sx={{ mt: -props.height / 8 }}
                 color='primary.text'
                 justifyContent='space-around'
                 alignItems='stretch'
-                height={props.height} 
-                sx={{ mt: -props.height / 8 }}
                 direction="column"
                 style={{ position: 'relative' }}>
 
                 <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <Typography align='center' sx={{mt: 8, mb: 4}}
-                            variant={isLandscape(props.width, props.height) ? 'h2' : 'h3'}>
+                            variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '식물류 계량 및 판매' :
                                 'Plant Cultivating & Sales'
                             }
                         </Typography>
                     </FadingComponent>
-                </Grid>
 
-                <Grid item align="center">
                     <Header 
                         dataPath={dataPathParent} 
                         content={content} height={props.height * 0.2} 
-                        landscape={isLandscape(props.width, props.height)}
+                        landscape={isLandscape()}
                         lang={lang}/>
                 </Grid>
 
                 <Grid item align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' sx={{mt: '5%'}}
-                            variant={isLandscape(props.width, props.height) ? 'h2' : 'h3'}>
+                        <Typography align='center' sx={{mt: 8, mb: 8}}
+                            variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '종자 목록' :
                                 'Featured Specimens'
                             }
                         </Typography>
                     </FadingComponent>
-                </Grid>
 
-                <Grid item align="center"/>
-
-                <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <Shop 
-                            maxHeight={props.height * 0.47} 
+                            maxHeight={props.height * 0.43} 
                             dataPath={dataPathParent + 'items/'} 
                             rawContent={rawContent} 
                             content={content}
-                            landscape={isLandscape(props.width, props.height)} 
+                            landscape={isLandscape()} 
                             lang={lang}/>
                     </FadingComponent>
                 </Grid>

@@ -62,45 +62,39 @@ export default function Section5(props) {
                 <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <Typography align='center' sx={{mt: 8, mb: 4}}
-                            variant={isLandscape(props.width, props.height) ? 'h2' : 'h3'}>
+                            variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '금년의 지의류' :
                                 'Lichen of the Year'
                             }
                         </Typography>
                     </FadingComponent>
-                </Grid>
 
-                <Grid item align="center">
                     <Header 
                         dataPath={dataPathParent} 
                         content={content} height={props.height * 0.2} 
-                        landscape={isLandscape(props.width, props.height)}
+                        landscape={isLandscape()}
                         lang={lang}/>
                 </Grid>
 
                 <Grid item align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' sx={{mt: '5%'}}
-                            variant={isLandscape(props.width, props.height) ? 'h2' : 'h3'}>
+                        <Typography align='center' sx={{mt: 8, mb: 4}}
+                            variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '지의류 목록' :
                                 'Featured Lichens'
                             }
                         </Typography>
                     </FadingComponent>
-                </Grid>
 
-                <Grid item align="center"/>
-
-                <Grid item align="center">
                     <FadingComponent duration={1500}>
                         <List 
-                            maxHeight={props.height * 0.47} 
+                            maxHeight={props.height * 0.43} 
                             dataPath={dataPathParent + 'items/'} 
                             rawContent={rawContent} 
                             content={content}
-                            landscape={isLandscape(props.width, props.height)} 
+                            landscape={isLandscape()} 
                             lang={lang}/>
                     </FadingComponent>
                 </Grid>

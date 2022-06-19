@@ -496,7 +496,7 @@ export default function Canvas(props) {
             clicked = false;
         }
         if (props.type === 'firefly' && spawnCount === 0 && !snackbarTriggered) {
-            localStorage.setItem('firefly_jar', true);
+            localStorage.setItem('hidden_page_unlocked', true);
             setSnackbarOpen(true);
             snackbarTriggered = true;
         }

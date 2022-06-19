@@ -145,11 +145,11 @@ export function MainPage() {
 
     useEffect(() => {
         if (page === specialPage) {
-            if (localStorage.getItem("firefly_jar") !== "true") {
+            if (localStorage.getItem("hidden_page_unlocked") !== "true") {
                 window.location.href = '/main-page/?p=1';
             } else {
 
-                localStorage.setItem("firefly_jar", "false");
+                localStorage.setItem("hidden_page_unlocked", "false");
             }
         }
 
@@ -252,7 +252,7 @@ export function MainPage() {
                         <Section8 width={width} height={height} />
                         <Box style={{background: 'linear-gradient(to bottom, #151515, #000000)'}} height={height}/>
                         <Grid container justifyContent='center' alignItems='flex-end' backgroundColor='#000000' height={height*100}>
-                            { localStorage.getItem("firefly_jar") === "true" ?
+                            { localStorage.getItem("hidden_page_unlocked") === "true" ?
                             <IconButton style={{marginBottom: 0, color: 'black'}} href={'/main-page/?p=' + specialPage}>
                                 <KeyboardDoubleArrowDown/>
                             </IconButton>

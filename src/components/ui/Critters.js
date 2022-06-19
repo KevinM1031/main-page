@@ -331,7 +331,7 @@ firework_pop_img[8].src = firework_pop_img9;
 firework_pop_img[9].src = firework_pop_img10;
 firework_pop_img[10].src = firework_pop_img11;
 firework_pop_img[11].src = firework_pop_img12;
-const fireworkPopSize = { w: 100, h: 100 };
+const fireworkPopSize = { w: 150, h: 150 };
 const fireworkPop_obj = (ctx, x, y, flip, t) => {
     let i = Math.floor(t/3) % 12;
     ctx.drawImage(firework_pop_img[i], x-fireworkPopSize.w/2, y-fireworkPopSize.h/2, fireworkPopSize.w, fireworkPopSize.h);
@@ -357,7 +357,7 @@ firefly_img[12].src = firefly_lit_img1f;
 firefly_img[13].src = firefly_lit_img2f;
 firefly_img[14].src = firefly_lit_img3f;
 firefly_img[15].src = firefly_lit_img4f;
-const fireflySize = { w: 8, h: 8 };
+const fireflySize = { w: 12, h: 12 };
 const firefly_obj = (ctx, x, y, flip, t) => {
     let i = Math.floor(t % 4 / 1 + (flip ? 4 : 0) + (Math.floor(t/9) % 4 === 0 ? 8 : 0));
     ctx.drawImage(firefly_img[i], x-fireflySize.w/2, y-fireflySize.h/2, fireflySize.w, fireflySize.h);
@@ -368,7 +368,7 @@ net_img[0].src = net_img1;
 net_img[1].src = net_img2;
 net_img[2].src = net_img3;
 net_img[3].src = net_img4;
-const netSize = { w: 20, h: 20 };
+const netSize = { w: 30, h: 30 };
 const net_obj = (ctx, x, y, flip, t) => {
     let i = Math.floor(t/2) % 4;
     ctx.drawImage(net_img[i], x-netSize.w*0.75, y-netSize.h/4, netSize.w*2, netSize.h*2);
@@ -380,7 +380,7 @@ jelly_img[0].src = jelly_img1;
 jelly_img[1].src = jelly_img2;
 jelly_img[2].src = jelly_img3;
 jelly_img[3].src = jelly_img4;
-const jellySize = { w: 10, h: 10 };
+const jellySize = { w: 15, h: 15 };
 const jelly_obj = (ctx, x, y, flip, t) => {
 let i = Math.floor(t/4) % 4;
 ctx.drawImage(jelly_img[i], x-jellySize.w*6, y-jellySize.h*6, jellySize.w*12, jellySize.h*12);
@@ -391,7 +391,7 @@ quadruped_img[0].src = quadruped_img1;
 quadruped_img[1].src = quadruped_img2;
 quadruped_img[2].src = quadruped_img3;
 quadruped_img[3].src = quadruped_img4;
-const quadrupedSize = { w: 20, h: 20 };
+const quadrupedSize = { w: 45, h: 45 };
 const quadruped_obj = (ctx, x, y, flip, t) => {
     let i = Math.floor(t/4) % 4;
     ctx.drawImage(quadruped_img[i], x-quadrupedSize.w, y-quadrupedSize.h, quadrupedSize.w*2, quadrupedSize.h*2);
@@ -407,7 +407,7 @@ fish_img[4].src = fish_img1f;
 fish_img[5].src = fish_img2f;
 fish_img[6].src = fish_img3f;
 fish_img[7].src = fish_img4f;
-const fishSize = { w: 30, h: 10 };
+const fishSize = { w: 42, h: 14 };
 const fish_obj = (ctx, x, y, flip, t) => {
 let i = Math.floor(Math.floor(t/4) % 4 / 1 + (flip ? 4 : 0));
 ctx.drawImage(fish_img[i], x-fishSize.w/2, y-fishSize.h/2, fishSize.w, fishSize.h);
@@ -423,7 +423,7 @@ shrimp_img[4].src = shrimp_img1f;
 shrimp_img[5].src = shrimp_img2f;
 shrimp_img[6].src = shrimp_img3f;
 shrimp_img[7].src = shrimp_img4f;
-const shrimpSize = { w: 10, h: 10 };
+const shrimpSize = { w: 15, h: 15 };
 const shrimp_obj = (ctx, x, y, flip, t) => {
     let i = Math.floor(Math.floor(t/2) % 4 / 1 + (flip ? 4 : 0));
     ctx.drawImage(shrimp_img[i], x-shrimpSize.w/2, y-shrimpSize.h/2, shrimpSize.w, shrimpSize.h);

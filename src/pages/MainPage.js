@@ -142,8 +142,6 @@ export function MainPage() {
         setTimeout( () => {
             setWidth(getScreenWidth());
             setHeight(getScreenHeight() * heightAmp);
-            if (page === 1) window.scroll(0, getScreenHeight() * heightAmp);
-            else window.scroll(0, getScreenHeight() * heightAmp * 2);
         }, 200 );
     }
 

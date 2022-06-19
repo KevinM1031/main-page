@@ -511,18 +511,20 @@ export default function Canvas(props) {
     }
 
     function updateCanvasSize() {
-        adjustedWidth = getScreenWidth() * resRatio;
-        adjustedHeight = getScreenHeight() * props.heightAmp * resRatio;
-        ctx.canvas.width = adjustedWidth;
-        ctx.canvas.height = adjustedHeight;
-        for (let critter of critters) {
-            critter.updateScreenSize(adjustedWidth, adjustedHeight);
-            critter.autoFit();
-        }
-        for (let spawn of spawns) {
-            spawn.updateScreenSize(adjustedWidth, adjustedHeight);
-            spawn.autoFit();
-        }
+        setTimeout( () => {
+            adjustedWidth = getScreenWidth() * resRatio;
+            adjustedHeight = getScreenHeight() * props.heightAmp * resRatio;
+            ctx.canvas.width = adjustedWidth;
+            ctx.canvas.height = adjustedHeight;
+            for (let critter of critters) {
+                critter.updateScreenSize(adjustedWidth, adjustedHeight);
+                critter.autoFit();
+            }
+            for (let spawn of spawns) {
+                spawn.updateScreenSize(adjustedWidth, adjustedHeight);
+                spawn.autoFit();
+            }
+        }, 300 );
     }
 
     function spawnAt(pos) {

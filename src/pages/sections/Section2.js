@@ -94,7 +94,7 @@ export default function Section2(props) {
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 8, mb: 4}}>
+                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 8}}>
                             { lang === 'kor' ?
                                 '게시판' :
                                 'Featured Items'
@@ -106,7 +106,7 @@ export default function Section2(props) {
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
                         <List 
-                            maxHeight={props.height * 0.5} 
+                            maxHeight={props.height * 0.45} 
                             dataPath={dataPathParent + 'items/'} 
                             rawContent={rawContent} 
                             content={content}
@@ -117,7 +117,7 @@ export default function Section2(props) {
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 12, mb: 6}}>
+                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 18, mb: 4}}>
                             { lang === 'kor' ?
                                 '특기 / 능력' :
                                 'Skillsets'

@@ -433,7 +433,7 @@ export default function Canvas(props) {
   
     var ctx = null;
     const canvasRef = useRef(null);
-    const resRatio = 0.55;
+    const resRatio = 0.7;
     var adjustedWidth = props.width*resRatio;
     var adjustedHeight = props.height*resRatio;
     var clickPos = { x: 0, y: 0 };

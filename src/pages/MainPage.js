@@ -21,7 +21,8 @@ import a1_temp from '../resources/bg_a1.png';
 import a1n_temp from '../resources/bg_a1n.png';
 import a2_temp from '../resources/bg_a2.png';
 import a2n_temp from '../resources/bg_a2n.png';
-import a3 from '../resources/bg_a3.png';
+import a3_temp from '../resources/bg_a3.png';
+import a3n_temp from '../resources/bg_a3n.png';
 
 import b0_temp from '../resources/bg_b0.png';
 import b0n_temp from '../resources/bg_b0n.png';
@@ -72,6 +73,7 @@ export function MainPage() {
     const [a0, setA0] = useState(a0_temp);
     const [a1, setA1] = useState(a1_temp);
     const [a2, setA2] = useState(a2_temp);
+    const [a3, setA3] = useState(a3_temp);
 
     const [b0, setB0] = useState(b0_temp);
     const [b1, setB1] = useState(b1_temp);
@@ -85,6 +87,7 @@ export function MainPage() {
         setA0(a0n_temp);
         setA1(a1n_temp);
         setA2(a2n_temp);
+        setA3(a3n_temp);
         setB0(b0n_temp);
         setB1(b1n_temp);
         setB2(b2n_temp);

@@ -250,7 +250,7 @@ class Scene extends Component {
             composer.addPass(effectPass);
             composer.addPass(smaaPass);
             this.composer = composer;
-        }, 100 );
+        }, 300 );
     }
 
     render() {

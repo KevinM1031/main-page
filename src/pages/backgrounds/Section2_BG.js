@@ -152,7 +152,7 @@ class Scene extends Component {
         this.renderScene();
         setTimeout( () => {
             this.frameId = window.requestAnimationFrame(this.animate);
-        }, 1000 / 40 );
+        }, 300 / 40 );
     }
 
     renderScene() {
@@ -165,7 +165,7 @@ class Scene extends Component {
             this.renderer.setSize(this.props.width, this.props.height);
             this.camera.aspect = this.props.width / this.props.height;
             this.camera.updateProjectionMatrix();
-        }, 100 );
+        }, 2000 );
     }
 
     render() {

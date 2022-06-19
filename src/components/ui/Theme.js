@@ -48,6 +48,7 @@ var theme = createTheme({
 
 export function setFontSize(dpi) {
     const small = isSmall(dpi);
+    console.log(small)
 
     theme.typography.h1.fontSize = small ? 32 : 42;
     theme.typography.h2.fontSize = small ? 24 : 32;

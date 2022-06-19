@@ -243,7 +243,7 @@ class Scene extends Component {
             composer.addPass(savePass);
             composer.addPass(outputPass);
             this.composer = composer;
-        }, 100 );
+        }, 300 );
     }
 
     render() {

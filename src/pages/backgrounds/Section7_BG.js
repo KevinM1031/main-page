@@ -124,7 +124,7 @@ class Scene extends Component {
             this.renderer.setSize(this.props.width, this.props.height);
             this.camera.aspect = this.props.width / this.props.height;
             this.camera.updateProjectionMatrix();
-        }, 100 );
+        }, 300 );
     }
 
     render() {

@@ -20,7 +20,7 @@ const App = () => {
 
     useEffect(() => {
         resizeHandler();
-        window.addEventListener("resize", resizeHandler);
+        window.addEventListener("resize", resizeHandler, true);
 
         return () => {
             window.removeEventListener("resize", resizeHandler);

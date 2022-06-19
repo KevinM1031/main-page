@@ -139,8 +139,12 @@ export function MainPage() {
     };
 
     const handleResize = () => {
-        setWidth(getScreenWidth());
-        setHeight(getScreenHeight() * heightAmp);
+        setTimeout( () => {
+            setWidth(getScreenWidth());
+            setHeight(getScreenHeight() * heightAmp);
+            if (page === 1) window.scroll(0, getScreenHeight() * heightAmp);
+            else window.scroll(0, getScreenHeight() * heightAmp * 2);
+        }, 200 );
     }
 
     const [width, setWidth] = useState(getScreenWidth());
@@ -151,7 +155,6 @@ export function MainPage() {
             if (localStorage.getItem("hidden_page_unlocked") !== "true") {
                 window.location.href = '/main-page/?p=1';
             } else {
-
                 localStorage.setItem("hidden_page_unlocked", "false");
             }
         }

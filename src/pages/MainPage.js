@@ -52,7 +52,7 @@ import e3 from '../resources/bg_e3.png';
 import f0 from '../resources/bg_f0.png';
 import f1 from '../resources/bg_f1.png';
 import f2 from '../resources/bg_f2.png';
-import f3 from '../resources/bg_d3.png';
+import f3 from '../resources/bg_f3.png';
 
 import g0 from '../resources/bg_g0.png';
 import g1 from '../resources/bg_g1.png';

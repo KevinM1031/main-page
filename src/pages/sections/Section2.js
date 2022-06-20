@@ -94,7 +94,7 @@ export default function Section2(props) {
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 8}}>
+                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '게시판' :
                                 'Featured Items'

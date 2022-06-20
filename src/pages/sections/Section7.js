@@ -1,4 +1,4 @@
-import { Typography, Grid, Box } from '@material-ui/core';
+import { Typography, Grid, Box, Pagination, Slide, Fade } from '@material-ui/core';
 import { getSectionContent, getSectionRawContent, pathBase } from '../../components/database/FirebaseAPI.js';
 import { useState, useEffect } from "react";
 import Section7BG from '../backgrounds/Section7_BG'
@@ -30,7 +30,7 @@ const LandscapeGalleries = (props) => {
     return (
         <Grid container>
             <Grid item xs={6} align="center">
-                <Typography align='center' variant='h2' sx={{mt: '5%', mb: 4}}>
+                <Typography align='center' variant='h2' sx={{mt: 8, mb: 4}}>
                     { props.lang === 'kor' ?
                         '일반' :
                         'Traditional Media'
@@ -47,7 +47,7 @@ const LandscapeGalleries = (props) => {
             </Grid>
 
             <Grid item xs={6} align="center">
-                <Typography align='center' variant='h2' sx={{mt: '5%', mb: 4}}>
+                <Typography align='center' variant='h2' sx={{mt: 8, mb: 4}}>
                     { props.lang === 'kor' ?
                         '디지털' :
                         'Digital Media'
@@ -67,41 +67,71 @@ const LandscapeGalleries = (props) => {
 }
 
 const PortraitGalleries = (props) => {
+    const [pageNum, setPageNum] = useState(1);
+    const [pageNumTemp, setPageNumTemp] = useState(1);
+    const [pageAnim, setPageAnim] = useState(true);
+
     return (
         <div>
-            <div>
-                <Typography align='center' variant='h3'>
-                    { props.lang === 'kor' ?
-                        '일반' :
-                        'Traditional Media'
-                    }
-                </Typography>
+            {
+            pageNum === 1 ?
+            <Fade direction="right" timeout={700} in={pageAnim} onExited={() => {
+                setPageAnim(true);
+                setPageNum(pageNumTemp);
+            }}>
+                <div>
+                    <Typography align='center' variant='h3' sx={{mb: 4}}>
+                        { props.lang === 'kor' ?
+                            '일반' :
+                            'Traditional Media'
+                        }
+                    </Typography>
 
-                <Gallery 
-                    maxHeight={props.height * 0.24} 
-                    dataPath={props.dataPathParent + 'traditional_media/'} 
-                    id={'traditional_media'}
-                    rawContent={props.rawContent} 
-                    content={props.content}
-                    landscape={false} />
-            </div>
+                    <Gallery 
+                        maxHeight={props.height * 0.43} 
+                        dataPath={props.dataPathParent + 'traditional_media/'} 
+                        id={'traditional_media'}
+                        rawContent={props.rawContent} 
+                        content={props.content}
+                        landscape={false} />
+                </div>
+            </Fade>
 
-            <div>
-                <Typography align='center' variant='h3' sx={{mt: '2%'}}>
-                    { props.lang === 'kor' ?
-                        '디지털' :
-                        'Digital Media'
-                    }
-                </Typography>
+            : pageNum === 2 ?
+            <Fade direction="right" timeout={700} in={pageAnim} onExited={() => {
+                setPageAnim(true);
+                setPageNum(pageNumTemp);
+            }}>
+                <div>
+                    <Typography align='center' variant='h3' sx={{mb: 4}}>
+                        { props.lang === 'kor' ?
+                            '디지털' :
+                            'Digital Media'
+                        }
+                    </Typography>
 
-                <Gallery 
-                    maxHeight={props.height * 0.24} 
-                    dataPath={props.dataPathParent + 'digital_media/'} 
-                    id={'digital_media'}
-                    rawContent={props.rawContent} 
-                    content={props.content}
-                    landscape={false} />
-            </div>
+                    <Gallery 
+                        maxHeight={props.height * 0.43} 
+                        dataPath={props.dataPathParent + 'digital_media/'} 
+                        id={'digital_media'}
+                        rawContent={props.rawContent} 
+                        content={props.content}
+                        landscape={false} />
+                    </div>
+            </Fade>
+            : <div/>
+            }
+
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center', }}>
+                <Pagination count={2} color='primary' sx={{mt: 4}}
+                    variant="outlined" shape="rounded" onChange={(event, value) => {
+                        setPageNumTemp(value);
+                        setPageAnim(false);
+                }} />
+            </Box>
         </div>
     );
 }
@@ -142,7 +172,7 @@ export default function Section7(props) {
 
                 <Grid item align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' sx={{mt: 8, mb: 4}}
+                        <Typography align='center' sx={{mb: 4}}
                             variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '그림' :

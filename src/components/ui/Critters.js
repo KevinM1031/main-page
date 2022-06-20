@@ -391,7 +391,7 @@ quadruped_img[0].src = quadruped_img1;
 quadruped_img[1].src = quadruped_img2;
 quadruped_img[2].src = quadruped_img3;
 quadruped_img[3].src = quadruped_img4;
-const quadrupedSize = { w: 45, h: 45 };
+const quadrupedSize = { w: 30, h: 30 };
 const quadruped_obj = (ctx, x, y, flip, t) => {
     let i = Math.floor(t/4) % 4;
     ctx.drawImage(quadruped_img[i], x-quadrupedSize.w, y-quadrupedSize.h, quadrupedSize.w*2, quadrupedSize.h*2);
@@ -423,7 +423,7 @@ shrimp_img[4].src = shrimp_img1f;
 shrimp_img[5].src = shrimp_img2f;
 shrimp_img[6].src = shrimp_img3f;
 shrimp_img[7].src = shrimp_img4f;
-const shrimpSize = { w: 15, h: 15 };
+const shrimpSize = { w: 12, h: 12 };
 const shrimp_obj = (ctx, x, y, flip, t) => {
     let i = Math.floor(Math.floor(t/2) % 4 / 1 + (flip ? 4 : 0));
     ctx.drawImage(shrimp_img[i], x-shrimpSize.w/2, y-shrimpSize.h/2, shrimpSize.w, shrimpSize.h);

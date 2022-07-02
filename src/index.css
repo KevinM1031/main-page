@@ -54,3 +54,25 @@ img {
 .parallaxWrapper {
     margin: 0px;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #33333366;
+    border-radius: 4px;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #666666bb;
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #dddddddd;
+}

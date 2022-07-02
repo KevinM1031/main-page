@@ -226,7 +226,7 @@ export default function ShopEditor(props) {
           </DialogContentText>
 
           <Grid container justifyContent='center' alignItems='center'>
-            <Grid item xs={10}>
+            <Grid item xs={8}>
               <Select
                 id="selectItem"
                 value={selectedItem}
@@ -243,13 +243,13 @@ export default function ShopEditor(props) {
                 ))}
               </Select>
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs={2} align='right'>
               <IconButton onClick={() => setAddItemOpen(true)}>
                 <AddCircleOutline fontSize="large"/>
               </IconButton>
               
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs={2} align='left'>
               <IconButton 
                 disabled={!items || items.length <= 1}
                 onClick={() => setRemoveItemOpen(true)}>

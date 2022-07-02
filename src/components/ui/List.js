@@ -16,7 +16,7 @@ const LandscapeLayout = (props) => {
                         <Fade timeout={700} in={props.pageAnim}>
                             <img src={props.content.items[props.pageNum].image}
                                 style={{ 
-                                    maxWidth: '90%', width: '90%', height: '90%', objectFit: 'cover',
+                                    maxWidth: '90%', width: '90%', height: '95%', objectFit: 'cover',
                                     marginLeft: 0 }}/>
                         </Fade>
                     </div>
@@ -30,7 +30,7 @@ const LandscapeLayout = (props) => {
                         <Fade timeout={700} in={props.pageAnim}>
                             <Box sx={{ overflowX: 'visible', overflowY: 'auto', height: props.maxHeight * 0.9 }}>
                                 <Grid container sx={{ mb: 2, alignItems: 'center' }}>
-                                    <Grid item xs={wasSmall() ? 6 : 10}>
+                                    <Grid item xs={wasSmall() ? 6 : 9}>
                                         <Typography variant='h2'>
                                             {
                                                 props.lang === 'kor' ?
@@ -41,7 +41,8 @@ const LandscapeLayout = (props) => {
                                         </Typography>
                                     </Grid>
 
-                                    <Grid item xs={wasSmall() ? 6 : 2} align={'right'}>
+                                    <Grid item xs={wasSmall() ? 6 : 3} align={'center'}
+                                            sx={{ overflowX: 'hidden' }}>
                                         <Button 
                                             disabled={!props.content.items[props.pageNum].link}
                                             href={props.content.items[props.pageNum].link}

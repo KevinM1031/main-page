@@ -43,8 +43,9 @@ const AddItemDialog = (props) => {
 
     if (!props.content[input]) {
       let data = props.content;
-      let key = titleToId(input);
+      let key = input;
       data[key] = {};
+      data[key].title = 'Sample Title';
       data[key].image = 'https://picsum.photos/600/400';
 
       setData(props.dataPath, data).then(() => window.location.reload());
@@ -62,12 +63,12 @@ const AddItemDialog = (props) => {
         <DialogTitle>Create New Item</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
-            Choose a name for the new item.
+            Choose an ID for the new item.
           </DialogContentText>
-          <CustomTextField id={'addItem'} label={'Name'} placeholder={''} listener={setInput} autoFocus={true}/>
+          <CustomTextField id={'addItem'} label={'Item ID'} placeholder={''} listener={setInput} autoFocus={true}/>
           <Collapse in={failed}>
             <Alert variant="outlined" severity="error" color="error">
-              Invalid item name. This name is already in use.
+              Invalid item ID. This ID is already in use.
             </Alert>
           </Collapse>
         </DialogContent>
@@ -88,12 +89,12 @@ const RemoveItemDialog = (props) => {
 
   const handleConfirm = () => {
     let data = props.content;
-    let key = titleToId(props.item);
+    let key = props.item;
     data[key] = {};
     setData(props.dataPath, data).then(() => window.location.reload());
     handleClose();
-  }
-
+  };
+  
   return (
     <div>
       <Dialog open={props.open} onClose={handleClose}>
@@ -117,10 +118,10 @@ export default function GalleryEditor(props) {
 
   const handleSubmit = () => {
     let data = props.content;
-    let key = titleToId(selectedItem);
-    let newKey = titleToId(title);
+    let key = selectedItem;
+    let newKey = ID;
 
-    if (data[newKey] && title != selectedItem) {
+    if (data[newKey] && ID != selectedItem) {
       setFailed(true);
       return;
     }
@@ -131,6 +132,7 @@ export default function GalleryEditor(props) {
       key = newKey;
     }
 
+    data[key].title = title;
     data[key].image = image;
 
     setData(props.dataPath, data).then(() => window.location.reload());
@@ -145,17 +147,18 @@ export default function GalleryEditor(props) {
   const handleSelect = (event) => {
     setSelectedItem(event.target.value);
     updateTextFields(event.target.value);
-  }
+  };
 
-  const updateTextFields = (item) => {
-    setTitle(item);
-    let key = titleToId(item);
+  const updateTextFields = (key) => {
+    setID(key);
+    setTitle(props.content[key].title);
     setImage(props.content[key].image);
   };
 
   const [items, setItems] = useState(['']);
   const [selectedItem, setSelectedItem] = useState('');
 
+  const [ID, setID] = useState('');
   const [title, setTitle] = useState('');
   const [image, setImage] = useState('');
 
@@ -165,8 +168,6 @@ export default function GalleryEditor(props) {
   useEffect(() => {
     if (props.content) {
       let newItems = Object.keys(props.content);
-      for (let i = 0; i < newItems.length; i++)
-        newItems[i] = idToTitle(newItems[i]);
       setItems(newItems);
       setSelectedItem(newItems[0]);
       updateTextFields(newItems[0]);
@@ -213,13 +214,13 @@ export default function GalleryEditor(props) {
                 ))}
               </Select>
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} align='right'>
               <IconButton onClick={() => setAddItemOpen(true)}>
                 <AddCircleOutline fontSize="large"/>
               </IconButton>
               
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={2} align='left'>
               <IconButton 
                 disabled={!items || items.length <= 1}
                 onClick={() => setRemoveItemOpen(true)}>
@@ -228,12 +229,13 @@ export default function GalleryEditor(props) {
             </Grid>
           </Grid>
 
-          <CustomTextField id={'title'} label={'Title'} placeholder={title} listener={setTitle} autoFocus={true}/>
+          <CustomTextField id={'ID'} label={'Item ID'} placeholder={ID} listener={setID}/>
           <Collapse in={failed}>
             <Alert variant="outlined" severity="error" color="error">
-              Invalid title. This title is already in use.
+              Invalid ID. This ID is already in use.
             </Alert>
           </Collapse>
+          <CustomTextField id={'title'} label={'Title'} placeholder={title} listener={setTitle} autoFocus={true}/>
           <CustomTextField id={'image'} label={'Image Source'} placeholder={image} listener={setImage}/>
           
           

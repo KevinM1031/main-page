@@ -6,10 +6,10 @@ import GalleryEditor from './GalleryEditor.js';
 
 const LandscapeLayout = (props) => {
     return (
-        <ImageList variant={'masonry'} cols={2} gap={8}>
-            {props.content[props.id].map((item) => (
+        <ImageList variant={'masonry'} cols={props.cols} gap={8}>
+            {props.content[props.id].map((item, key) => (
                 <ImageListItem 
-                    key={item.title}
+                    key={key}
                     onClick={() => { window.open(item.image, '_blank') }}>
                     <img
                         src={item.image}
@@ -26,10 +26,10 @@ const LandscapeLayout = (props) => {
 
 const PortraitLayout = (props) => {
     return (
-        <ImageList variant={'masonry'} cols={2} gap={8}>
-            {props.content[props.id].map((item) => (
+        <ImageList variant={'masonry'} cols={props.cols} gap={8}>
+            {props.content[props.id].map((item, key) => (
                 <ImageListItem 
-                    key={item.title}
+                    key={key}
                     onClick={() => { window.open(item.image, '_blank') }}>
                     <img
                         src={item.image}
@@ -67,11 +67,13 @@ export default function Gallery(props) {
                     props.landscape ?
                         <LandscapeLayout 
                             content={props.content}
-                            id={props.id}/>
+                            id={props.id}
+                            cols={props.cols}/>
                     :
                         <PortraitLayout 
                             content={props.content}
-                            id={props.id}/>
+                            id={props.id}
+                            cols={props.cols}/>
                     }
                 </Editable>
             </div>

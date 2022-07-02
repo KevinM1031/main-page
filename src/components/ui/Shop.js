@@ -15,7 +15,7 @@ const LandscapeLayout = (props) => {
                         <Fade timeout={700} in={props.pageAnim}>
                             <img src={props.content.items[props.pageNum].image}
                                 style={{ 
-                                    maxWidth: '90%', width: '90%', height: '90%', objectFit: 'cover',
+                                    maxWidth: '90%', width: '90%', height: '95%', objectFit: 'cover',
                                     marginLeft: 0 }}/>
                         </Fade>
                     </div>

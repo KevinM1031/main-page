@@ -14,13 +14,11 @@ const defaultContent = {
     'description_kor': '',
     'traditional_media': [
         {
-            'title': '',
             'image': '',
         },
     ],
     'digital_media': [
         {
-            'title': '',
             'image': '',
         },
     ],
@@ -43,7 +41,8 @@ const LandscapeGalleries = (props) => {
                     id={'traditional_media'}
                     rawContent={props.rawContent} 
                     content={props.content}
-                    landscape={true} />
+                    landscape={true}
+                    cols={2} />
             </Grid>
 
             <Grid item xs={6} align="center">
@@ -60,7 +59,8 @@ const LandscapeGalleries = (props) => {
                     id={'digital_media'}
                     rawContent={props.rawContent} 
                     content={props.content}
-                    landscape={true} />
+                    landscape={true}
+                    cols={2} />
             </Grid>
         </Grid>
     );
@@ -93,7 +93,8 @@ const PortraitGalleries = (props) => {
                         id={'traditional_media'}
                         rawContent={props.rawContent} 
                         content={props.content}
-                        landscape={false} />
+                        landscape={false}
+                        cols={2} />
                 </div>
             </Fade>
 
@@ -116,7 +117,8 @@ const PortraitGalleries = (props) => {
                         id={'digital_media'}
                         rawContent={props.rawContent} 
                         content={props.content}
-                        landscape={false} />
+                        landscape={false}
+                        cols={2} />
                     </div>
             </Fade>
             : <div/>

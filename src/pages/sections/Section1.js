@@ -18,6 +18,7 @@ const defaultContent = {
     'personal_icon': null,
     'personal_photo': null,
     'introductory_text': '',
+    'introductory_text_kor': '',
     'affiliation_image_1': null,
     'affiliation_image_2': null,
     'affiliation_image_3': null,

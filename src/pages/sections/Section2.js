@@ -13,8 +13,11 @@ const defaultContent = {
     'items': [
         {
             'title': '',
+            'title_kor': '',
             'status': '',
+            'status_kor': '',
             'description': '',
+            'description_kor': '',
             'image': null,
         },
     ],
@@ -94,16 +97,14 @@ export default function Section2(props) {
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mb: 4}}>
+                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mb: 6}}>
                             { lang === 'kor' ?
                                 '게시판' :
                                 'Featured Items'
                             }
                         </Typography>
                     </FadingComponent>
-                </Grid>
 
-                <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
                         <List 
                             maxHeight={props.height * 0.45} 
@@ -115,18 +116,15 @@ export default function Section2(props) {
                     </FadingComponent>
                 </Grid>
 
-                <Grid item xs={12} align="center">
+                <Grid item xs={10} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 18, mb: 4}}>
+                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mb: 6}}>
                             { lang === 'kor' ?
                                 '특기 / 능력' :
                                 'Skillsets'
                             }
                         </Typography>
                     </FadingComponent>
-                </Grid>
-
-                <Grid item xs={10} align="center">
                     {
                     isLandscape() ?
                         <Grid container justifyContent='center' alignItems='center'>

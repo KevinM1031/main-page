@@ -118,7 +118,7 @@ export default function Section2(props) {
 
                 <Grid item xs={10} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mb: 6}}>
+                        <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 8, mb: 6}}>
                             { lang === 'kor' ?
                                 '특기 / 능력' :
                                 'Skillsets'

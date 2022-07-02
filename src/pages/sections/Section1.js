@@ -211,7 +211,7 @@ export default function Section1(props) {
 
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
-                        <Typography align='center' sx={{mt: 12}}
+                        <Typography align='center' sx={{mt: 8, mb: 6}}
                             variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
                                 '소속' :

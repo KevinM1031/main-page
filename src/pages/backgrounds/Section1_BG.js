@@ -105,6 +105,10 @@ class Scene extends Component {
     }
 
     animate() {
+        if (Date.now() < this.nextFrame) {
+            requestAnimationFrame(this.animate);
+            return;
+        } else this.nextFrame = Date.now() + 1000/40;
 
         let height = this.renderer.domElement.scrollHeight * 1.5;
         let scrollY = window.scrollY - height + getScreenHeight() / 2;
@@ -142,9 +146,7 @@ class Scene extends Component {
         //////////////////////////
 
         this.renderScene();
-        setTimeout( () => {
-            this.frameId = window.requestAnimationFrame(this.animate);
-        }, 1000 / 40 );
+        this.frameId = window.requestAnimationFrame(this.animate);
     }
 
     renderScene() {

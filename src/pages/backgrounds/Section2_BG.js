@@ -124,6 +124,10 @@ class Scene extends Component {
     }
 
     animate() {
+        if (Date.now() < this.nextFrame) {
+            requestAnimationFrame(this.animate);
+            return;
+        } else this.nextFrame = Date.now() + 1000/40;
 
         let height = this.renderer.domElement.scrollHeight * 2.5;
         let scrollY = window.scrollY - height + getScreenHeight() / 2;
@@ -150,9 +154,7 @@ class Scene extends Component {
         //////////////////////////
 
         this.renderScene();
-        setTimeout( () => {
-            this.frameId = window.requestAnimationFrame(this.animate);
-        }, 300 / 40 );
+        this.frameId = window.requestAnimationFrame(this.animate);
     }
 
     renderScene() {
@@ -165,7 +167,7 @@ class Scene extends Component {
             this.renderer.setSize(this.props.width, this.props.height);
             this.camera.aspect = this.props.width / this.props.height;
             this.camera.updateProjectionMatrix();
-        }, 2000 );
+        }, 300 );
     }
 
     render() {

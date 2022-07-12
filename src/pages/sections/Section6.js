@@ -1,17 +1,21 @@
-import { Typography, Grid, Box } from '@material-ui/core';
+import { Typography, Grid, Box, IconButton } from '@material-ui/core';
 import { getSectionContent, getSectionRawContent, pathBase } from '../../components/database/FirebaseAPI.js';
 import { useState, useEffect } from "react";
-import Section6BG from '../backgrounds/Section6_BG'
-import Shop from '../../components/ui/Shop.js'
-import Header from '../../components/ui/Header.js'
-import { FadingComponent } from '../../components/ui/AnimatedComponent.js';
-import { isLandscape } from '../../components/ui/Window.js'
+import ButtonEditor from '../../components/ui/ButtonEditor.js';
+import Editable from '../../components/ui/Editable.js';
+import Section6BG from '../backgrounds/Section6_BG';
+import Shop from '../../components/ui/Shop.js';
+import Header from '../../components/ui/Header.js';
+import { FadingComponent, ZoomingComponent } from '../../components/ui/AnimatedComponent.js';
+import { isLandscape } from '../../components/ui/Window.js';
+import { ShoppingCartOutlined } from "@mui/icons-material";
 
 const defaultContent = {
     'thumbnail_left': null,
     'thumbnail_right': null,
     'description': '',
     'description_kor': '',
+    'shop_link': '',
     'items': [
         {
             'name': '',
@@ -34,10 +38,31 @@ export default function Section5(props) {
         getSectionRawContent(6, setRawContent);
     }, []);
 
+    const [buttonEditorOpen, setButtonEditorOpen] = useState(false);
+    const [editTarget, setEditTarget] = useState('');
+    const [editPlaceholder, setEditPlaceholder] = useState('');
+    const [editDataPath, setEditDataPath] = useState('');
+    const openButtonEditor = (id) => {
+        setButtonEditorOpen(true);
+        prepareEditor(id);
+    };
+    const prepareEditor = (id) => {
+        setEditTarget(id);
+        setEditDataPath(dataPathParent);
+        setEditPlaceholder(content[id]);
+    }
+
     const lang = localStorage.getItem('lang');
 
     return (
         <div style={{height: props.height + 'px'}}>
+
+            <ButtonEditor 
+                open={buttonEditorOpen} 
+                setOpen={setButtonEditorOpen} 
+                id={editTarget} 
+                dataPath={editDataPath} 
+                placeholder={editPlaceholder}/>
 
             <Box width={props.width} height={props.height} sx={{ overflow: 'hidden' }}>
                 <div style={{ marginTop: '0px' }}>
@@ -75,6 +100,26 @@ export default function Section5(props) {
                         content={content} height={props.height * 0.2} 
                         landscape={isLandscape()}
                         lang={lang}/>
+
+                    <ZoomingComponent duration={800}>
+                        <div>
+                            <Editable editor={openButtonEditor} id={'shop_link'}>
+                                <IconButton 
+                                    variant='outlined' 
+                                    href={content.shop_link} 
+                                    target='_blank'>
+                                    <ShoppingCartOutlined fontSize={isLandscape() ? 'large' : 'medium'}/>
+                                </IconButton>
+                            </Editable>
+                            
+                            <Typography align='center' variant={isLandscape() ? 'h5' : 'h6'}>
+                                { lang === 'kor' ?
+                                    '판매 개체 목록' :
+                                    'List of Animals in Sale'
+                                }
+                            </Typography>
+                        </div>
+                    </ZoomingComponent>
                 </Grid>
 
                 <Grid item align="center">

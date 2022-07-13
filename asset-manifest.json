@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/main-page/static/css/main.fd7dcf4f.css",
-    "main.js": "/main-page/static/js/main.cc2c2a99.js",
+    "main.js": "/main-page/static/js/main.a682f91f.js",
     "static/media/bg_c0.png": "/main-page/static/media/bg_c0.8d89e9f2df5339999d68.png",
     "static/media/bg_a0.png": "/main-page/static/media/bg_a0.f1213f8b7f2441c81d5b.png",
     "static/media/bg_a2.png": "/main-page/static/media/bg_a2.98498184c2fee6048fc6.png",
@@ -33,6 +33,8 @@
     "static/media/bg_c2n.png": "/main-page/static/media/bg_c2n.eab17be1ca8308f50413.png",
     "static/media/bg_a1n.png": "/main-page/static/media/bg_a1n.302c78541b72788fca07.png",
     "static/media/bg_c1n.png": "/main-page/static/media/bg_c1n.2875551552db03c9e9cc.png",
+    "static/media/bg_a3n.png": "/main-page/static/media/bg_a3n.4a06219f04d126ece9b3.png",
+    "static/media/bg_a3.png": "/main-page/static/media/bg_a3.c3f226c339a6ceafcaf9.png",
     "static/media/bg_f2.png": "/main-page/static/media/bg_f2.2eb6ea704720258f3f0a.png",
     "static/media/bg_h0.png": "/main-page/static/media/bg_h0.88fa2574c961e4aabee5.png",
     "static/media/firework_launch.wav": "/main-page/static/media/firework_launch.69e4fe2e05be4a87595b.wav",
@@ -51,8 +53,6 @@
     "static/media/firework_pop3.png": "/main-page/static/media/firework_pop3.1ddcb13e4734711ad907.png",
     "static/media/bg_b3.png": "/main-page/static/media/bg_b3.1c2f017b53fae865c91e.png",
     "static/media/bg_e3.png": "/main-page/static/media/bg_e3.ddbafad665c04510c349.png",
-    "static/media/bg_a3n.png": "/main-page/static/media/bg_a3n.2180bf652d33deeb5578.png",
-    "static/media/bg_a3.png": "/main-page/static/media/bg_a3.459fcf569c34bd4473e4.png",
     "static/media/firework_pop9.png": "/main-page/static/media/firework_pop9.0a0bd10ce7e4478ffb2e.png",
     "static/media/firework_pop2.png": "/main-page/static/media/firework_pop2.ca7e593927b7e3711470.png",
     "static/media/firework_pop10.png": "/main-page/static/media/firework_pop10.59dcac19c65244b52b75.png",
@@ -67,10 +67,10 @@
     "static/media/firefly_lit3.png": "/main-page/static/media/firefly_lit3.a5342f6f075439b24d8f.png",
     "index.html": "/main-page/index.html",
     "main.fd7dcf4f.css.map": "/main-page/static/css/main.fd7dcf4f.css.map",
-    "main.cc2c2a99.js.map": "/main-page/static/js/main.cc2c2a99.js.map"
+    "main.a682f91f.js.map": "/main-page/static/js/main.a682f91f.js.map"
   },
   "entrypoints": [
     "static/css/main.fd7dcf4f.css",
-    "static/js/main.cc2c2a99.js"
+    "static/js/main.a682f91f.js"
   ]
 }

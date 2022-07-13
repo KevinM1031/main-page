@@ -156,7 +156,7 @@ export default function SectionH(props) {
                 <Grid item xs={12} align="center">
                     <FadingComponent duration={1500}>
                         <div>
-                            <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mb: 6}}>
+                            <Typography align='center' variant={isLandscape() ? 'h2' : 'h3'} sx={{mt: 8, mb: 6}}>
                                 { props.lang === 'kor' ?
                                     '비밀 갤러리' :
                                     'Hidden Gallery'
@@ -170,7 +170,7 @@ export default function SectionH(props) {
                                 rawContent={rawContent} 
                                 content={content}
                                 landscape={false}
-                                cols={4} />
+                                cols={isLandscape() ? 4 : 2} />
                             </div>
                     </FadingComponent>
                 </Grid>

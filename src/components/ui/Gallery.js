@@ -9,14 +9,13 @@ const CustomImageList = (props) => {
 
     return (
         <Grid container spacing={2}>
-            {cols.map((i) => (
-                <Grid item xs={12 / props.cols}>
+            {cols.map((i, k) => (
+                <Grid item xs={12 / props.cols} key={k}>
                     {props.content[props.id].map((item, key) => (
-                        <div>
+                        <div key={key}>
                             {
                                 (key % props.cols) === i ?
-                                    <ImageListItem 
-                                        key={key}
+                                    <ImageListItem
                                         style={{marginBottom: 8}}
                                         onClick={() => { window.open(item.image, '_blank') }}>
                                         <img

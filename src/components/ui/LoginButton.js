@@ -19,6 +19,7 @@ export default function LoginButton(props) {
     const handleOpen = () => {
         if (loggedIn) {
             logout();
+            localStorage.setItem("admin", "false");
             window.location.reload();
         } else setOpen(true);
     }
@@ -26,6 +27,7 @@ export default function LoginButton(props) {
     const handleLogin = () => {
         login(email, password).then(() => {
             handleClose();
+            localStorage.setItem("admin", "true");
             window.location.reload();
         }).catch(() => {
             setFailed(true);

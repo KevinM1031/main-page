@@ -122,9 +122,9 @@ export default function SectionH(props) {
                                     sx={{overflow: 'auto', mb: 8}}>
                                     {
                                         lang === 'kor' ?
-                                        content.description_kor
+                                        content.introductory_text_kor
                                         :
-                                        content.description
+                                        content.introductory_text
                                     }
                                 </Typography>
                             </Editable>

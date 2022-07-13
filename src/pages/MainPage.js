@@ -152,9 +152,9 @@ export function MainPage() {
 
     useEffect(() => {
         if (page === specialPage) {
-            if (localStorage.getItem("hidden_page_unlocked") !== "true") {
+            if (localStorage.getItem("admin") !== "true" && localStorage.getItem("hidden_page_unlocked") !== "true") {
                 window.location.href = '/main-page/?p=1';
-            } else if (!isEditor()) {
+            } else if (localStorage.getItem("admin") !== "true") {
                 localStorage.setItem("hidden_page_unlocked", "false");
             }
         }

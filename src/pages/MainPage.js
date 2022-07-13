@@ -14,6 +14,7 @@ import SectionH from "./sections/SectionH.js";
 import SectionBG from "../components/ui/SectionBG.js"
 import { useState, useEffect } from "react";
 import { getSunPos } from "../components/util/Util.js";
+import { isEditor } from '../components/database/FirebaseAPI.js';
 
 // Import background images
 import a0_temp from '../resources/bg_a0.png';
@@ -153,7 +154,7 @@ export function MainPage() {
         if (page === specialPage) {
             if (localStorage.getItem("hidden_page_unlocked") !== "true") {
                 window.location.href = '/main-page/?p=1';
-            } else {
+            } else if (!isEditor()) {
                 localStorage.setItem("hidden_page_unlocked", "false");
             }
         }

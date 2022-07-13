@@ -130,6 +130,7 @@ const PortraitGalleries = (props) => {
                 alignItems: 'center', }}>
                 <Pagination count={2} color='primary' sx={{mt: 4}}
                     variant="outlined" shape="rounded" onChange={(event, value) => {
+                        if(!value) return;
                         setPageNumTemp(value);
                         setPageAnim(false);
                 }} />

@@ -196,6 +196,7 @@ export default function Shop(props) {
                     alignItems: 'center', }}>
                     <Pagination count={props.content.items.length} color='primary' siblingCount={props.landscape ? 2 : 0}
                         variant="outlined" shape="rounded" onChange={(event, value) => {
+                            if(!value) return;
                             setPageNumTemp(value);
                             setPageAnim(false);
                     }} />

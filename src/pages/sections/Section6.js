@@ -100,13 +100,15 @@ export default function Section5(props) {
                         content={content} height={props.height * 0.2} 
                         landscape={isLandscape()}
                         lang={lang}/>
+                </Grid>
 
+                <Grid item align="center">
                     <ZoomingComponent duration={800}>
                         <div>
                             <Editable editor={openButtonEditor} id={'shop_link'}>
                                 <IconButton 
                                     variant='outlined' 
-                                    href={content.shop_link} 
+                                    href={content.shop_link}
                                     target='_blank'>
                                     <ShoppingCartOutlined fontSize={isLandscape() ? 'large' : 'medium'}/>
                                 </IconButton>

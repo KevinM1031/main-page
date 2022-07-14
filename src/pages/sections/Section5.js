@@ -118,7 +118,7 @@ export default function Section5(props) {
                             <Typography align='center' variant={isLandscape() ? 'h5' : 'h6'}>
                                 { lang === 'kor' ?
                                     '판매 종자 및 묘목 목록' :
-                                    'List of Plants in Sale'
+                                    'List of Plants for Sale'
                                 }
                             </Typography>
                         </div>

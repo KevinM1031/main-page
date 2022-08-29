@@ -109,6 +109,7 @@ export default function Section5(props) {
                                 <IconButton 
                                     variant='outlined' 
                                     href={content.shop_link}
+                                    sx={{mt: 4}}
                                     target='_blank'>
                                     <ShoppingCartOutlined fontSize={isLandscape() ? 'large' : 'medium'}/>
                                 </IconButton>

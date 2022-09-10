@@ -14,7 +14,6 @@ import SectionH from "./sections/SectionH.js";
 import SectionBG from "../components/ui/SectionBG.js"
 import { useState, useEffect } from "react";
 import { getSunPos } from "../components/util/Util.js";
-import { isEditor } from '../components/database/FirebaseAPI.js';
 
 // Import background images
 import a0_temp from '../resources/bg_a0.png';
@@ -150,6 +149,101 @@ export function MainPage() {
     const [width, setWidth] = useState(getScreenWidth());
     const [height, setHeight] = useState(getScreenHeight() * heightAmp);
 
+    const loadBG = () => {
+        let img = [];
+        img[0] = new Image();
+        img[0].src = a0_temp;
+        img[1] = new Image();
+        img[1].src = a0n_temp;
+        img[2] = new Image();
+        img[2].src = a1_temp;
+        img[3] = new Image();
+        img[3].src = a1n_temp;
+        img[4] = new Image();
+        img[4].src = a2_temp;
+        img[5] = new Image();
+        img[5].src = a2n_temp;
+        img[6] = new Image();
+        img[6].src = a3_temp;
+        img[7] = new Image();
+        img[7].src = a3n_temp;
+
+        img[8] = new Image();
+        img[8].src = b0_temp;
+        img[9] = new Image();
+        img[9].src = b0n_temp;
+        img[10] = new Image();
+        img[10].src = b1_temp;
+        img[11] = new Image();
+        img[11].src = b1n_temp;
+        img[12] = new Image();
+        img[12].src = b2_temp;
+        img[13] = new Image();
+        img[13].src = b2n_temp;
+        img[14] = new Image();
+        img[14].src = b3;
+
+        img[15] = new Image();
+        img[15].src = c0_temp;
+        img[16] = new Image();
+        img[16].src = c0n_temp;
+        img[17] = new Image();
+        img[17].src = c1_temp;
+        img[18] = new Image();
+        img[18].src = c1n_temp;
+        img[19] = new Image();
+        img[19].src = c2_temp;
+        img[20] = new Image();
+        img[20].src = c2n_temp;
+        img[21] = new Image();
+        img[21].src = c3;
+
+        img[22] = new Image();
+        img[22].src = d0;
+        img[23] = new Image();
+        img[23].src = d1;
+        img[24] = new Image();
+        img[24].src = d2;
+        img[25] = new Image();
+        img[25].src = d3;
+
+        img[26] = new Image();
+        img[26].src = e0;
+        img[27] = new Image();
+        img[27].src = e1;
+        img[28] = new Image();
+        img[28].src = e2;
+        img[29] = new Image();
+        img[29].src = e3;
+
+        img[30] = new Image();
+        img[30].src = f0;
+        img[31] = new Image();
+        img[31].src = f1;
+        img[32] = new Image();
+        img[32].src = f2;
+        img[33] = new Image();
+        img[33].src = f3;
+
+        img[34] = new Image();
+        img[34].src = g0;
+        img[35] = new Image();
+        img[35].src = g1;
+        img[36] = new Image();
+        img[36].src = g2;
+        img[37] = new Image();
+        img[37].src = g3;
+
+        img[38] = new Image();
+        img[38].src = h0;
+        img[39] = new Image();
+        img[39].src = h1;
+        img[40] = new Image();
+        img[40].src = h2;
+        img[41] = new Image();
+        img[41].src = h3;
+    }
+
     useEffect(() => {
         if (page === specialPage) {
             if (localStorage.getItem("admin") !== "true" && localStorage.getItem("hidden_page_unlocked") !== "true") {
@@ -173,6 +267,8 @@ export function MainPage() {
         if (page === 1 || page === specialPage) window.scroll(0, fromBottom ? currHeight : 0);
         else window.scroll(0, fromBottom ? currHeight*2 : currHeight);
 
+        loadBG();
+
         window.addEventListener("scroll", handleScroll);
         window.addEventListener('resize', handleResize);
 
@@ -184,6 +280,7 @@ export function MainPage() {
 
     return (
         <div>
+                
             <NavBar/>
 
             <Fade timeout={2000} in={true}>

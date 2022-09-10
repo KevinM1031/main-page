@@ -12,37 +12,37 @@ export default function SectionBG() {
         {
             key: 0,
             icon: <Person />,
-            name: lang === 'kor' ? '소개' : 'About me',
+            name: lang === 'kor' ? '소개' : 'About Me',
         },
         {
             key: 1,
             icon: <StarBorder />,
-            name: lang === 'kor' ? '게시판' : 'Featured items',
+            name: lang === 'kor' ? '게시판' : 'Featured Items',
         },
         {
             key: 2,
             icon: <Code />,
-            name: lang === 'kor' ? '컴퓨터공학' : 'Computer science',
+            name: lang === 'kor' ? '컴퓨터공학' : 'Computer Science',
         },
         {
             key: 3,
             icon: <SportsEsports />,
-            name: lang === 'kor' ? '게임 개발' : 'Video game development',
+            name: lang === 'kor' ? '게임 개발' : 'Video Game Development',
         },
         {
             key: 4,
             icon: <Spa />,
-            name: lang === 'kor' ? '식물류 개량 및 판매' : 'Plant cultivating & sales',
+            name: lang === 'kor' ? '식물 / 화훼 / 테라리움' : 'Plants and Terrariums',
         },
         {
             key: 5,
             icon: <BugReport />,
-            name: lang === 'kor' ? '동물류 브리딩 및 분양' : 'Animal breeding & sales',
+            name: lang === 'kor' ? '동물류 사육 / 키우기 / 분양' : 'Animal Keeping and Sales',
         },
         {
             key: 6,
             icon: <Brush />,
-            name: lang === 'kor' ? '그림' : 'Art gallery',
+            name: lang === 'kor' ? '그림 / 예술작품' : 'Art gallery',
         },
         {
             key: 7,

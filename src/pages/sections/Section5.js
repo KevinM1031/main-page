@@ -51,6 +51,18 @@ export default function Section5(props) {
         setEditDataPath(dataPathParent);
         setEditPlaceholder(content[id]);
     }
+
+    useEffect(() => {
+        let img = [];
+        img[0] = new Image();
+        img[0].src = content.thumbnail_left;
+        img[1] = new Image();
+        img[1].src = content.thumbnail_right;
+        for (let i in content.items) {
+            img[2+i] = new Image();
+            img[2+i].src = content.items[i].image;
+        }
+    }, [content]);
     
     const lang = localStorage.getItem('lang');
 
@@ -89,8 +101,8 @@ export default function Section5(props) {
                         <Typography align='center' sx={{mb: 4}}
                             variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
-                                '식물류 계량 및 판매' :
-                                'Plant Cultivating & Sales'
+                                '식물 / 화훼 / 테라리움' :
+                                'Plants and Terrariums'
                             }
                         </Typography>
                     </FadingComponent>
@@ -117,8 +129,8 @@ export default function Section5(props) {
                             
                             <Typography align='center' variant={isLandscape() ? 'h5' : 'h6'}>
                                 { lang === 'kor' ?
-                                    '판매 종자 및 묘목 목록' :
-                                    'List of Plants for Sale'
+                                    '판매중인 종자 및 물품 목록' :
+                                    'List of Items for Sale'
                                 }
                             </Typography>
                         </div>
@@ -130,8 +142,8 @@ export default function Section5(props) {
                         <Typography align='center' sx={{mt: 8, mb: 6}}
                             variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
-                                '종자 목록' :
-                                'Featured Specimens'
+                                '전시 물품' :
+                                'Featured Items'
                             }
                         </Typography>
                     </FadingComponent>

@@ -34,6 +34,18 @@ export default function Section5(props) {
         getSectionRawContent(8, setRawContent);
     }, []);
 
+    useEffect(() => {
+        let img = [];
+        img[0] = new Image();
+        img[0].src = content.thumbnail_left;
+        img[1] = new Image();
+        img[1].src = content.thumbnail_right;
+        for (let i in content.items) {
+            img[2+i] = new Image();
+            img[2+i].src = content.items[i].image;
+        }
+    }, [content]);
+
     const lang = localStorage.getItem('lang');
 
     return (

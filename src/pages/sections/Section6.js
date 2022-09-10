@@ -52,6 +52,18 @@ export default function Section5(props) {
         setEditPlaceholder(content[id]);
     }
 
+    useEffect(() => {
+        let img = [];
+        img[0] = new Image();
+        img[0].src = content.thumbnail_left;
+        img[1] = new Image();
+        img[1].src = content.thumbnail_right;
+        for (let i in content.items) {
+            img[2+i] = new Image();
+            img[2+i].src = content.items[i].image;
+        }
+    }, [content]);
+
     const lang = localStorage.getItem('lang');
 
     return (
@@ -89,8 +101,8 @@ export default function Section5(props) {
                         <Typography align='center' sx={{mb: 4}}
                             variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
-                                '동물류 브리딩 및 분양' :
-                                'Animal Breeding & Sales'
+                                '동물류 사육 / 키우기 / 분양' :
+                                'Animal Keeping and Sales'
                             }
                         </Typography>
                     </FadingComponent>
@@ -117,7 +129,7 @@ export default function Section5(props) {
                             
                             <Typography align='center' variant={isLandscape() ? 'h5' : 'h6'}>
                                 { lang === 'kor' ?
-                                    '판매 개체 목록' :
+                                    '판매중인 개체 목록' :
                                     'List of Animals for Sale'
                                 }
                             </Typography>
@@ -130,7 +142,7 @@ export default function Section5(props) {
                         <Typography align='center' sx={{mt: 8, mb: 6}}
                             variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
-                                '종류 목록' :
+                                '전시 목록' :
                                 'Featured Species'
                             }
                         </Typography>

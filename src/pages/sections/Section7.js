@@ -148,6 +148,23 @@ export default function Section7(props) {
         getSectionRawContent(7, setRawContent);
     }, []);
 
+    useEffect(() => {
+        let img = [];
+        img[0] = new Image();
+        img[0].src = content.thumbnail_left;
+        img[1] = new Image();
+        img[1].src = content.thumbnail_right;
+        for (let i in content.traditional_media) {
+            img[2+i] = new Image();
+            img[2+i].src = content.traditional_media[i].image;
+        }
+        const n = content.traditional_media.length;
+        for (let i in content.digital_media) {
+            img[2+i+n] = new Image();
+            img[2+i+n].src = content.digital_media[i].image;
+        }
+    }, [content]);
+
     const lang = localStorage.getItem('lang');
 
     return (
@@ -178,7 +195,7 @@ export default function Section7(props) {
                         <Typography align='center' sx={{mb: 4}}
                             variant={isLandscape() ? 'h2' : 'h3'}>
                             { lang === 'kor' ?
-                                '그림' :
+                                '그림 / 예술작품' :
                                 'Art Gallery'
                             }
                         </Typography>

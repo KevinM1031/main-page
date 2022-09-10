@@ -66,6 +66,48 @@ export default function Section2(props) {
         getSectionContent(2, setContent);
         getSectionRawContent(2, setRawContent);
     }, []);
+
+    useEffect(() => {
+        let img = [];
+        img[0] = new Image();
+        img[0].src = content.main_1;
+        img[1] = new Image();
+        img[1].src = content.main_2;
+        img[2] = new Image();
+        img[2].src = content.main_3;
+        img[3] = new Image();
+        img[3].src = content.main_4;
+        img[4] = new Image();
+        img[4].src = content.main_5;
+        img[5] = new Image();
+        img[5].src = content.side_1;
+        img[6] = new Image();
+        img[6].src = content.side_2;
+        img[7] = new Image();
+        img[7].src = content.side_3;
+        img[8] = new Image();
+        img[8].src = content.side_4;
+        img[9] = new Image();
+        img[9].src = content.side_5;
+        img[10] = new Image();
+        img[10].src = content.side_6;
+        img[11] = new Image();
+        img[11].src = content.minor_1;
+        img[12] = new Image();
+        img[12].src = content.minor_2;
+        img[13] = new Image();
+        img[13].src = content.minor_3;
+        img[14] = new Image();
+        img[14].src = content.minor_4;
+        img[15] = new Image();
+        img[15].src = content.minor_5;
+        img[16] = new Image();
+        img[16].src = content.minor_6;
+        for (let i in content.items) {
+            img[17+i] = new Image();
+            img[17+i].src = content.items[i].image;
+        }
+    }, [content]);
     
     const lang = localStorage.getItem('lang');
 

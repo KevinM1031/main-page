@@ -76,6 +76,22 @@ export default function Section1(props) {
         getSectionContent(1, setContent);
     }, []);
 
+    useEffect(() => {
+        let img = [];
+        img[0] = new Image();
+        img[0].src = content.personal_icon;
+        img[1] = new Image();
+        img[1].src = content.personal_photo;
+        img[2] = new Image();
+        img[2].src = content.affiliation_image_1;
+        img[3] = new Image();
+        img[3].src = content.affiliation_image_2;
+        img[4] = new Image();
+        img[4].src = content.affiliation_image_3;
+        img[5] = new Image();
+        img[5].src = content.affiliation_image_4;
+    }, [content]);
+
     return (
         <div>
             <TextEditor 
@@ -160,7 +176,7 @@ export default function Section1(props) {
                 <Grid item xs={2} align="left">
                     <FadingComponent duration={1000}>
                         <Tooltip title={lang === 'kor' ? '날씨' : 'Digital Weather Report'}>
-                            <IconButton href={content.weather} target='_blank'>
+                            <IconButton href={content.weather} target='_blank' disabled={true}>
                                 <NightsStayOutlined 
                                     fontSize={isLandscape() ? 'large' : 'medium'}/>
                             </IconButton>

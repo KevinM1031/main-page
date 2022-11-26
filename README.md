@@ -1,7 +1,7 @@
 # Main Page
 
 A personal website
-Visit the [website](https://kevinm1031.github.io/main-page/).
+Visit the [website](https://kevinm1031.github.io).
 
 This website is more of a personal archive/exhibition than anything else, but can serve as a professional website to some degree as well.  
 The deeper you scroll down, the more eccentric items you will see.
